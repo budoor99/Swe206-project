@@ -8,7 +8,7 @@ public class Machine {
     private String machineName;
 
     private ArrayList<String> researchInterest;
-    private ResearchInterest[] myReservations;
+    private ArrayList<Reservation> myReservations;
 
 
 

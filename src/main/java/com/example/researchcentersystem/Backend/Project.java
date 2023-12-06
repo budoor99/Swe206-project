@@ -23,25 +23,25 @@ public class Project {
         this.projectName = projectName;
     }
 
-    public ArrayList<Machine> getProjectMachines() {
-        return projectMachines;
-    }
+
 
     public void setProjectMachines(ArrayList<Machine> projectMachines) {
         this.projectMachines = projectMachines;
     }
 
-    public ArrayList<Machine> viewAvailableMachines(){
-        return null; // to avoid error signs
+    public ArrayList<Machine> viewAvailableMachines(){ //getter
+        return projectMachines;
     }
 
-    public void addMachine(Machine m1){}
-
-    public Machine removeMachine(Machine m1){
-        return null; //to avoid error sign}
+    public void addMachine(Machine m1){
+        projectMachines.add(m1);
     }
 
-    public void assignTeamProject(Team t1, Project p1){}
+    public boolean removeMachine(Machine m1){
+        return projectMachines.remove(m1);
+    }
+
+    //public void assignTeamProject(Team t1, Project p1){}
 
 
 
