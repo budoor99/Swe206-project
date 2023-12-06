@@ -16,4 +16,6 @@ public class ResearchInterest
     }
 
     public ArrayList<String> refreshInterests(){return interests;}
+
+
 }

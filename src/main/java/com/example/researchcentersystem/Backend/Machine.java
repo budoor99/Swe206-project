@@ -15,6 +15,8 @@ public class Machine {
     public Machine(int machineID, String machineName){
         this.machineID= machineID;
         this.machineName=machineName;
+        this.researchInterest = new ArrayList<>();
+        this.myReservations = new ArrayList<>();
 
     }
 
@@ -28,6 +30,14 @@ public class Machine {
 
     public void setMachineID(int machineID){
         this.machineID = machineID;
+    }
+
+    public void setResearchInterest(ArrayList<String> researchInterest) {
+        this.researchInterest = researchInterest;
+    }
+
+    public void setMyReservations(ArrayList<Reservation> myReservations) {
+        this.myReservations = myReservations;
     }
 
     public void setMachineName(String machineName) {

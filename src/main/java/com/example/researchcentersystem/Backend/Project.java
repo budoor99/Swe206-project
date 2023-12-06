@@ -6,13 +6,22 @@ public class Project {
 
     private String projectName;
 
-    //private Team team;
+    private Team team;
 
     private ArrayList<Machine> projectMachines;
 
-    public Project(String projectName, ArrayList<Machine> projectMachines) {
+
+
+    public Project(String projectName) { //1
         this.projectName = projectName;
-        this.projectMachines = projectMachines;
+        this.projectMachines = new ArrayList<>();
+        this.team =null;
+    }
+
+    public Project(String projectName, Team team) { //2
+        this.projectName = projectName;
+        this.projectMachines = new ArrayList<>();
+        this.team = team;
     }
 
     public String getProjectName() {
@@ -24,9 +33,12 @@ public class Project {
     }
 
 
+    public void setTeam(Team team) {
+        this.team = team;
+    }
 
-    public void setProjectMachines(ArrayList<Machine> projectMachines) {
-        this.projectMachines = projectMachines;
+    public Team getTeam() {
+        return team;
     }
 
     public ArrayList<Machine> viewAvailableMachines(){ //getter
@@ -41,7 +53,9 @@ public class Project {
         return projectMachines.remove(m1);
     }
 
-    //public void assignTeamProject(Team t1, Project p1){}
+    public void assignTeamProject(Team t1){
+        team=t1;
+    }
 
 
 
