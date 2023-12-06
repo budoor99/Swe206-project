@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Member extends User{
     private String researchInterest;
     private ArrayList<Team> myTeams;
-//    private ArrayList<Project> myProjects;
+    private ArrayList<Project> myProjects;
 
     public Member(String userName, String userEmail, String userType,String userID, String researchInterest) {
         super(userName, userEmail, userType, userID);
@@ -20,9 +20,9 @@ public class Member extends User{
         return researchInterest;
     }
 
-//    public ArrayList<Project> viewAssignedProject(){
-//        return myProjects;
-//    }
+    public ArrayList<Project> viewAssignedProject(){
+        return myProjects;
+    }
     public ArrayList<Team> viewTeams(){
         return myTeams;
     }

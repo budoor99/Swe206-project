@@ -6,7 +6,7 @@ public class Project {
 
     private String projectName;
 
-    //private Team team;
+    private Team team;
 
     private ArrayList<Machine> projectMachines;
 
@@ -41,7 +41,9 @@ public class Project {
         return projectMachines.remove(m1);
     }
 
-    //public void assignTeamProject(Team t1, Project p1){}
+    public void assignTeamProject(Team t1){
+        team=t1;
+    }
 
 
 
