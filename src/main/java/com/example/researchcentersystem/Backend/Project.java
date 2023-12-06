@@ -1,14 +1,16 @@
 package com.example.researchcentersystem.Backend;
 
+import java.util.ArrayList;
+
 public class Project {
 
     private String projectName;
 
     //private Team team;
 
-    private Machine[] projectMachines;
+    private ArrayList<Machine> projectMachines;
 
-    public Project(String projectName, Machine[] projectMachines) {
+    public Project(String projectName, ArrayList<Machine> projectMachines) {
         this.projectName = projectName;
         this.projectMachines = projectMachines;
     }
@@ -21,15 +23,15 @@ public class Project {
         this.projectName = projectName;
     }
 
-    public Machine[] getProjectMachines() {
+    public ArrayList<Machine> getProjectMachines() {
         return projectMachines;
     }
 
-    public void setProjectMachines(Machine[] projectMachines) {
+    public void setProjectMachines(ArrayList<Machine> projectMachines) {
         this.projectMachines = projectMachines;
     }
 
-    public Machine[] viewAvailableMachines(){
+    public ArrayList<Machine> viewAvailableMachines(){
         return null; // to avoid error signs
     }
 
@@ -41,7 +43,7 @@ public class Project {
 
     public void assignTeamProject(Team t1, Project p1){}
 
-    
+
 
 
 }

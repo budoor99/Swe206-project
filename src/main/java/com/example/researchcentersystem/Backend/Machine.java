@@ -1,11 +1,13 @@
 package com.example.researchcentersystem.Backend;
 
+import java.util.ArrayList;
+
 public class Machine {
 
     private int machineID;
     private String machineName;
 
-    private String[] researchInterest;
+    private ArrayList<String> researchInterest;
     private ResearchInterest[] myReservations;
 
 
