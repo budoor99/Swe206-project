@@ -15,8 +15,8 @@ public class Machine {
     public Machine(int machineID, String machineName){
         this.machineID= machineID;
         this.machineName=machineName;
-        this.researchInterest = new ArrayList<>();
-        this.myReservations = new ArrayList<>();
+        this.researchInterest = new ArrayList<>();// we will update it. it is not optional
+        this.myReservations = new ArrayList<>();// there is problem
 
     }
 

@@ -191,20 +191,20 @@ public class MemorySession {
 
     }
 
-    public Machine viewMostUsedMachine(){ //two arrays, the first is machines, the second is the count of machines
-
-        //or dictionary 
-
-
-        HashMap<Machine, Integer> dictionary = new HashMap<>();
-        for(Machine machine: machines){
-            dictionary.put(machine,0);
-        }
-
-
-
-
-    }
+//    public Machine viewMostUsedMachine(){ //two arrays, the first is machines, the second is the count of machines
+//
+//        //or dictionary
+//
+//
+//        HashMap<Machine, Integer> dictionary = new HashMap<>();
+//        for(Machine machine: machines){
+//            dictionary.put(machine,0);
+//        }
+//
+//
+//
+//
+//    }
 
 
 
