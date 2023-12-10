@@ -1,16 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.researchcentersystem.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <BorderPane layoutX="6.0" prefHeight="600.0" prefWidth="1094.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <AnchorPane prefHeight="45.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="-6.0" layoutY="-86.0" prefHeight="45.0" prefWidth="1100.0" styleClass="my-form" stylesheets="@design.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <FontAwesomeIconView glyphName="USERS" layoutX="23.0" layoutY="28.0" size="1.5em" />
+                              <Label layoutX="55.0" layoutY="13.0" text="KFUMP research center system">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="1034.0" layoutY="2.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="60.0" styleClass="close" stylesheets="@design.css">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="CLOSE" size="1.2em" text="" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="968.0" layoutY="2.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="60.0" styleClass="minimize" stylesheets="@design.css">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="MINUS" size="1.2em" text="" />
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="555.0" prefWidth="217.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="-7.0" layoutY="98.0" prefHeight="555.0" prefWidth="224.0" styleClass="nav-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="79.0" layoutY="111.0" size="7em" />
+                              <Label layoutX="67.0" layoutY="123.0" text="Welcome," textFill="WHITE">
+                                 <font>
+                                    <Font name="Elephant" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="5.0" layoutY="146.0" prefHeight="20.0" prefWidth="211.0" text="admin" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="61.0" layoutX="130.0" layoutY="182.0" startX="-100.0" />
+                              <Button layoutX="19.0" layoutY="203.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@design.css" text="Home">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="HOME" size="1.5em" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="19.0" layoutY="273.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@design.css" text="Add new machine">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="PLUS" size="1.5em" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="19.0" layoutY="238.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@design.css" text="Add new project">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="PLUS" size="1.5em" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="19.0" layoutY="378.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@design.css" text="View machines">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="PLUS" size="1.5em" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="19.0" layoutY="343.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="View teams">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="USER" size="1.5em" text="" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="19.0" layoutY="308.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Add new member">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="USER_PLUS" size="1.5em" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="14.0" layoutY="504.0" mnemonicParsing="false" styleClass="logout" stylesheets="@dashboardDesign.css">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="SIGN_OUT" size="2em" />
+                                 </graphic>
+                              </Button>
+                              <Label layoutX="57.0" layoutY="510.0" text="Logout" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="138.0" layoutY="122.0" prefHeight="555.0" prefWidth="878.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="8.0" prefHeight="534.0" prefWidth="850.0" stylesheets="@dashboardDesign.css">
+                                 <children>
+                                    <AnchorPane prefHeight="173.0" prefWidth="850.0">
+                                       <children>
+                                          <AnchorPane layoutX="8.0" layoutY="6.0" prefHeight="162.0" prefWidth="269.0" style="-fx-background-color: yellow;">
+                                             <children>
+                                                <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="23.0" layoutY="85.0" size="4em" />
+                                                <Label layoutX="41.0" layoutY="116.0" prefHeight="26.0" prefWidth="187.0" text="The most used machine">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label alignment="TOP_RIGHT" layoutX="109.0" layoutY="24.0" prefHeight="40.0" prefWidth="146.0" text="0">
+                                                   <font>
+                                                      <Font size="28.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="564.0" layoutY="6.0" prefHeight="162.0" prefWidth="272.0" style="-fx-background-color: yellow;">
+                                             <children>
+                                                <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="34.0" layoutY="83.0" size="4em" text="" />
+                                                <Label layoutX="48.0" layoutY="114.0" prefHeight="26.0" prefWidth="191.0" text="The most active member">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label alignment="TOP_RIGHT" layoutX="120.0" layoutY="22.0" prefHeight="40.0" prefWidth="146.0" text="0">
+                                                   <font>
+                                                      <Font size="28.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="284.0" layoutY="6.0" prefHeight="162.0" prefWidth="269.0" style="-fx-background-color: yellow;">
+                                             <children>
+                                                <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="29.0" layoutY="83.0" size="4em" />
+                                                <Label layoutX="13.0" layoutY="106.0" prefHeight="42.0" prefWidth="244.0" text="The project with most machines">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label alignment="TOP_RIGHT" layoutX="115.0" layoutY="22.0" prefHeight="40.0" prefWidth="146.0" text="0">
+                                                   <font>
+                                                      <Font size="28.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="174.0" layoutY="109.0" prefHeight="555.0" prefWidth="877.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="529.0" prefWidth="851.0" stylesheets="@dashboardDesign.css">
+                                 <children>
+                                    <AnchorPane prefHeight="174.0" prefWidth="851.0" stylesheets="@dashboardDesign.css" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
