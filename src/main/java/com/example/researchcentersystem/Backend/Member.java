@@ -21,7 +21,7 @@ public class Member extends User{
         return researchInterest;
     }
 
-    public ArrayList<Project> viewAssignedProject(){ //may be changed 
+    public ArrayList<Project> viewAssignedProject(){ //may be changed
         return myProjects;
     }
     public ArrayList<Team> viewTeams(){
