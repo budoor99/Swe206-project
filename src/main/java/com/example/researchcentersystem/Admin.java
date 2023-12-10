@@ -1,4 +1,4 @@
-package com.example.researchcentersystem.Backend;
+package com.example.researchcentersystem;
 
 public class Admin extends User {
 

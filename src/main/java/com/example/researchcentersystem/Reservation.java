@@ -1,4 +1,6 @@
-package com.example.researchcentersystem.Backend;
+package com.example.researchcentersystem;
+
+import com.example.researchcentersystem.Machine;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

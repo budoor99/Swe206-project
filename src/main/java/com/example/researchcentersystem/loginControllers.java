@@ -1,4 +1,4 @@
-package com.example.researchcentersystem.Backend;
+package com.example.researchcentersystem;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

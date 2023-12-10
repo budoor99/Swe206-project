@@ -1,9 +1,8 @@
-package com.example.researchcentersystem.Backend;
+package com.example.researchcentersystem;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Member extends User{
+public class Member extends User {
     private String researchInterest; //should be a list
     private ArrayList<Team> myTeams;
     private ArrayList<Project> myProjects;

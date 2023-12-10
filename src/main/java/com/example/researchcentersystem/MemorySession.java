@@ -1,7 +1,6 @@
-package com.example.researchcentersystem.Backend;
+package com.example.researchcentersystem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class MemorySession {
     private ArrayList<Project> takenProjects;
