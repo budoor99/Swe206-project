@@ -191,6 +191,7 @@ public class MemorySession {
 
     }
 
+
 //    public Machine viewMostUsedMachine(){ //two arrays, the first is machines, the second is the count of machines
 //
 //        //or dictionary
@@ -205,12 +206,5 @@ public class MemorySession {
 //
 //
 //    }
-
-
-
-
-
-
-
 
 }

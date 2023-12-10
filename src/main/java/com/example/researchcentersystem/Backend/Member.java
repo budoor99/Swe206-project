@@ -1,9 +1,10 @@
 package com.example.researchcentersystem.Backend;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Member extends User{
-    private String researchInterest;
+    private String researchInterest; //should be a list
     private ArrayList<Team> myTeams;
     private ArrayList<Project> myProjects;
 
@@ -20,7 +21,7 @@ public class Member extends User{
         return researchInterest;
     }
 
-    public ArrayList<Project> viewAssignedProject(){
+    public ArrayList<Project> viewAssignedProject(){ //may be changed
         return myProjects;
     }
     public ArrayList<Team> viewTeams(){
