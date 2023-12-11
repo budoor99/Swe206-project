@@ -19,7 +19,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MemberController implements Initializable {
-
+    private MemorySession database=new MemorySession();
 
     @FXML
     private Button close;

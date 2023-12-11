@@ -1,5 +1,6 @@
 package com.example.researchcentersystem;
 
+import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,11 +13,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AdminController implements Initializable {
+    private MemorySession database=new MemorySession();
 
     @FXML
     private Button addMachine_DeleteBtn;
