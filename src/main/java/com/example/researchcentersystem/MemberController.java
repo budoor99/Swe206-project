@@ -57,6 +57,23 @@ public class MemberController implements Initializable {
     @FXML
     private AnchorPane viewteams_form;
 
+    @FXML
+    private Label totalTeams;
+
+    @FXML
+    private Button closViewTeam_btn;
+
+
+    @FXML
+    private Button reserveMachine_btn;
+
+
+    @FXML
+    private AnchorPane viewOneTeam_form;
+
+
+
+
 
     public void switchForm(ActionEvent event) {
 
@@ -84,7 +101,8 @@ public class MemberController implements Initializable {
 
 
 
-            private double x=0;
+
+    private double x=0;
     private double y=0;
 
     public void logout(){
@@ -146,24 +164,53 @@ public class MemberController implements Initializable {
         String username = MemorySession.currentUser.getUserName();
         memberName.setText(username);
         addMyTeams();
+        totalTeams();
 
+
+    }
+
+    public void totalTeams(){
+
+        totalTeams.setText(String.valueOf(teams.size()));
 
     }
 
 
 
+    ArrayList<Team> teams;
+    private Team selectedTeam;  //store the selected team
+
     public void addMyTeams() {
         Member member = (Member) MemorySession.currentUser;
-        ArrayList<Team> teams = member.viewTeams();
+        teams = member.viewTeams();
 
         myteams.getChildren().clear();
 
         for (Team team : teams) {
-
             Button teamButton = new Button(team.getTeamName());
+            teamButton.setOnAction(event -> handleTeamButtonClick(team)); // Add event handler
             myteams.getChildren().add(teamButton);
+        }
+    }
+
+    private void handleTeamButtonClick(Team team) {
+        selectedTeam = team;
+        moveForwardToTeam();
+    }
+
+    public void moveBackToTeams(ActionEvent event) {
+        if (event.getSource() == closViewTeam_btn) {
+            viewteams_form.setVisible(true);
+            viewOneTeam_form.setVisible(false);
+            home_form.setVisible(false);
+
 
         }
     }
-    
+
+    public void moveForwardToTeam() {
+        viewteams_form.setVisible(false);
+        viewOneTeam_form.setVisible(true);
+        home_form.setVisible(false);
+    }
 }
