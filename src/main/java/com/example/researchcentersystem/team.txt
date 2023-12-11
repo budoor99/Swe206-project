@@ -1,4 +1,3 @@
-TeamName,TeamID,Leader,TeamMember1,TeamMember2,TeamMember3,TeamMember4
 Team1,1234567,Ahmed Mohamed,Fatima Ali,Youssef Khalil,Lina Abdullah,Tarek Hassan
 Team2,2345678,Fatima Ali,Youssef Khalil,Lina Abdullah,Tarek Hassan,Nour Ibrahim
 Team3,3456789,Youssef Khalil,Lina Abdullah,Tarek Hassan,Nour Ibrahim,Sara Hamdi

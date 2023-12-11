@@ -190,6 +190,19 @@ public class MemorySession {
 
     }
 
+    public Member searchMember(String name){
+        for (int i = 0; i<members.size();i++){
+            if(members.get(i).getUserName().equals(name)){
+                return members.get(i);
+            }
+        }
+        return null;
+    }
+
+    public void addTeamToList(Team t1){
+
+    }
+
 
 //    public Machine viewMostUsedMachine(){ //two arrays, the first is machines, the second is the count of machines
 //

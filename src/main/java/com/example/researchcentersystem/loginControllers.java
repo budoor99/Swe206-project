@@ -39,6 +39,7 @@ public class loginControllers implements Initializable {
 
     Alert alert;
     public void login(){
+        MemorySession database = new MemorySession();
         String name=username.getText();
         String pass=password.getText();
         boolean found=false;
@@ -51,7 +52,7 @@ public class loginControllers implements Initializable {
             alert.setContentText("please fill the all blank fields");
         }
         else {
-            try (BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\Dell\\Documents\\SWE206\\researchCenterSystem\\src\\main\\java\\com\\example\\researchcentersystem\\loginInfo"))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader("/Users/Mahameeho/Desktop/Uni/Term 231/SWE 206 Lab/Swe206-project/src/main/java/com/example/researchcentersystem/loginInfo.txt"))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] parts = line.split(",");
@@ -61,10 +62,29 @@ public class loginControllers implements Initializable {
                         String storedPassword = parts[1];
                         String status=parts[3];
                         if (name.equals(storedUsername) && pass.equals(storedPassword)) {
+                            BufferedReader readerMember = new BufferedReader(new FileReader("/Users/Mahameeho/Desktop/Uni/Term 231/SWE 206 Lab/Swe206-project/src/main/java/com/example/researchcentersystem/member.txt"));
+                            String memberInfo;
+                            while ((memberInfo = readerMember.readLine()) != null){
+                                String [] info = memberInfo.split(",");
+                                database.addMember(info[0], info[1], info[3], info[2]);
+                            }
+                            BufferedReader readerTeam = new BufferedReader(new FileReader("/Users/Mahameeho/Desktop/Uni/Term 231/SWE 206 Lab/Swe206-project/src/main/java/com/example/researchcentersystem/team.txt"));
+                            String teamInfo;
+                            while ((teamInfo = readerTeam.readLine())!=null){
+                                String [] tInfo = teamInfo.split(",");
+                                Team t1 = new Team (tInfo[0], tInfo[1]);
+                                t1.setLeader(tInfo[2]);
+                                for (int i = 2; i<tInfo.length;i++){
+                                    t1.addTeamMember(database.searchMember(tInfo[i]));
+                                    database.searchMember(tInfo[i]).addToMyTeams(t1);
+                                }
+
+                                database.addTeamToList(t1);
+                            }
                             //if all went well
                             found=true;
                             loginBtn.getScene().getWindow().hide();
-                            if(status=="admin") {
+                            if(status.equals("admin")) {
                                 Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
                                 Stage stage = new Stage();
                                 Scene scene = new Scene(root);
