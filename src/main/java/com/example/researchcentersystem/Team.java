@@ -5,7 +5,7 @@ import com.example.researchcentersystem.Member;
 import java.util.ArrayList;
 
 public class Team {
-    private ArrayList<Member> members;
+    private ArrayList<Member> members = new ArrayList<>();
     private String leader;
 
     public String getTeamName() {
