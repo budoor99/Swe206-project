@@ -52,7 +52,7 @@ public class loginControllers implements Initializable {
             alert.setContentText("please fill the all blank fields");
         }
         else {
-            try (BufferedReader reader = new BufferedReader(new FileReader("/Users/Mahameeho/Desktop/Uni/Term 231/SWE 206 Lab/Swe206-project/src/main/java/com/example/researchcentersystem/loginInfo.txt"))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/loginInfo.txt"))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] parts = line.split(",");
@@ -63,13 +63,16 @@ public class loginControllers implements Initializable {
                         String status=parts[3];
                         if (name.equals(storedUsername) && pass.equals(storedPassword)) {
 
-                            BufferedReader readerMember = new BufferedReader(new FileReader("/Users/Mahameeho/Desktop/Uni/Term 231/SWE 206 Lab/Swe206-project/src/main/java/com/example/researchcentersystem/member.txt"));
+                            //for members
+                            BufferedReader readerMember = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/member.txt"));
                             String memberInfo;
                             while ((memberInfo = readerMember.readLine()) != null){
                                 String [] info = memberInfo.split(",");
                                 database.addMember(info[0], info[1], info[3], info[2]);
                             }
-                            BufferedReader readerTeam = new BufferedReader(new FileReader("/Users/Mahameeho/Desktop/Uni/Term 231/SWE 206 Lab/Swe206-project/src/main/java/com/example/researchcentersystem/team.txt"));
+
+                            //for teams
+                            BufferedReader readerTeam = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/team.txt"));
                             String teamInfo;
                             while ((teamInfo = readerTeam.readLine())!=null){
                                 String [] tInfo = teamInfo.split(",");

@@ -6,7 +6,7 @@ public class MemorySession {
     private static ArrayList<Project> takenProjects = new ArrayList<>();
 
     private static ArrayList<Project> availableProjects = new ArrayList<>();
-    private static ArrayList<Member> members = new ArrayList<>();
+    private  static ArrayList<Member> members = new ArrayList<>();
     private static ArrayList<Team> teams = new ArrayList<>();
     private static ArrayList<Machine> machines = new ArrayList<>();
 
@@ -202,6 +202,7 @@ public class MemorySession {
     public void addTeamToList(Team t1){
 
     }
+
 
 
 //    public Machine viewMostUsedMachine(){ //two arrays, the first is machines, the second is the count of machines
