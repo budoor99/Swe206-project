@@ -61,10 +61,11 @@ public class loginControllers implements Initializable {
                         String storedPassword = parts[1];
                         String status=parts[3];
                         if (name.equals(storedUsername) && pass.equals(storedPassword)) {
+
                             //if all went well
                             found=true;
                             loginBtn.getScene().getWindow().hide();
-                            if(status=="admin") {
+                            if(status.equals("admin")) {
                                 Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
                                 Stage stage = new Stage();
                                 Scene scene = new Scene(root);
