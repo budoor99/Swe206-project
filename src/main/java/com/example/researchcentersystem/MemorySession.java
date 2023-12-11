@@ -3,6 +3,7 @@ package com.example.researchcentersystem;
 import java.util.ArrayList;
 
 public class MemorySession {
+    public static User currentUser;
     private static ArrayList<Project> takenProjects = new ArrayList<>();
 
     private static ArrayList<Project> availableProjects = new ArrayList<>();
@@ -11,6 +12,7 @@ public class MemorySession {
     private static ArrayList<Machine> machines = new ArrayList<>();
 
     private static ArrayList<String> researchInterest = new ArrayList<>();
+    private static ArrayList<Admin> admins=new ArrayList<>();
 
 
     public void addMachine(String name, String machineID,  ArrayList<String> researchInterest){
@@ -37,6 +39,11 @@ public class MemorySession {
     public void addMember(String name, String email, String researchInterest, String memberID ){
         Member newMember =new Member(name,email, "Member", memberID,researchInterest );
         this.members.add(newMember);
+
+    }
+    public void addAdmin(String name, String email, String memberID ){
+        Admin newAdmin =new Admin(name,email, "Admin", memberID);
+        this.admins.add(newAdmin);
 
     }
 
@@ -199,6 +206,7 @@ public class MemorySession {
         return null;
     }
 
+
     public Team searchTeam(String name){
         for (int i = 0; i<teams.size();i++){
             if(teams.get(i).getTeamName().equals(name)){
@@ -230,6 +238,21 @@ public class MemorySession {
 
     public ArrayList<Machine> getMachines(){
         return machines;
+    }
+
+    public User searchCurrentUser(String name){
+        for(Member m:members){
+            if(m.getUserName().equals(name)){
+                return m;
+            }
+        }
+
+        for(Admin m:admins){
+            if(m.getUserName().equals(name)){
+                return m;
+            }
+        }
+        return new User("edfe","efw","ewf","efwe");
     }
 
 

@@ -71,6 +71,16 @@ public class loginControllers implements Initializable {
                                 String [] info = memberInfo.split(",");
                                 database.addMember(info[0], info[1], info[3], info[2]);
                             }
+                            //readings for members
+                            BufferedReader readerAdmin = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/admin.txt"));
+                            String adminInfo;
+                            while ((adminInfo = readerAdmin.readLine()) != null){
+                                String [] info = adminInfo.split(",");
+                                database.addAdmin(info[0],info[1],info[3]);
+                            }
+
+                            //get the current user
+                            MemorySession.currentUser=database.searchCurrentUser(parts[2]);
 
                             //readings for teams
                             BufferedReader readerTeam = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/team.txt"));

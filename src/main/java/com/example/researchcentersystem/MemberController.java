@@ -103,5 +103,6 @@ public class MemberController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+
     }
 }
