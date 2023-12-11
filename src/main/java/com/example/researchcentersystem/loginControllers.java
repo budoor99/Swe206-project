@@ -62,9 +62,7 @@ public class loginControllers implements Initializable {
                         String storedPassword = parts[1];
                         String status=parts[3];
                         if (name.equals(storedUsername) && pass.equals(storedPassword)) {
-<<<<<<< HEAD
 
-=======
                             BufferedReader readerMember = new BufferedReader(new FileReader("/Users/Mahameeho/Desktop/Uni/Term 231/SWE 206 Lab/Swe206-project/src/main/java/com/example/researchcentersystem/member.txt"));
                             String memberInfo;
                             while ((memberInfo = readerMember.readLine()) != null){
@@ -85,7 +83,7 @@ public class loginControllers implements Initializable {
 
                                 database.addTeamToList(t1);
                             }
->>>>>>> ae0418b4bd90036814c08a8a91ae9989bc7a7e67
+
                             //if all went well
                             found=true;
                             loginBtn.getScene().getWindow().hide();
