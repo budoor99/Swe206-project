@@ -1,4 +1,3 @@
-Name,Email,Member,MemberID,com.example.researchcentersystem.ResearchInterest
 Ahmed Mohamed,ahmed.mohamed@example.com,member,1234567,Physics
 Fatima Ali,fatima.ali@example.com,member,2345678,Chemistry
 Youssef Khalil,youssef.khalil@example.com,member,3456789,Biology
