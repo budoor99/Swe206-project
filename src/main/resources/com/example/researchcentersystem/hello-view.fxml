@@ -13,9 +13,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.researchcentersystem.AdminController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
          <children>
             <BorderPane layoutX="6.0" prefHeight="600.0" prefWidth="1094.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <top>
@@ -29,12 +29,12 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="1034.0" layoutY="2.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="60.0" styleClass="close" stylesheets="@dashboardDesign.css">
+                              <Button fx:id="close" layoutX="1034.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="60.0" styleClass="close" stylesheets="@dashboardDesign.css">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="CLOSE" size="1.2em" text="" />
                                  </graphic>
                               </Button>
-                              <Button layoutX="968.0" layoutY="2.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="60.0" styleClass="minimize" stylesheets="@dashboardDesign.css">
+                              <Button fx:id="minimize" layoutX="968.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" prefHeight="24.0" prefWidth="60.0" styleClass="minimize" stylesheets="@dashboardDesign.css">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="MINUS" size="1.2em" text="" />
                                  </graphic>
@@ -55,43 +55,43 @@
                                     <Font name="Elephant" size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" layoutX="5.0" layoutY="146.0" prefHeight="20.0" prefWidth="211.0" text="admin" textFill="WHITE">
+                              <Label fx:id="username" alignment="CENTER" layoutX="5.0" layoutY="146.0" prefHeight="20.0" prefWidth="211.0" text="admin" textFill="WHITE">
                                  <font>
                                     <Font name="Arial" size="17.0" />
                                  </font>
                               </Label>
                               <Line endX="61.0" layoutX="130.0" layoutY="182.0" startX="-100.0" />
-                              <Button layoutX="19.0" layoutY="203.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Home">
+                              <Button fx:id="home_btn" layoutX="19.0" layoutY="203.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Home">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="HOME" size="1.5em" />
                                  </graphic>
                               </Button>
-                              <Button layoutX="19.0" layoutY="273.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Add new machine">
+                              <Button fx:id="addMachine_btn" layoutX="19.0" layoutY="273.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Add new machine">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="PLUS" size="1.5em" />
                                  </graphic>
                               </Button>
-                              <Button layoutX="19.0" layoutY="238.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Add new project">
+                              <Button fx:id="addProject_btn" layoutX="19.0" layoutY="238.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Add new project">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="PLUS" size="1.5em" />
                                  </graphic>
                               </Button>
-                              <Button layoutX="19.0" layoutY="378.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="View machines">
+                              <Button fx:id="viewMachines_btn" layoutX="19.0" layoutY="378.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="View machines">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="PLUS" size="1.5em" />
                                  </graphic>
                               </Button>
-                              <Button layoutX="19.0" layoutY="343.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="View teams">
+                              <Button fx:id="viewTeams_btn" layoutX="19.0" layoutY="343.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="View teams">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="USER" size="1.5em" text="" />
                                  </graphic>
                               </Button>
-                              <Button layoutX="19.0" layoutY="308.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Add new member">
+                              <Button fx:id="addMember_btn" layoutX="19.0" layoutY="308.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Add new member">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="USER_PLUS" size="1.5em" />
                                  </graphic>
                               </Button>
-                              <Button layoutX="14.0" layoutY="504.0" mnemonicParsing="false" styleClass="logout" stylesheets="@dashboardDesign.css">
+                              <Button fx:id="logout" layoutX="14.0" layoutY="504.0" mnemonicParsing="false" onAction="#logout" styleClass="logout" stylesheets="@dashboardDesign.css">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="SIGN_OUT" size="2em" />
                                  </graphic>
@@ -109,7 +109,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="home_form" layoutX="138.0" layoutY="122.0" prefHeight="555.0" prefWidth="878.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="home_form" layoutX="138.0" layoutY="122.0" prefHeight="555.0" prefWidth="878.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="14.0" layoutY="8.0" prefHeight="534.0" prefWidth="850.0" stylesheets="@dashboardDesign.css">
                                  <children>
