@@ -72,6 +72,7 @@ public class loginControllers implements Initializable {
                             String teamInfo;
                             while ((teamInfo = readerTeam.readLine())!=null){
                                 String [] tInfo = teamInfo.split(",");
+                                System.out.println(Arrays.toString(tInfo));
                                 Team t1 = new Team (tInfo[0], tInfo[1]);
                                 t1.setLeader(tInfo[2]);
                                 for (int i = 2; i<tInfo.length;i++){

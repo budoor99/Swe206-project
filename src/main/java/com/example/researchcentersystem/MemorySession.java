@@ -3,14 +3,14 @@ package com.example.researchcentersystem;
 import java.util.ArrayList;
 
 public class MemorySession {
-    private static ArrayList<Project> takenProjects;
+    private static ArrayList<Project> takenProjects = new ArrayList<>();
 
-    private static ArrayList<Project> availableProjects;
-    private static ArrayList<Member> members;
-    private static ArrayList<Team> teams;
-    private static ArrayList<Machine> machines;
+    private static ArrayList<Project> availableProjects = new ArrayList<>();
+    private static ArrayList<Member> members = new ArrayList<>();
+    private static ArrayList<Team> teams = new ArrayList<>();
+    private static ArrayList<Machine> machines = new ArrayList<>();
 
-    private static ArrayList<String> researchInterest;
+    private static ArrayList<String> researchInterest = new ArrayList<>();
 
 
     public void addMachine(String name, int machineID,  ArrayList<String> researchInterest){
