@@ -15,6 +15,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
@@ -63,7 +64,7 @@ public class loginControllers implements Initializable {
                         String status=parts[3];
                         if (name.equals(storedUsername) && pass.equals(storedPassword)) {
 
-                            //for members
+                            //readings for members
                             BufferedReader readerMember = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/member.txt"));
                             String memberInfo;
                             while ((memberInfo = readerMember.readLine()) != null){
@@ -71,12 +72,11 @@ public class loginControllers implements Initializable {
                                 database.addMember(info[0], info[1], info[3], info[2]);
                             }
 
-                            //for teams
+                            //readings for teams
                             BufferedReader readerTeam = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/team.txt"));
                             String teamInfo;
                             while ((teamInfo = readerTeam.readLine())!=null){
                                 String [] tInfo = teamInfo.split(",");
-                                System.out.println(Arrays.toString(tInfo));
                                 Team t1 = new Team (tInfo[0], tInfo[1]);
                                 t1.setLeader(tInfo[2]);
                                 for (int i = 2; i<tInfo.length;i++){
@@ -87,22 +87,39 @@ public class loginControllers implements Initializable {
                                 database.addTeamToList(t1);
                             }
 
-                            //for projects
+                            //readings for projects
                             BufferedReader readerProjects = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/projects.txt"));
                             String projectInfo;
                             while ((projectInfo = readerProjects.readLine())!=null){
                                 String [] pInfo = projectInfo.split(",");
-                                System.out.println(Arrays.toString(pInfo));
-                                Team t=database.searchTeam(pInfo[1]);
-                                if(t!=null){
+                                if(pInfo.length==2){
+                                    Team t=database.searchTeam(pInfo[1]);
                                     database.addProject(pInfo[0],t);
+
                                 }
                                 else {
                                     database.addProject(pInfo[0],null);
-
                                 }
                             }
 
+                            //reading for research interest
+                            BufferedReader readerResearchInterests = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/researchInterests.txt"));
+                            String researchInterests;
+                            while ((researchInterests = readerResearchInterests.readLine()) != null){
+                                database.addResearchInterest(researchInterests.trim());
+                            }
+
+                            //reading for machines
+                            BufferedReader readerMachines = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/machines.txt"));
+                            String machine;
+                            while ((machine = readerMachines.readLine()) != null){
+                                String[] machineIfo=machine.split(",");
+                                ArrayList<String> interests=new ArrayList<>();
+                                for (int i=2;i<machineIfo.length;i++){
+                                    interests.add(machineIfo[i]);
+                                }
+                                database.addMachine(machineIfo[0],machineIfo[1],interests);
+                            }
 
                             //if all went well
                             found=true;

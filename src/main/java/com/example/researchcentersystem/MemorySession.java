@@ -13,7 +13,7 @@ public class MemorySession {
     private static ArrayList<String> researchInterest = new ArrayList<>();
 
 
-    public void addMachine(String name, int machineID,  ArrayList<String> researchInterest){
+    public void addMachine(String name, String machineID,  ArrayList<String> researchInterest){
         Machine newMachine = new Machine(machineID, name);
         newMachine.setResearchInterest(researchInterest);
         machines.add(newMachine);
@@ -209,9 +209,28 @@ public class MemorySession {
     }
 
     public void addTeamToList(Team t1){
+        teams.add(t1);
 
     }
 
+    public ArrayList<Member> getAllMembers(){
+        return this.members;
+    }
+    public ArrayList<Project> getTakenProjects(){
+        return takenProjects;
+    }
+
+    public ArrayList<Project> getAvailableProjects(){
+        return availableProjects;
+    }
+
+    public void addResearchInterest(String r){
+        researchInterest.add(r);
+    }
+
+    public ArrayList<Machine> getMachines(){
+        return machines;
+    }
 
 
 //    public Machine viewMostUsedMachine(){ //two arrays, the first is machines, the second is the count of machines

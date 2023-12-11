@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Machine {
 
-    private int machineID;
+    private String machineID;
     private String machineName;
 
     private ArrayList<String> researchInterest;
@@ -12,7 +12,7 @@ public class Machine {
 
 
 
-    public Machine(int machineID, String machineName){
+    public Machine(String machineID, String machineName){
         this.machineID= machineID;
         this.machineName=machineName;
         this.researchInterest = new ArrayList<>();// we will update it. it is not optional
@@ -20,7 +20,7 @@ public class Machine {
 
     }
 
-    public int getMachineID() {
+    public String getMachineID() {
         return machineID;
     }
 
@@ -28,7 +28,7 @@ public class Machine {
         return machineName;
     }
 
-    public void setMachineID(int machineID){
+    public void setMachineID(String machineID){
         this.machineID = machineID;
     }
 
