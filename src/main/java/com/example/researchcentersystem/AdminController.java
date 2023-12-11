@@ -217,6 +217,9 @@ public class AdminController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        String adminName = MemorySession.currentUser.getUserName();
+        username.setText(adminName);
         
 
     }
