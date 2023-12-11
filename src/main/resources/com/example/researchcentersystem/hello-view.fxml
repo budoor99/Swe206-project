@@ -21,7 +21,7 @@
                <top>
                   <AnchorPane prefHeight="45.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="-6.0" layoutY="-86.0" prefHeight="45.0" prefWidth="1100.0" styleClass="my-form" stylesheets="@design.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane layoutX="-6.0" layoutY="-86.0" prefHeight="45.0" prefWidth="1100.0" styleClass="my-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <FontAwesomeIconView glyphName="USERS" layoutX="23.0" layoutY="28.0" size="1.5em" />
                               <Label layoutX="55.0" layoutY="13.0" text="KFUMP research center system">
@@ -29,12 +29,12 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="1034.0" layoutY="2.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="60.0" styleClass="close" stylesheets="@design.css">
+                              <Button layoutX="1034.0" layoutY="2.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="60.0" styleClass="close" stylesheets="@dashboardDesign.css">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="CLOSE" size="1.2em" text="" />
                                  </graphic>
                               </Button>
-                              <Button layoutX="968.0" layoutY="2.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="60.0" styleClass="minimize" stylesheets="@design.css">
+                              <Button layoutX="968.0" layoutY="2.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="60.0" styleClass="minimize" stylesheets="@dashboardDesign.css">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="MINUS" size="1.2em" text="" />
                                  </graphic>
@@ -61,22 +61,22 @@
                                  </font>
                               </Label>
                               <Line endX="61.0" layoutX="130.0" layoutY="182.0" startX="-100.0" />
-                              <Button layoutX="19.0" layoutY="203.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@design.css" text="Home">
+                              <Button layoutX="19.0" layoutY="203.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Home">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="HOME" size="1.5em" />
                                  </graphic>
                               </Button>
-                              <Button layoutX="19.0" layoutY="273.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@design.css" text="Add new machine">
+                              <Button layoutX="19.0" layoutY="273.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Add new machine">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="PLUS" size="1.5em" />
                                  </graphic>
                               </Button>
-                              <Button layoutX="19.0" layoutY="238.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@design.css" text="Add new project">
+                              <Button layoutX="19.0" layoutY="238.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Add new project">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="PLUS" size="1.5em" />
                                  </graphic>
                               </Button>
-                              <Button layoutX="19.0" layoutY="378.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@design.css" text="View machines">
+                              <Button layoutX="19.0" layoutY="378.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="View machines">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="PLUS" size="1.5em" />
                                  </graphic>
