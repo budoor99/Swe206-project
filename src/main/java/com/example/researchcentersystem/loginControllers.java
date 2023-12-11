@@ -87,6 +87,23 @@ public class loginControllers implements Initializable {
                                 database.addTeamToList(t1);
                             }
 
+                            //for projects
+                            BufferedReader readerProjects = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/projects.txt"));
+                            String projectInfo;
+                            while ((projectInfo = readerProjects.readLine())!=null){
+                                String [] pInfo = projectInfo.split(",");
+                                System.out.println(Arrays.toString(pInfo));
+                                Team t=database.searchTeam(pInfo[1]);
+                                if(t!=null){
+                                    database.addProject(pInfo[0],t);
+                                }
+                                else {
+                                    database.addProject(pInfo[0],null);
+
+                                }
+                            }
+
+
                             //if all went well
                             found=true;
                             loginBtn.getScene().getWindow().hide();

@@ -199,6 +199,15 @@ public class MemorySession {
         return null;
     }
 
+    public Team searchTeam(String name){
+        for (int i = 0; i<teams.size();i++){
+            if(teams.get(i).getTeamName().equals(name)){
+                return teams.get(i);
+            }
+        }
+        return null;
+    }
+
     public void addTeamToList(Team t1){
 
     }
