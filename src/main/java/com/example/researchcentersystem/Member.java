@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Member extends User {
     private String researchInterest; //should be a list
-    private ArrayList<Team> myTeams;
+    private ArrayList<Team> myTeams = new ArrayList<>();
     private ArrayList<Project> myProjects;
 
     public Member(String userName, String userEmail, String userType,String userID, String researchInterest) {

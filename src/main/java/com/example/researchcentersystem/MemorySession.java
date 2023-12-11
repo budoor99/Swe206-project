@@ -3,14 +3,14 @@ package com.example.researchcentersystem;
 import java.util.ArrayList;
 
 public class MemorySession {
-    private ArrayList<Project> takenProjects;
+    private static ArrayList<Project> takenProjects = new ArrayList<>();
 
-    private ArrayList<Project> availableProjects;
-    private ArrayList<Member> members;
-    private ArrayList<Team> teams;
-    private ArrayList<Machine> machines;
+    private static ArrayList<Project> availableProjects = new ArrayList<>();
+    private  static ArrayList<Member> members = new ArrayList<>();
+    private static ArrayList<Team> teams = new ArrayList<>();
+    private static ArrayList<Machine> machines = new ArrayList<>();
 
-    private ArrayList<String> researchInterest;
+    private static ArrayList<String> researchInterest = new ArrayList<>();
 
 
     public void addMachine(String name, int machineID,  ArrayList<String> researchInterest){
@@ -189,6 +189,20 @@ public class MemorySession {
         return project;
 
     }
+
+    public Member searchMember(String name){
+        for (int i = 0; i<members.size();i++){
+            if(members.get(i).getUserName().equals(name)){
+                return members.get(i);
+            }
+        }
+        return null;
+    }
+
+    public void addTeamToList(Team t1){
+
+    }
+
 
 
 //    public Machine viewMostUsedMachine(){ //two arrays, the first is machines, the second is the count of machines

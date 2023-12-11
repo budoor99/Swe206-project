@@ -1,0 +1,10 @@
+Machine1,Physics,Chemistry,Materials Science
+Machine2,Biology,Neuroscience,Bioinformatics
+Machine3,Environmental Science,Earth Science,Geographic Information Systems
+Machine4,Astronomy,Astrophysics,Artificial Intelligence
+Machine5,Chemistry,Chemical Engineering,Materials Informatics
+Machine6,Mathematics,Algorithms and Complexity,Scientific Computing
+Machine7,Computer Science,Data Science,Machine Learning
+Machine8,Psychology,Cognitive Modeling,Neuroscience
+Machine9,Genetics,Biotechnology,Bioinformatics
+Machine10,Geology,Earth Science,Environmental Science
