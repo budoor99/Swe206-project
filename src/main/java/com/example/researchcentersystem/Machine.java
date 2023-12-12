@@ -1,6 +1,8 @@
 package com.example.researchcentersystem;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
 
 public class Machine {
 
@@ -8,7 +10,7 @@ public class Machine {
     private String machineName;
 
     private ArrayList<String> researchInterest;
-    private ArrayList<Reservation> myReservations;
+    HashMap<String, ArrayList <String>> reservations= new HashMap<>();
 
 
 
@@ -16,7 +18,6 @@ public class Machine {
         this.machineID= machineID;
         this.machineName=machineName;
         this.researchInterest = new ArrayList<>();// we will update it. it is not optional
-        this.myReservations = new ArrayList<>();// there is problem
 
     }
 
@@ -36,9 +37,6 @@ public class Machine {
         this.researchInterest = researchInterest;
     }
 
-    public void setMyReservations(ArrayList<Reservation> myReservations) {
-        this.myReservations = myReservations;
-    }
 
     public void setMachineName(String machineName) {
         this.machineName = machineName;
@@ -54,6 +52,22 @@ public class Machine {
 
     public String createSchedule(){
         return null; //to avoid error sign
+    }
+
+    public boolean createReservation (String date, String time){
+        if(reservations.containsKey(date)) {
+            if (!reservations.get(date).contains(time)) {
+                reservations.get(date).add(time);
+                return true;
+            }
+        }else{
+            ArrayList<String> addNewDate = new ArrayList<>();
+            addNewDate.add(time);
+            reservations.put(date, addNewDate);
+            return true;
+        }
+        return false;
+
     }
 
 
