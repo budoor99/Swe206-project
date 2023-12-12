@@ -96,6 +96,13 @@ To get started, it is important to download the entire Swe206-project files. Thi
 * In order to login as a admin use the following information:
   * Username: n1234 , Password: 12345
 
+It is necessary to PRESS on the log in button to be logged onto the system.
+ 
+### Admin Page
+
+The admin has the ability to preform many tasks that appear to the user on the left side of the page. The initial page will look like the following:
+* 
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
