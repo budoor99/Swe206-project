@@ -317,7 +317,7 @@ public class MemorySession {
 
 
     //list of reservation Array list of reservation
-    public ArrayList<Reservation> getReservations(String s){ //for one machine a timetable 
+    public ArrayList<Reservation> getReservations(String s){ //for one machine a timetable
         ArrayList<Reservation> newArray = new ArrayList<>();
         for(Team team: teams){
             HashMap<String, ArrayList <String>> teamR =  team.getTeamReservations();
