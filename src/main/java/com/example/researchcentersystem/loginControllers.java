@@ -134,6 +134,28 @@ public class loginControllers implements Initializable {
                                 database.addMachine(machineIfo[0],machineIfo[1],interests);
                             }
 
+                            BufferedReader readReservations = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/MachineReservations.txt"));
+                            String reservation;
+                            Machine m1, prevm1 = new Machine("","");
+                            Team t1 = new Team("","");
+                            while ((reservation = readReservations.readLine()) != null){
+                                m1= database.searchMachine(reservation);
+                                if(m1==null){
+                                    //reservation= readReservations.readLine();
+                                    String [] rInfo = reservation.split(",");
+                                    for(int i = 1; i<rInfo.length;i++){
+                                        String [] teamAndMachineInfo = rInfo[i].split("/");
+                                        prevm1.createReservation(rInfo[0], teamAndMachineInfo[1]);
+                                        t1 = database.searchTeam(teamAndMachineInfo[0]);
+                                        System.out.println(teamAndMachineInfo[0]);
+                                        t1.addMachine(prevm1.getMachineName(), rInfo[0]+", "+teamAndMachineInfo[1]);
+                                        System.out.println(t1.teamMachines);
+                                    }
+                                }else{
+                                    prevm1 = m1;
+                                }
+                            }
+
                             //if all went well
                             found=true;
                             loginBtn.getScene().getWindow().hide();

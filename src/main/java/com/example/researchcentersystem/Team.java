@@ -3,10 +3,13 @@ package com.example.researchcentersystem;
 import com.example.researchcentersystem.Member;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Team {
     private ArrayList<Member> members = new ArrayList<>();
     private String leader;
+    public HashMap<String, ArrayList <String>> teamMachines= new HashMap<>();
+
 
     public String getTeamName() {
         return teamName;
@@ -62,6 +65,22 @@ public class Team {
 
     public boolean isPartOfTeam(Member m){
         return members.contains(m);
+
+    }
+
+    public boolean addMachine(String machineName, String dateAndTime){
+        if(teamMachines.containsKey(machineName)) {
+            if (!teamMachines.get(machineName).contains(dateAndTime)) {
+                teamMachines.get(machineName).add(dateAndTime);
+                return true;
+            }
+        }else{
+            ArrayList<String> addNewDate = new ArrayList<>();
+            addNewDate.add(dateAndTime);
+            teamMachines.put(machineName, addNewDate);
+            return true;
+        }
+        return false;
 
     }
     

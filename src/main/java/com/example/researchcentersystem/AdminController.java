@@ -579,12 +579,17 @@ public class AdminController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+
         addMemberShowListData();
         addMemberResearchInterests();
         //homeTheMostActiveMember();
 
         String adminName = MemorySession.currentUser.getUserName();
         username.setText(adminName);
+
+        addMemberShowListData();
+        addMemberResearchInterests();
+
 
 
     }
