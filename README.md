@@ -32,7 +32,8 @@
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="kfupm logo (1).png" alt="kfupm logo (1).png" width="40" height="40">
+    ![Kfupm Image](https://github.com/budoor99/Swe206-project/assets/144340930/7e93c5d0-b376-44de-8cbc-e964998c6430)
+)
   </a>
 
 <h3 align="center">KFUPM Research Center</h3>
@@ -94,7 +95,7 @@ This project is dedicated to addressing challenges within the KFUPM research cen
 * [![Laravel][Laravel.com]][Laravel-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![JQuery][JQuery.com]][JQuery-url]
-*  <img src="./icons/Java-Dark.svg" width="48"> 
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
