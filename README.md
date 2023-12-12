@@ -32,17 +32,13 @@
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="kfupm logo (1).png" alt="" width="40" height="40">
+    <img src="" alt="kfupm logo (1).png" width="40" height="40">
   </a>
 
 <h3 align="center">KFUPM Research Center</h3>
 
   <p align="center">
-    Made by Team 1 from F62
-    Najla 
-    Budoor
-    Malak
-    Funoon
+    Made by Team 1 from F62: Najla, Budoor, Malak, Funoon
     <br />
     <br />
     <br />
