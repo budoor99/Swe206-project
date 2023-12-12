@@ -1,4 +1,4 @@
-# Swe206-project
+![kfupm logo (1)](https://github.com/budoor99/Swe206-project/assets/144340930/7de91268-a996-4339-b0f4-be91e3c0d36e)# Swe206-project
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 <!--
@@ -32,7 +32,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="kfupm logo (1).png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">project_title</h3>
