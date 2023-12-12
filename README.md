@@ -35,7 +35,7 @@
     <img src="kfupm logo (1).png" alt="Logo" width="40" height="40">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">KFUPM Research Center</h3>
 
   <p align="center">
     project_description
