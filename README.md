@@ -32,7 +32,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="kfupm logo (1).png" alt="Logo" width="40" height="40">
+    <img src="kfupm logo (1).png" alt="" width="40" height="40">
   </a>
 
 <h3 align="center">KFUPM Research Center</h3>
@@ -84,9 +84,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+This project is aimed to solve issues regarding the KFUPM research center. It will help organize all scheduling issues related to teams, projects, members, and machines. Through this application, many processes will be automataed and made more efficient for all the people involved.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
