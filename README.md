@@ -13,7 +13,7 @@
 <h3 align="center">KFUPM Research Center</h3>
 
 <h4 align="center">Made by Team 1 from F62:</h4>
-<h4 align="center" style="font-size: smaller; color: blue; text-decoration: underline;">Najla, Budoor, Malak, Funoon</h4>
+<h4 align="center" style="font-size: smaller;  text-decoration: underline;">Najla, Budoor, Malak, Funoon</h4>
 
 
   
