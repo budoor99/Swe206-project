@@ -94,6 +94,7 @@ This project is dedicated to addressing challenges within the KFUPM research cen
 * [![Laravel][Laravel.com]][Laravel-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![JQuery][JQuery.com]][JQuery-url]
+*  <img src="./icons/Java-Dark.svg" width="48"> 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
