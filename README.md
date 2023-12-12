@@ -100,12 +100,12 @@ To get started, it is important to download the entire Swe206-project files. Thi
 
 It is necessary to PRESS on the log in button to be logged onto the system.
  
-### Admin Page
+### Admin Account
 
 The admin has the ability to preform many tasks that appear to the user on the left side of the page. The initial page will look like the following:
 * 
 
-### Member Page
+### Member Account
 
 The member has the ability to preform a few tasks that appear to the user on the left side of the page. 
 
@@ -114,7 +114,7 @@ The member has the ability to preform a few tasks that appear to the user on the
 #### View Teams Page:
 
 <p align="center">
-  <img src="https://github.com/budoor99/Swe206-project/blob/main/images/javalogo.png" alt="KFUPM Logo" width="80">
+  <img src="https://github.com/budoor99/Swe206-project/blob/main/images/Screen%20Shot%202023-12-12%20at%2011.07.28%20PM.png" width="500">
 </p>
 
 
