@@ -83,6 +83,8 @@ To get started, it is important to download the entire Swe206-project files. Thi
 ### Run Application
 
 * Run the HelloApplication.java file on intellij to start the program
+    * This file is found in Swe206-project/src/main/java/com/example/researchcentersystem
+
 
 
 
