@@ -1,6 +1,5 @@
 package com.example.researchcentersystem;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -52,10 +51,7 @@ public class AdminController implements Initializable {
     private TextField addMachine_machineName;
 
     @FXML
-    private TextField addMachine_researchInterest;
-
-    @FXML
-    private TableView<?> addMachine_table;
+    private TableView<Machine> addMachine_table;
 
     @FXML
     private Button addMember_addBtn;
@@ -112,7 +108,9 @@ public class AdminController implements Initializable {
     private Button addProject_clearBtn;
 
     @FXML
-    private TableColumn<?, ?> addProject_col_projectName;
+    private TableColumn<Project,String> addProject_col_projectName;
+    @FXML
+    private TableColumn<Project,String> addProject_col_team;
 
     @FXML
     private Button addProject_deleteBtn;
@@ -179,6 +177,12 @@ public class AdminController implements Initializable {
 
     @FXML
     private TextField addProject_Team;
+
+    @FXML
+    private Button addProject_AssignBtn;
+
+    @FXML
+    private ListView<String> addMachine_listView;
 
 
 
@@ -281,6 +285,7 @@ public class AdminController implements Initializable {
             viewMachines_btn.setStyle("-fx-background-color:transparent");
             assignTeamToProject_btn.setStyle("-fx-background-color:transparent");
             addProjectShowListData();
+            addTeams();
 
 
         } else if (event.getSource() == addMachine_btn) {
@@ -301,7 +306,7 @@ public class AdminController implements Initializable {
             viewMachines_btn.setStyle("-fx-background-color:transparent");
             assignTeamToProject_btn.setStyle("-fx-background-color:transparent");
 
-//            salaryShowListData();
+            addMachineShowListData();
 
         } else if (event.getSource() ==addMember_btn) {
             home_form.setVisible(false);
@@ -511,19 +516,18 @@ public class AdminController implements Initializable {
 
 
     //*************************ALL THESE FUNCTIONS TO ADD NEW Project FORM*************************//
-    @FXML
-    private TableColumn<Project,String> addProject_col_team;
-    public void addProjectShowListData(){
 
-        ObservableList<Project> addProjectsList= convertProjectsListToObservable(database.getAllProjects());
+    ObservableList<Project> addProjectsList;
+    public void addProjectShowListData(){ //big problem!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+        addProjectsList= convertProjectsListToObservable(database.getAllProjects());
+//        addMember_col_memberName.setCellValueFactory(new PropertyValueFactory<>("userName"));
+//        addMember_col_memberEmail.setCellValueFactory(new PropertyValueFactory<>("userEmail"));
+//        addMember_col_researchInterest.setCellValueFactory(new PropertyValueFactory<>("researchInterest"));
         addProject_col_projectName.setCellValueFactory(new PropertyValueFactory<>("projectName"));
-        addProject_col_team.setCellValueFactory(cellData -> {
-            Team team = cellData.getValue().getTeam();
-            String teamName = (team != null) ? team.getTeamName() : "-";
-            return new SimpleStringProperty(teamName);
-        });
+        addProject_col_team.setCellValueFactory(new PropertyValueFactory<>("team"));
         addProject_table.setItems(addProjectsList);
+        System.out.println("here");
 
 
     }
@@ -536,26 +540,248 @@ public class AdminController implements Initializable {
         return projects;
     }
 
+    private Project selectedProject;
+
     public void addProjectSelect(){
-        Project project=addProject_table.getSelectionModel().getSelectedItem();
+        selectedProject=addProject_table.getSelectionModel().getSelectedItem();
         int num=addProject_table.getSelectionModel().getSelectedIndex();
 
         if((num-1)<-1){
             return;
         }
 
-        addProject_projectName.setText(String.valueOf(project.getProjectName())); // Assuming memberID is the actual member ID
-        Team projectTeam = project.getTeam();
+        addProject_projectName.setText(String.valueOf(selectedProject.getProjectName())); // Assuming memberID is the actual member ID
+        Team projectTeam = selectedProject.getTeam();
         addProject_Team.setText(String.valueOf((projectTeam != null) ? projectTeam.getTeamName() :""));
     }
 
-    // i am here
-//    public void addTeams() {
-//        ArrayList<Team> RI=FXCollections.observableArrayList(database.ge);
-//
-//        ObservableList<String> researchInterests = FXCollections.observableArrayList(RI);
-//        addMember_researchInterest.setItems(researchInterests);
-//    }
+
+    public void addTeams() {
+        ObservableList<Team> RI=FXCollections.observableArrayList(database.getAllTeam());
+        addProject_selectTeam.setItems(RI);
+    }
+
+    public void  assignBtn(){
+        if(addProject_projectName.getText().isEmpty() || addProject_selectTeam.getSelectionModel().getSelectedItem() == null){
+            Alert alert;
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error message");
+            alert.setHeaderText(null);
+            alert.setContentText("please fill all the fields");
+            alert.showAndWait();
+
+        }else {
+            String team = addProject_Team.getText();
+            String project = addProject_projectName.getText();
+            Team assignedTeam = addProject_selectTeam.getSelectionModel().getSelectedItem();
+            if(addProject_Team.getText().isEmpty()){
+                selectedProject.assignTeamProject(assignedTeam);
+
+                addProjectShowListData();
+                Alert alert;
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Message");
+                alert.setHeaderText(null);
+                alert.setContentText(project+ " has been successfully assigned to "+ assignedTeam.toString());
+                alert.showAndWait();
+                addProjectClear();
+
+            }
+            else {
+                Alert alert;
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error message");
+                alert.setHeaderText(null);
+                alert.setContentText("the project is already assigned to "+team);
+                alert.showAndWait();
+
+            }
+
+        }
+    }
+    public void addProjectClear() {
+        addProject_projectName.setText(""); // Assuming memberID is the actual member ID
+        addProject_Team.setText("");
+        addProject_selectTeam.getSelectionModel().clearSelection();
+        selectedProject=null;
+    }
+    public void addProjectDelete(){
+        Alert alert;
+        if(addProject_projectName.getText().isEmpty()){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error message");
+            alert.setHeaderText(null);
+            alert.setContentText("please select a project to be deleted");
+            alert.showAndWait();
+        }
+        else {
+            String name=addProject_projectName.getText();
+            String team=addProject_Team.getText();
+            Project toBeRemoved=database.searchProject(name);
+            if(toBeRemoved!=null){
+
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Cofirmation Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want to DELETE  "+name);
+                Optional<ButtonType> option = alert.showAndWait();
+
+                if (option.get().equals(ButtonType.OK)) {
+                    database.removeProject(name);
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully deleted!");
+                    alert.showAndWait();
+                    addProjectShowListData();
+                    addProjectClear();
+                }
+            }
+            else {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error message");
+                alert.setHeaderText(null);
+                alert.setContentText("The project is not exist!");
+                alert.showAndWait();
+
+            }
+        }
+    }
+
+    //*************************ALL THESE FUNCTIONS TO ADD NEW MACHINE FORM*************************//
+    ObservableList<Machine> addMachineList;
+
+    @FXML
+    private TableColumn<Machine,String> addMachine_col_researchInterests;
+    public void addMachineShowListData(){
+        addMachineList= convertMachinesListToObservable(database.getMachines());
+        addMachine_col_machineID.setCellValueFactory(new PropertyValueFactory<>("machineID"));
+        addMachine_col_MachineName.setCellValueFactory(new PropertyValueFactory<>("machineName"));
+        addMachine_col_researchInterests.setCellValueFactory(new PropertyValueFactory<>("researchInterests"));
+        addMachine_table.setItems(addMachineList);
+        AddMachineFillResearchInterests();
+
+    }
+    public void addMachineSelect(){
+        Machine machine=addMachine_table.getSelectionModel().getSelectedItem();
+        int num=addMachine_table.getSelectionModel().getSelectedIndex();
+
+        if((num-1)<-1){
+            return;
+        }
+
+        addMachine_machineID.setText(String.valueOf(machine.getMachineID())); // Assuming memberID is the actual member ID
+        addMachine_machineName.setText(String.valueOf(machine.getMachineName()));
+
+
+    }
+
+    private ObservableList<Machine> convertMachinesListToObservable(ArrayList<Machine> machines) {
+        ObservableList<Machine> m = FXCollections.observableArrayList();
+        for (Machine machine : machines) {
+            m.add(machine);
+        }
+
+        return m;
+    }
+
+    public void addMachineAdd(){
+        ObservableList<String> selectedItems = addMachine_listView.getSelectionModel().getSelectedItems();
+        Alert alert;
+        if(addMachine_machineID.getText().isEmpty() ||
+                addMachine_machineName.getText().isEmpty() ||
+                selectedItems.isEmpty()){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error message");
+            alert.setHeaderText(null);
+            alert.setContentText("please fill all the fields");
+            alert.showAndWait();
+        }
+        else {
+            String name=addMachine_machineName.getText(); String ID=addMachine_machineID.getText();
+            Machine machine=database.searchMachine(name);
+            if(machine==null){
+                database.addMachine(name,ID,new ArrayList<>(selectedItems));
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully Added!");
+                alert.showAndWait();
+                addMachineShowListData();
+                addMachineClear();
+
+            }
+            else {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error message");
+                alert.setHeaderText(null);
+                alert.setContentText("the machine is already exist");
+                alert.showAndWait();
+
+            }
+        }
+    }
+
+    public void AddMachineFillResearchInterests(){
+
+        
+        ObservableList<String> interests = FXCollections.observableArrayList(database.getResearchInterest());;
+
+        addMachine_listView.getItems().addAll(interests);
+        addMachine_listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    }
+
+
+    public void addMachineDelete(){
+        Alert alert;
+        if(addMachine_machineID.getText().isEmpty() ||
+                addMachine_machineName.getText().isEmpty()){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error message");
+            alert.setHeaderText(null);
+            alert.setContentText("please fill all the machine id and name");
+            alert.showAndWait();
+        }
+        else {
+            String name=addMachine_machineName.getText(); String ID=addMachine_machineID.getText();
+            Machine machine=database.searchMachine(name);
+            if(machine!=null){
+
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Cofirmation Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want to DELETE "+name+" with ID: " + ID + "?");
+                Optional<ButtonType> option = alert.showAndWait();
+
+                if (option.get().equals(ButtonType.OK)) {
+                    database.removeMachine(name);
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully deleted!");
+                    alert.showAndWait();
+                    addMachineShowListData();
+                    addMachineClear();
+                }
+            }
+            else {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error message");
+                alert.setHeaderText(null);
+                alert.setContentText("The machine is not exist!");
+                alert.showAndWait();
+
+            }
+        }
+    }
+    public void addMachineClear() {
+        addMachine_machineID.setText(""); // Assuming memberID is the actual member ID
+        addMachine_machineName.setText("");
+        addMachine_listView.getSelectionModel().clearSelection();
+    }
 
 
 
@@ -589,6 +815,8 @@ public class AdminController implements Initializable {
 
         addMemberShowListData();
         addMemberResearchInterests();
+
+        AddMachineFillResearchInterests();
 
 
 

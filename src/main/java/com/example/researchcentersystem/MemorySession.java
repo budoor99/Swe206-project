@@ -17,22 +17,18 @@ public class MemorySession {
 
     public void addMachine(String name, String machineID,  ArrayList<String> researchInterest){
         Machine newMachine = new Machine(machineID, name);
-        newMachine.setResearchInterest(researchInterest);
+        newMachine.setResearchInterests(researchInterest);
         machines.add(newMachine);
     }
 
     public Machine removeMachine(String name) {
-        Machine removedMachine = null; //dummy
-        for(Machine machine: machines)
-        {
-            if(machine.getMachineName().equals(name))
-                removedMachine = machine;
-                machines.remove(machine);
+        for (Machine m:machines){
+            if(m.getMachineName().equals(name)){
+                machines.remove(m);
                 break;
-
+            }
         }
-
-        return removedMachine;
+        return null;
 
     }
 
@@ -309,9 +305,22 @@ public class MemorySession {
         return all;
     }
 
-//   public ArrayList<Team> getAllTeam(){
-//        return
+   public ArrayList<Team> getAllTeam(){
+        return teams;
+   }
+
+//   public void assignTeamForProject(){
+//
 //   }
+    public Project searchProject(String na){
+        ArrayList<Project> a=getAllProjects();
+        for(Project p:a){
+            if (p.getProjectName().equals(na))
+                return p;
+        }
+        return null;
+    }
+
 
 
 

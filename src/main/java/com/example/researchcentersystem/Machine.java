@@ -1,7 +1,6 @@
 package com.example.researchcentersystem;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.HashMap;
 
 public class Machine {
@@ -9,7 +8,7 @@ public class Machine {
     private String machineID;
     private String machineName;
 
-    private ArrayList<String> researchInterest;
+    private ArrayList<String> researchInterests;
     public HashMap<String, ArrayList <String>> reservations= new HashMap<>();
 
 
@@ -17,7 +16,7 @@ public class Machine {
     public Machine(String machineID, String machineName){
         this.machineID= machineID;
         this.machineName=machineName;
-        this.researchInterest = new ArrayList<>();// we will update it. it is not optional
+        this.researchInterests = new ArrayList<>();// we will update it. it is not optional
 
     }
 
@@ -33,8 +32,8 @@ public class Machine {
         this.machineID = machineID;
     }
 
-    public void setResearchInterest(ArrayList<String> researchInterest) {
-        this.researchInterest = researchInterest;
+    public void setResearchInterests(ArrayList<String> researchInterests) {
+        this.researchInterests = researchInterests;
     }
 
 
@@ -68,6 +67,9 @@ public class Machine {
         }
         return false;
 
+    }
+    public String getResearchInterests(){
+        return researchInterests.toString();
     }
 
 
