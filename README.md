@@ -105,6 +105,20 @@ It is necessary to PRESS on the log in button to be logged onto the system.
 The admin has the ability to preform many tasks that appear to the user on the left side of the page. The initial page will look like the following:
 * 
 
+### Member Page
+
+The member has the ability to preform a few tasks that appear to the user on the left side of the page. 
+
+#### Initial Page: 
+
+#### View Teams Page:
+
+<p align="center">
+  <img src="https://github.com/budoor99/Swe206-project/blob/main/images/javalogo.png" alt="KFUPM Logo" width="80">
+</p>
+
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
