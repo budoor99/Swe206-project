@@ -222,6 +222,10 @@ public class MemorySession {
     public ArrayList<Member> getAllMembers(){
         return this.members;
     }
+
+
+
+
     public ArrayList<Project> getTakenProjects(){
         return takenProjects;
     }

@@ -1,15 +1,15 @@
 package com.example.researchcentersystem;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -24,6 +24,21 @@ import java.util.ResourceBundle;
 
 public class MemberController implements Initializable {
     private MemorySession database=new MemorySession();
+
+    @FXML
+    private TableColumn<Member, String> col_memberEmail;
+
+    @FXML
+    private TableColumn<Member, String> col_memberID;
+
+    @FXML
+    private TableColumn<Member, String> col_memberName;
+
+    @FXML
+    private TableColumn<Member, String> col_researchInterest;
+
+    @FXML
+    private TableView<Member> Member_table;
 
     @FXML
     private Button close;
@@ -71,6 +86,8 @@ public class MemberController implements Initializable {
     @FXML
     private AnchorPane viewOneTeam_form;
 
+    //private ObservableList<Member> MemberList;
+
 
 
 
@@ -95,6 +112,8 @@ public class MemberController implements Initializable {
             viewTeams.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
 
         }
+
+        //else if(event.getSource() == )
     }
 
 
@@ -167,6 +186,7 @@ public class MemberController implements Initializable {
         totalTeams();
 
 
+
     }
 
     public void totalTeams(){
@@ -195,7 +215,12 @@ public class MemberController implements Initializable {
 
     private void handleTeamButtonClick(Team team) {
         selectedTeam = team;
-        moveForwardToTeam();
+        // debug
+        System.out.println("Selected Team: " + selectedTeam.getTeamName());
+        MemberShowListData(selectedTeam);
+        //moveForwardToTeam();
+
+
     }
 
     public void moveBackToTeams(ActionEvent event) {
@@ -208,9 +233,43 @@ public class MemberController implements Initializable {
         }
     }
 
-    public void moveForwardToTeam() {
+   /* public void moveForwardToTeam() {
         viewteams_form.setVisible(false);
         viewOneTeam_form.setVisible(true);
         home_form.setVisible(false);
+
+        MemberShowListData(selectedTeam);
+    }
+*/
+
+    private ObservableList<Member> convertMembersListToObservable(ArrayList<Member> memberList) {
+        ObservableList<Member> members = FXCollections.observableArrayList();
+        for (Member member : memberList) {
+            members.add(member);
+        }
+
+        return members;
+    }
+
+    public void MemberShowListData(Team team) {
+        /*MemberList= convertMembersListToObservable(selectedTeam.getMembers());
+        col_memberID.setCellValueFactory(new PropertyValueFactory<>("userID"));
+        col_memberName.setCellValueFactory(new PropertyValueFactory<>("userName"));
+        col_memberEmail.setCellValueFactory(new PropertyValueFactory<>("userEmail"));
+        col_researchInterest.setCellValueFactory(new PropertyValueFactory<>("researchInterest"));
+        Member_table.setItems(MemberList);*/
+
+
+            ObservableList<Member> memberList = convertMembersListToObservable(team.getMembers());
+
+            //debug
+            System.out.println("Number of members: " + memberList.size());
+
+
+            col_memberName.setCellValueFactory(new PropertyValueFactory<>("userName"));
+            col_memberEmail.setCellValueFactory(new PropertyValueFactory<>("userEmail"));
+            Member_table.setItems(memberList);
+
+
     }
 }
