@@ -59,12 +59,12 @@
                                             </font>
                                         </Label>
                                         <Line endX="84.14544677734375" endY="1.52587890625E-5" layoutX="113.0" layoutY="183.0" startX="-100.0" />
-                                        <Button fx:id="home" layoutX="12.0" layoutY="221.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Home">
+                                        <Button fx:id="home" layoutX="12.0" layoutY="221.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="37.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Home">
                                             <graphic>
                                                 <FontAwesomeIconView glyphName="HOME" size="1.5em" />
                                             </graphic>
                                         </Button>
-                                        <Button fx:id="viewTeams" layoutX="11.0" layoutY="257.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="182.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="View Teams">
+                                        <Button fx:id="viewTeams" layoutX="11.0" layoutY="257.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="39.0" prefWidth="182.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="View Teams">
                                             <graphic>
                                                 <FontAwesomeIconView glyphName="EYE" size="1.5em" />
                                             </graphic>
@@ -91,7 +91,7 @@
                     <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="3.0" layoutY="7.0" prefHeight="536.0" prefWidth="878.0">
+                        <AnchorPane fx:id="home_form" layoutX="3.0" layoutY="7.0" prefHeight="536.0" prefWidth="878.0" visible="false">
                            <children>
                               <AnchorPane layoutX="10.0" layoutY="8.0" prefHeight="518.0" prefWidth="861.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
@@ -105,7 +105,19 @@
                                           <String fx:value="white-bg" />
                                        </styleClass>
                                        <children>
-                                          <AnchorPane layoutX="20.0" layoutY="15.0" prefHeight="141.0" prefWidth="266.0" styleClass="card" stylesheets="@dashboardDesign.css" />
+                                          <AnchorPane layoutX="20.0" layoutY="15.0" prefHeight="141.0" prefWidth="266.0" styleClass="card" stylesheets="@dashboardDesign.css">
+                                             <children>
+                                                <Label layoutX="84.0" layoutY="100.0" text="Total Teams" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="Tahoma" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="totalTeams" alignment="CENTER_RIGHT" layoutX="110.0" layoutY="17.0" prefHeight="17.0" prefWidth="128.0" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="22.0" />
+                                                   </font>
+                                                </Label>
+                                             </children></AnchorPane>
                                           <AnchorPane layoutX="295.0" layoutY="14.0" prefHeight="142.0" prefWidth="276.0" styleClass="card" stylesheets="@dashboardDesign.css" />
                                           <AnchorPane layoutX="583.0" layoutY="12.0" prefHeight="142.0" prefWidth="266.0" styleClass="card" stylesheets="@dashboardDesign.css" />
                                        </children>
@@ -114,7 +126,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="5.0" layoutY="3.0" prefHeight="548.0" prefWidth="877.0" visible="false">
+                        <AnchorPane fx:id="viewteams_form" layoutX="5.0" layoutY="3.0" prefHeight="548.0" prefWidth="877.0" visible="false">
                            <children>
                               <AnchorPane layoutX="8.0" layoutY="3.0" prefHeight="533.0" prefWidth="862.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
@@ -127,22 +139,27 @@
                                           <Font name="Tahoma" size="30.0" />
                                        </font>
                                     </Label>
-                                    <VBox layoutX="327.0" layoutY="122.0" prefHeight="280.0" prefWidth="188.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="191.0" text="Team 1" />
-                                          <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="191.0" text="Team 2" />
-                                          <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="191.0" text="Team 3" />
-                                          <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="191.0" text="Team 4" />
-                                       </children>
-                                    </VBox>
+                                    <VBox fx:id="myteams" layoutX="327.0" layoutY="122.0" prefHeight="280.0" prefWidth="188.0" />
                                  </children>
                               </AnchorPane>
                            </children></AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="8.0" prefHeight="535.0" prefWidth="866.0" stylesheets="@dashboardDesign.css" visible="false">
-                           <styleClass>
-                              <String fx:value="shadow" />
-                              <String fx:value="white-bg" />
-                           </styleClass>
+                        <AnchorPane fx:id="viewOneTeam_form" prefHeight="555.0" prefWidth="889.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="8.0" layoutY="3.0" prefHeight="546.0" prefWidth="877.0" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="3.0">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <Button fx:id="closViewTeam_btn" layoutX="805.0" layoutY="5.0" mnemonicParsing="false" onAction="#moveBackToTeams" prefHeight="43.0" prefWidth="70.0" stylesheets="@dashboardDesign.css">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="CLOSE" size="2em" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="reserveMachine_btn" layoutX="638.0" layoutY="425.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="154.0" text="Reserve Machine" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
                         </AnchorPane>
                      </children></AnchorPane>
                     </center>

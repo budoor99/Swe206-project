@@ -250,7 +250,11 @@ public class MemorySession {
                 return m;
             }
         }
+<<<<<<< HEAD
         return null;
+=======
+        return new User("edfe","efw","ewf","efwe"); //just to check
+>>>>>>> 3cc2126d8c4ab62cfdb768aba47e4a6934065e4b
     }
 
     public static ArrayList<String> getResearchInterest() {

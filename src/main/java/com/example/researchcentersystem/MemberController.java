@@ -1,5 +1,6 @@
 package com.example.researchcentersystem;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,10 +12,13 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -34,6 +38,10 @@ public class MemberController implements Initializable {
     private Label memberName;
 
     @FXML
+    private AnchorPane home_form;
+
+
+    @FXML
     private Button minimize;
 
     @FXML
@@ -41,6 +49,56 @@ public class MemberController implements Initializable {
 
     @FXML
     private AnchorPane main_form;
+
+    @FXML
+    private VBox myteams;
+
+
+    @FXML
+    private AnchorPane viewteams_form;
+
+    @FXML
+    private Label totalTeams;
+
+    @FXML
+    private Button closViewTeam_btn;
+
+
+    @FXML
+    private Button reserveMachine_btn;
+
+
+    @FXML
+    private AnchorPane viewOneTeam_form;
+
+
+
+
+
+    public void switchForm(ActionEvent event) {
+
+        if (event.getSource() == home) {
+            home_form.setVisible(true);
+            viewteams_form.setVisible(false);
+
+
+            home.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
+            viewTeams.setStyle("-fx-background-color:transparent");
+
+        }
+        else if(event.getSource() == viewTeams){
+            home_form.setVisible(false);
+            viewteams_form.setVisible(true);
+
+
+            home.setStyle("-fx-background-color:transparent");
+            viewTeams.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
+
+        }
+    }
+
+
+
 
 
 
@@ -103,6 +161,56 @@ public class MemberController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        String username = MemorySession.currentUser.getUserName();
+        memberName.setText(username);
+        addMyTeams();
+        totalTeams();
 
+
+    }
+
+    public void totalTeams(){
+
+        totalTeams.setText(String.valueOf(teams.size()));
+
+    }
+
+
+
+    ArrayList<Team> teams;
+    private Team selectedTeam;  //store the selected team
+
+    public void addMyTeams() {
+        Member member = (Member) MemorySession.currentUser;
+        teams = member.viewTeams();
+
+        myteams.getChildren().clear();
+
+        for (Team team : teams) {
+            Button teamButton = new Button(team.getTeamName());
+            teamButton.setOnAction(event -> handleTeamButtonClick(team)); // Add event handler
+            myteams.getChildren().add(teamButton);
+        }
+    }
+
+    private void handleTeamButtonClick(Team team) {
+        selectedTeam = team;
+        moveForwardToTeam();
+    }
+
+    public void moveBackToTeams(ActionEvent event) {
+        if (event.getSource() == closViewTeam_btn) {
+            viewteams_form.setVisible(true);
+            viewOneTeam_form.setVisible(false);
+            home_form.setVisible(false);
+
+
+        }
+    }
+
+    public void moveForwardToTeam() {
+        viewteams_form.setVisible(false);
+        viewOneTeam_form.setVisible(true);
+        home_form.setVisible(false);
     }
 }
