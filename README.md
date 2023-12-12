@@ -61,8 +61,8 @@ This project is dedicated to addressing challenges within the KFUPM research cen
 
 <p align="left">
   <img src="https://github.com/budoor99/Swe206-project/blob/main/images/javalogo.png" alt="KFUPM Logo" width="80">
+  <img src="https://github.com/budoor99/Swe206-project/blob/main/images/SceneBuilderLogo.png" alt="KFUPM Logo" width="80">
 </p>
-
 
 
 
@@ -73,43 +73,28 @@ This project is dedicated to addressing challenges within the KFUPM research cen
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get started, it is important to download the entire Swe206-project files. This folder has all the necessary front and back end implementations. 
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+* Download the file
+* Open the file on intellij IDE
 
-### Installation
+### Run Application
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/github_username/repo_name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+* Run the HelloApplication.java file on intellij to start the program
 
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## How To Use 
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### Login Information
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+* In order to login as a member use the following information:
+  * Username: y1234 , Password: 2345
+* In order to login as a admin use the following information:
+  * Username: n1234 , Password: 12345
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
