@@ -1,5 +1,6 @@
 package com.example.researchcentersystem;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,15 +13,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MemberController implements Initializable {
     private MemorySession database=new MemorySession();
@@ -82,11 +82,34 @@ public class MemberController implements Initializable {
     @FXML
     private Button reserveMachine_btn;
 
+    @FXML
+    private Button reserve_btn; //this one
+
+    @FXML
+    private AnchorPane reserve_form;
+
 
     @FXML
     private AnchorPane viewOneTeam_form;
 
     //private ObservableList<Member> MemberList;
+
+    @FXML
+    private Label assignedProjext_label;
+
+
+    @FXML
+    private TableColumn<Map.Entry<String, List<String>>, String> machines_col;
+
+    @FXML
+    private TableColumn<Map.Entry<String, List<String>>, String> reservations_col;
+
+
+    @FXML
+    private TableView<Map.Entry<String, List<String>>> reserved_table;
+
+
+
 
 
 
@@ -97,23 +120,38 @@ public class MemberController implements Initializable {
         if (event.getSource() == home) {
             home_form.setVisible(true);
             viewteams_form.setVisible(false);
+            reserve_form.setVisible(false);
 
 
             home.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
             viewTeams.setStyle("-fx-background-color:transparent");
+            reserve_btn.setStyle("-fx-background-color:transparent");
+
 
         }
         else if(event.getSource() == viewTeams){
             home_form.setVisible(false);
             viewteams_form.setVisible(true);
+            reserve_form.setVisible(false);
 
 
             home.setStyle("-fx-background-color:transparent");
             viewTeams.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
+            reserve_btn.setStyle("-fx-background-color:transparent");
 
         }
 
-        //else if(event.getSource() == )
+        else if(event.getSource() == reserve_btn){
+            home_form.setVisible(false);
+            viewteams_form.setVisible(false);
+            reserve_form.setVisible(true);
+
+
+            home.setStyle("-fx-background-color:transparent");
+            viewTeams.setStyle("-fx-background-color:transparent");
+            reserve_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
+
+        }
     }
 
 
@@ -208,6 +246,8 @@ public class MemberController implements Initializable {
 
         for (Team team : teams) {
             Button teamButton = new Button(team.getTeamName());
+            teamButton.setMaxWidth(Double.MAX_VALUE); // Allow the button to grow horizontally
+            HBox.setHgrow(teamButton, Priority.ALWAYS);
             teamButton.setOnAction(event -> handleTeamButtonClick(team)); // Add event handler
             myteams.getChildren().add(teamButton);
         }
@@ -218,7 +258,15 @@ public class MemberController implements Initializable {
         // debug
         System.out.println("Selected Team: " + selectedTeam.getTeamName());
         MemberShowListData(selectedTeam);
+        //showTeamReservations(selectedTeam);
+
         //moveForwardToTeam();
+
+
+        String assignedProjectName = getAssignedProject(selectedTeam);
+        assignedProjext_label.setText(assignedProjectName);
+
+        showMachinesAndInfo(selectedTeam);
 
 
     }
@@ -272,4 +320,66 @@ public class MemberController implements Initializable {
 
 
     }
+
+    ///////
+    public String getAssignedProject(Team selectedTeam){
+        if (selectedTeam != null) {
+            for (Project project : database.getTakenProjects()) {
+                if (project.getTeam() != null && project.getTeam().equals(selectedTeam)) {
+                    return project.getProjectName();
+                }
+            }
+        }
+        return "No assigned project";
+    }
+
+
+
+    @FXML
+    private Label date_label;
+
+
+    @FXML
+    private Label machines_label;
+
+    @FXML
+    private Label time_label;
+
+    //////
+    //private HashMap<String, ArrayList <String>> mahinesInfo;
+
+    public void showMachinesAndInfo(Team selectedTeam) {
+        HashMap<String, ArrayList<String>> machinesInfo = selectedTeam.getTeamReservations();
+
+        // debug
+        System.out.println(machinesInfo);
+        if (selectedTeam != null && machinesInfo != null) {
+            StringBuilder machinesStringBuilder = new StringBuilder();
+            StringBuilder datesStringBuilder = new StringBuilder();
+            StringBuilder timeRangesStringBuilder = new StringBuilder();
+
+            for (Map.Entry<String, ArrayList<String>> entry : machinesInfo.entrySet()) {
+                String machine = entry.getKey();
+                ArrayList<String> reservations = entry.getValue();
+
+                machinesStringBuilder.append(machine).append("\n");
+
+                for (String reservation : reservations) {
+                    String[] reservationParts = reservation.split(",");
+                    String date = reservationParts[0].trim();
+                    String timeRange = reservationParts[1].trim();
+
+                    datesStringBuilder.append(date).append("\n");
+                    timeRangesStringBuilder.append(timeRange).append("\n");
+                }
+            }
+
+            // Set the text for labels
+            machines_label.setText(machinesStringBuilder.toString());
+            date_label.setText(datesStringBuilder.toString());
+            time_label.setText(timeRangesStringBuilder.toString());
+        }
+    }
+
+
 }
