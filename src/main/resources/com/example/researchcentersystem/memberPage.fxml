@@ -21,7 +21,7 @@
                     <top>
                         <AnchorPane prefHeight="45.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                             <children>
-                                <AnchorPane layoutX="-8.0" layoutY="-3.0" prefHeight="36.0" prefWidth="1108.0" styleClass="my-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0">
+                                <AnchorPane layoutX="-8.0" layoutY="-3.0" prefHeight="36.0" prefWidth="1108.0" styleClass="my-form" stylesheets="@dashboardDesign.css" visible="false" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0">
                                     <children>
                                         <FontAwesomeIconView glyphName="USERS" layoutX="16.0" layoutY="27.0" size="1.5em" />
                                         <Label layoutX="49.0" layoutY="11.0" text="KFUPM Research Center System">
@@ -85,6 +85,11 @@
                                                 <Font size="14.0" />
                                             </font>
                                         </Label>
+                              <Button fx:id="reserve_btn" layoutX="14.0" layoutY="288.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="181.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Reserve Machine">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="PLUS" />
+                                 </graphic>
+                              </Button>
                                     </children>
                                 </AnchorPane>
                             </children>
@@ -128,7 +133,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="viewteams_form" layoutX="5.0" layoutY="3.0" prefHeight="548.0" prefWidth="877.0">
+                        <AnchorPane fx:id="viewteams_form" layoutX="5.0" layoutY="3.0" prefHeight="548.0" prefWidth="877.0" visible="false">
                            <children>
                               <AnchorPane layoutX="8.0" layoutY="3.0" prefHeight="533.0" prefWidth="862.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
@@ -136,26 +141,79 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <Label alignment="CENTER" layoutX="25.0" layoutY="19.0" prefHeight="38.0" prefWidth="324.0" text="MY TEAMS">
+                                    <Label alignment="CENTER" layoutX="-27.0" layoutY="16.0" prefHeight="38.0" prefWidth="324.0" text="MY TEAMS">
                                        <font>
                                           <Font name="Tahoma" size="30.0" />
                                        </font>
                                     </Label>
-                                    <VBox fx:id="myteams" layoutX="79.0" layoutY="109.0" prefHeight="280.0" prefWidth="188.0" />
-                                    <AnchorPane layoutX="467.0" layoutY="15.0" prefHeight="319.0" prefWidth="394.0" stylesheets="@dashboardDesign.css">
+                                    <VBox fx:id="myteams" layoutX="40.0" layoutY="70.0" prefHeight="180.0" prefWidth="188.0" stylesheets="@dashboardDesign.css">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                       </styleClass></VBox>
+                                    <AnchorPane layoutX="454.0" layoutY="4.0" prefHeight="245.0" prefWidth="385.0" stylesheets="@dashboardDesign.css">
                                        <styleClass>
                                           <String fx:value="white-bg" />
                                           <String fx:value="shadow" />
                                        </styleClass>
                                        <children>
-                                          <TableView fx:id="Member_table" layoutX="4.0" layoutY="9.0" prefHeight="303.0" prefWidth="386.0">
+                                          <TableView fx:id="Member_table" layoutX="5.0" layoutY="4.0" prefHeight="238.0" prefWidth="375.0">
                                              <columns>
                                                 <TableColumn fx:id="col_memberName" minWidth="0.0" prefWidth="204.0" text="Member name" />
-                                                <TableColumn fx:id="col_memberEmail" prefWidth="204.0" text="Membet email" />
+                                                <TableColumn fx:id="col_memberEmail" prefWidth="204.0" text="Member email" />
                                              </columns>
                                           </TableView>
                                        </children>
                                     </AnchorPane>
+                                    <AnchorPane layoutX="452.0" layoutY="263.0" prefHeight="255.0" prefWidth="387.0" stylesheets="@dashboardDesign.css">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <children>
+                                          <Label fx:id="machines_label" layoutX="100.0" layoutY="52.0" prefHeight="28.0" prefWidth="117.0" />
+                                          <Label fx:id="date_label" layoutX="88.0" layoutY="85.0" prefHeight="64.0" prefWidth="112.0" />
+                                          <Label fx:id="time_label" layoutX="246.0" layoutY="82.0" prefHeight="70.0" prefWidth="123.0" />
+                                          <Label alignment="CENTER" layoutX="73.0" layoutY="9.0" prefHeight="43.0" prefWidth="246.0" text="Machines under your team's control">
+                                             <font>
+                                                <Font name="Tahoma" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" layoutX="19.0" layoutY="52.0" prefHeight="29.0" prefWidth="79.0" text="Name:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" layoutX="23.0" layoutY="100.0" prefHeight="41.0" prefWidth="70.0" text="Date:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" layoutX="191.0" layoutY="103.0" prefHeight="41.0" prefWidth="70.0" text="Time:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="36.0" layoutY="415.0" prefHeight="90.0" prefWidth="200.0" stylesheets="@dashboardDesign.css">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <children>
+                                          <Label fx:id="assignedProjext_label" alignment="CENTER" layoutX="12.0" layoutY="28.0" prefHeight="27.0" prefWidth="169.0">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <Label layoutX="42.0" layoutY="382.0" text="Assigned Project">
+                                       <font>
+                                          <Font name="Tahoma" size="18.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </AnchorPane>
                            </children></AnchorPane>
@@ -174,6 +232,16 @@
                                     </Button>
                                     <Button fx:id="reserveMachine_btn" layoutX="638.0" layoutY="425.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="154.0" text="Reserve Machine" />
                                  </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="reserve_form" prefHeight="555.0" prefWidth="889.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="9.0" layoutY="6.0" prefHeight="537.0" prefWidth="873.0" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
                               </AnchorPane>
                            </children>
                         </AnchorPane>

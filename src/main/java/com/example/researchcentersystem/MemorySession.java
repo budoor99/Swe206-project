@@ -1,6 +1,8 @@
 package com.example.researchcentersystem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MemorySession {
     public static User currentUser;
@@ -314,5 +316,29 @@ public class MemorySession {
 //   }
 
 
+    //list of reservation Array list of reservation
+    public ArrayList<Reservation> getReservations(String s){ //for one machine a timetable 
+        ArrayList<Reservation> newArray = new ArrayList<>();
+        for(Team team: teams){
+            HashMap<String, ArrayList <String>> teamR =  team.getTeamReservations();
+            for(Map.Entry<String, ArrayList<String>> entry : teamR.entrySet()){
+                String key = entry.getKey();
+                if(key.equals(s)){
+                    ArrayList<String> values = entry.getValue();
+                    for(String value : values){
+                        String[] info = value.split(",");
+                        newArray.add(new Reservation(key, team.getTeamName(),info[1],info[0]));
+                    }
+                }
 
-}
+            }
+
+            }
+        return newArray;
+        }
+
+
+    }
+
+
+
