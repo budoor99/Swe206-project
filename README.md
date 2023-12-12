@@ -2,43 +2,21 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 <!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
 <!-- PROJECT LOGO -->
-
+<p align="center">
+  <img src="https://github.com/budoor99/Swe206-project/assets/144340930/7de91268-a996-4339-b0f4-be91e3c0d36e" alt="KFUPM Logo" width="200">
+</p>
 <h3 align="center">KFUPM Research Center</h3>
 
-  <p align="center">
-    Made by Team 1 from F62: Najla, Budoor, Malak, Funoon
-    <br />
-    <br />
-    <br />
-  </p>
-</div>
+<h4 align="center">Made by Team 1 from F62:</h4>
+<h4 align="center" style="font-size: smaller; color: blue; text-decoration: underline;">Najla, Budoor, Malak, Funoon</h4>
+
+
+  
 
 
 
