@@ -59,11 +59,9 @@ public class MemorySession {
         for(Team team: teams){
             if(team.isPartOfTeam(removedMember)){
                 team.removeTeamMember(removedMember);
-
             }
         }
         return removedMember;
-
 
     }
 
@@ -252,11 +250,13 @@ public class MemorySession {
                 return m;
             }
         }
-        return new User("edfe","efw","ewf","efwe");
+        return null;
     }
 
-
-//    public Machine viewMostUsedMachine(){ //two arrays, the first is machines, the second is the count of machines
+    public static ArrayList<String> getResearchInterest() {
+        return researchInterest;
+    }
+    //    public Machine viewMostUsedMachine(){ //two arrays, the first is machines, the second is the count of machines
 //
 //        //or dictionary
 //
@@ -270,5 +270,22 @@ public class MemorySession {
 //
 //
 //    }
+
+    public Member viewMostActiveMember(){
+        int maxNumOfProject=0;
+        Member member=members.get(0);
+        for(Member m:members){
+            ArrayList<Project> projects=m.viewAssignedProject();
+            int p=0;
+            if(projects!=null){
+                p=projects.size();
+                if(p>maxNumOfProject){
+                    maxNumOfProject=p;
+                    member=m;
+                }
+            }
+        }
+        return member;
+    }
 
 }

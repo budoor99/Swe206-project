@@ -3,6 +3,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -61,32 +62,32 @@
                                  </font>
                               </Label>
                               <Line endX="61.0" layoutX="130.0" layoutY="182.0" startX="-100.0" />
-                              <Button fx:id="home_btn" layoutX="19.0" layoutY="203.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Home">
+                              <Button fx:id="home_btn" layoutX="19.0" layoutY="203.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Home">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="HOME" size="1.5em" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="addMachine_btn" layoutX="19.0" layoutY="273.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Add new machine">
+                              <Button fx:id="addMachine_btn" layoutX="19.0" layoutY="273.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Add new machine">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="PLUS" size="1.5em" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="addProject_btn" layoutX="19.0" layoutY="238.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Add new project">
+                              <Button fx:id="addProject_btn" layoutX="19.0" layoutY="238.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Add new project">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="PLUS" size="1.5em" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="viewMachines_btn" layoutX="19.0" layoutY="378.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="View machines">
+                              <Button fx:id="viewMachines_btn" layoutX="19.0" layoutY="378.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="View machines">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="PLUS" size="1.5em" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="viewTeams_btn" layoutX="19.0" layoutY="343.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="View teams">
+                              <Button fx:id="viewTeams_btn" layoutX="19.0" layoutY="343.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="View teams">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="USER" size="1.5em" text="" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="addMember_btn" layoutX="19.0" layoutY="308.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Add new member">
+                              <Button fx:id="addMember_btn" layoutX="19.0" layoutY="308.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Add new member">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="USER_PLUS" size="1.5em" />
                                  </graphic>
@@ -101,6 +102,11 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
+                              <Button fx:id="assignTeamToProject_btn" layoutX="21.0" layoutY="413.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Assign team to project">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="PLUS" size="1.5em" />
+                                 </graphic>
+                              </Button>
                            </children>
                         </AnchorPane>
                      </children>
@@ -140,7 +146,7 @@
                                                             <Font size="17.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="TOP_RIGHT" layoutX="120.0" layoutY="22.0" prefHeight="40.0" prefWidth="146.0" text="0" textFill="WHITE">
+                                                      <Label fx:id="home_theMostActiveMember" alignment="TOP_RIGHT" layoutX="120.0" layoutY="22.0" prefHeight="40.0" prefWidth="146.0" text="0" textFill="WHITE">
                                                          <font>
                                                             <Font size="28.0" />
                                                          </font>
@@ -291,12 +297,12 @@
                                                 <String fx:value="shadow" />
                                              </styleClass>
                                              <children>
-                                                <TableView fx:id="addMember_table" layoutX="14.0" layoutY="14.0" prefHeight="327.0" prefWidth="816.0">
+                                                <TableView fx:id="addMember_table" layoutX="14.0" layoutY="14.0" onMouseClicked="#addMemberSelect" prefHeight="327.0" prefWidth="816.0">
                                                    <columns>
-                                                      <TableColumn fx:id="addMember_col_memberID" prefWidth="190.0" text="Member ID" />
-                                                      <TableColumn fx:id="addMember_col_memberName" prefWidth="229.0" text="Member name" />
-                                                      <TableColumn fx:id="addMember_col_memberEmail" minWidth="0.0" prefWidth="199.0" text="Member email" />
-                                                      <TableColumn fx:id="addMember_col_researchInterest" minWidth="0.0" prefWidth="214.0" text="research Interest" />
+                                                      <TableColumn fx:id="addMember_col_memberID" prefWidth="204.0" text="Member ID" />
+                                                      <TableColumn fx:id="addMember_col_memberName" minWidth="0.0" prefWidth="204.0" text="Member name" />
+                                                      <TableColumn fx:id="addMember_col_memberEmail" prefWidth="204.0" text="Membet email" />
+                                                      <TableColumn fx:id="addMember_col_researchInterest" prefWidth="204.0" text="Member research interest" />
                                                    </columns>
                                                 </TableView>
                                              </children>
@@ -319,19 +325,49 @@
                                              </font>
                                           </Label>
                                           <TextField fx:id="addMember_memberEmail" layoutX="213.0" layoutY="456.0" prefHeight="25.0" prefWidth="200.0" />
-                                          <Button fx:id="addMember_addBtn" layoutX="511.0" layoutY="433.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="101.0" text="Add" />
-                                          <Button fx:id="addMember_clearBtn" layoutX="511.0" layoutY="388.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="101.0" text="Clear" />
+                                          <Button fx:id="addMember_addBtn" layoutX="511.0" layoutY="433.0" mnemonicParsing="false" onAction="#addMemberAdd" prefHeight="34.0" prefWidth="101.0" text="Add" />
+                                          <Button fx:id="addMember_clearBtn" layoutX="511.0" layoutY="388.0" mnemonicParsing="false" onAction="#addMemberClear" prefHeight="34.0" prefWidth="101.0" text="Clear" />
                                           <Button fx:id="addMember_updateBtn" layoutX="639.0" layoutY="388.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="101.0" text="Update" />
-                                          <Button fx:id="addMember_deleteBtn" layoutX="639.0" layoutY="433.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="101.0" text="Delete" />
+                                          <Button fx:id="addMember_deleteBtn" layoutX="639.0" layoutY="433.0" mnemonicParsing="false" onAction="#addMemberDelete" prefHeight="34.0" prefWidth="101.0" text="Delete" />
                                           <Label layoutX="76.0" layoutY="492.0" prefHeight="27.0" prefWidth="136.0" text="research Interest:">
                                              <font>
                                                 <Font size="17.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="addMember_researchInterest" layoutX="212.0" layoutY="493.0" prefHeight="25.0" prefWidth="200.0" />
+                                          <ComboBox fx:id="addMember_researchInterest" layoutX="213.0" layoutY="493.0" prefHeight="25.0" prefWidth="199.0" />
                                        </children>
                                     </AnchorPane>
                                  </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="teams_form" layoutX="140.0" layoutY="102.0" prefHeight="555.0" prefWidth="877.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="528.0" prefWidth="852.0" stylesheets="@dashboardDesign.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="machines_form" layoutX="167.0" layoutY="65.0" prefHeight="555.0" prefWidth="877.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="530.0" prefWidth="851.0" stylesheets="@dashboardDesign.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="assignTeam_form" layoutX="61.0" layoutY="118.0" prefHeight="555.0" prefWidth="877.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="532.0" prefWidth="854.0" stylesheets="@dashboardDesign.css" visible="false">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
                               </AnchorPane>
                            </children>
                         </AnchorPane>

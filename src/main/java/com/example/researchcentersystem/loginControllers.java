@@ -69,7 +69,7 @@ public class loginControllers implements Initializable {
                             String memberInfo;
                             while ((memberInfo = readerMember.readLine()) != null){
                                 String [] info = memberInfo.split(",");
-                                database.addMember(info[0], info[1], info[3], info[2]);
+                                database.addMember(info[0], info[1], info[4], info[3]);
                             }
                             //readings for members
                             BufferedReader readerAdmin = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/admin.txt"));
