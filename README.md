@@ -29,7 +29,6 @@
 
 
 <!-- PROJECT LOGO -->
-![Kfupm Image](/Users/Mahameeho/Desktop/Uni/Term 231/SWE 206 Lab/Swe206-project/kfupm logo (1).png)
 
 <h3 align="center">KFUPM Research Center</h3>
 
