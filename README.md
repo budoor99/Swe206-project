@@ -38,9 +38,12 @@
 <h3 align="center">KFUPM Research Center</h3>
 
   <p align="center">
-    project_description
+    Made by Team 1 from F62
+    Najla 
+    Budoor
+    Malak
+    Funoon
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/github_username/repo_name">View Demo</a>
@@ -84,7 +87,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project is aimed to solve issues regarding the KFUPM research center. It will help organize all scheduling issues related to teams, projects, members, and machines. Through this application, many processes will be automataed and made more efficient for all the people involved.
+This project is dedicated to addressing challenges within the KFUPM research center, with the primary goal of enhancing efficiency and organization across various scheduling aspects, including teams, projects, members, and machine utilization. The application aims to streamline and automate numerous processes, offering a comprehensive solution for all stakeholders involved. By leveraging technology, this initiative seeks to optimize the management of team activities, project timelines, member assignments, and the utilization of research equipment. Ultimately, the application is designed to foster a more cohesive and productive environment within the university research center, ensuring seamless coordination and enhanced productivity for everyone participating in the research endeavors.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
