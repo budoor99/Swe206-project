@@ -60,8 +60,8 @@ This project is dedicated to addressing challenges within the KFUPM research cen
 ### Built With
 
 <p align="left">
-  <img src="https://github.com/budoor99/Swe206-project/blob/main/images/javalogo.png" alt="KFUPM Logo" width="80">
-  <img src="https://github.com/budoor99/Swe206-project/blob/main/images/SceneBuilderLogo.png" alt="KFUPM Logo" width="80">
+  <img src="images/javalogo.png" alt="KFUPM Logo" width="80">
+  <img src="images/SceneBuilderLogo.png" alt="KFUPM Logo" width="80">
 </p>
 
 
