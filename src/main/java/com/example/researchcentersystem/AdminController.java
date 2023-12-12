@@ -726,7 +726,7 @@ public class AdminController implements Initializable {
 
     public void AddMachineFillResearchInterests(){
 
-        
+
         ObservableList<String> interests = FXCollections.observableArrayList(database.getResearchInterest());;
 
         addMachine_listView.getItems().addAll(interests);

@@ -1,13 +1,12 @@
 package com.example.researchcentersystem;
 
-import com.example.researchcentersystem.Member;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class Team {
     private ArrayList<Member> members = new ArrayList<>();
     private String leader;
+
+
     public HashMap<String, ArrayList <String>> teamMachines= new HashMap<>();
 
 
@@ -84,9 +83,24 @@ public class Team {
 
     }
 
+<<<<<<< HEAD
     @Override
     public String toString(){
         return teamName;
     }
     
+=======
+
+    //get machines method for specific team
+    public HashMap<String, ArrayList <String>> getTeamReservations() {
+        HashMap<String, ArrayList<String>> teamReservations = new HashMap<>();
+
+        for (String machine : teamMachines.keySet()) {
+            ArrayList<String> machineReservations = new ArrayList<>(teamMachines.get(machine));
+            teamReservations.put(machine, machineReservations);
+        }
+
+        return teamReservations;
+    }
+>>>>>>> fd59b26ae90b4a2285d668fbbd1418f755ae1813
 }
