@@ -29,12 +29,7 @@
 
 
 <!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    ![Kfupm Image](https://github.com/budoor99/Swe206-project/assets/144340930/7e93c5d0-b376-44de-8cbc-e964998c6430)
-)
-  </a>
+![Kfupm Image](kfupm logo (1).png)
 
 <h3 align="center">KFUPM Research Center</h3>
 
