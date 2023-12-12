@@ -5,9 +5,8 @@ import java.util.ArrayList;
 public class Member extends User {
     private String researchInterest; //should be a list
     private ArrayList<Team> myTeams = new ArrayList<>();
-    private ArrayList<Project> myProjects;
-//Ahmed Mohamed,ahmed.mohamed@example.com,member,1234567,Physics
-    //String userName, String userEmail, String userType,String userID, String researchInterest
+    private ArrayList<Project> myProjects=new ArrayList<>();
+
     public Member(String userName, String userEmail, String userType,String userID, String researchInterest) {
         super(userName, userEmail, userType, userID);
         this.researchInterest = researchInterest;

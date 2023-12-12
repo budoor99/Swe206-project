@@ -69,9 +69,10 @@ public class loginControllers implements Initializable {
                             String memberInfo;
                             while ((memberInfo = readerMember.readLine()) != null){
                                 String [] info = memberInfo.split(",");
+                                System.out.println(Arrays.toString(info));
                                 database.addMember(info[0], info[1], info[4], info[3]);
                             }
-                            //readings for members
+                            //readings for admins
                             BufferedReader readerAdmin = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/admin.txt"));
                             String adminInfo;
                             while ((adminInfo = readerAdmin.readLine()) != null){
@@ -103,7 +104,7 @@ public class loginControllers implements Initializable {
                             while ((projectInfo = readerProjects.readLine())!=null){
                                 String [] pInfo = projectInfo.split(",");
                                 if(pInfo.length==2){
-                                    Team t=database.searchTeam(pInfo[1]);
+                                    Team t=database.searchTeam(pInfo[1].trim());
                                     database.addProject(pInfo[0],t);
 
                                 }
@@ -111,6 +112,8 @@ public class loginControllers implements Initializable {
                                     database.addProject(pInfo[0],null);
                                 }
                             }
+
+
 
                             //reading for research interest
                             BufferedReader readerResearchInterests = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/researchInterests.txt"));

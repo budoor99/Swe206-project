@@ -250,11 +250,8 @@ public class MemorySession {
                 return m;
             }
         }
-<<<<<<< HEAD
         return null;
-=======
-        return new User("edfe","efw","ewf","efwe"); //just to check
->>>>>>> 3cc2126d8c4ab62cfdb768aba47e4a6934065e4b
+
     }
 
     public static ArrayList<String> getResearchInterest() {
@@ -291,5 +288,17 @@ public class MemorySession {
         }
         return member;
     }
+
+    public ArrayList<Project> getAllProjects(){
+        ArrayList<Project> all=new ArrayList<>(takenProjects);
+        all.addAll(availableProjects);
+        return all;
+    }
+
+//   public ArrayList<Team> getAllTeam(){
+//        return
+//   }
+
+
 
 }

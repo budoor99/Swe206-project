@@ -115,7 +115,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="home_form" layoutX="138.0" layoutY="122.0" prefHeight="555.0" prefWidth="878.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="home_form" layoutX="138.0" layoutY="122.0" prefHeight="555.0" prefWidth="878.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="14.0" layoutY="8.0" prefHeight="534.0" prefWidth="850.0" stylesheets="@dashboardDesign.css">
                                  <children>
@@ -140,15 +140,30 @@
                                                 </AnchorPane>
                                                 <AnchorPane layoutX="571.0" layoutY="6.0" prefHeight="162.0" prefWidth="272.0" styleClass="card" stylesheets="@dashboardDesign.css">
                                                    <children>
+                                                      <Label fx:id="home_numOfProject" layoutX="165.0" layoutY="61.0" prefHeight="34.0" prefWidth="50.0" text="00" textFill="#90ffb5">
+                                                         <font>
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </Label>
                                                       <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="34.0" layoutY="83.0" size="4em" text="" />
                                                       <Label layoutX="48.0" layoutY="114.0" prefHeight="26.0" prefWidth="191.0" text="The most active member" textFill="WHITE">
                                                          <font>
                                                             <Font size="17.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="home_theMostActiveMember" alignment="TOP_RIGHT" layoutX="120.0" layoutY="22.0" prefHeight="40.0" prefWidth="146.0" text="0" textFill="WHITE">
+                                                      <Label fx:id="home_theMostActiveMember" alignment="TOP_RIGHT" layoutX="90.0" layoutY="22.0" prefHeight="40.0" prefWidth="180.0" text="user name" textFill="WHITE">
                                                          <font>
-                                                            <Font size="28.0" />
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="140.0" layoutY="61.0" text="In" textFill="WHITE">
+                                                         <font>
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="195.0" layoutY="61.0" text="projects" textFill="WHITE">
+                                                         <font>
+                                                            <Font size="20.0" />
                                                          </font>
                                                       </Label>
                                                    </children>
@@ -184,7 +199,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="project_form" layoutX="141.0" layoutY="134.0" prefHeight="555.0" prefWidth="877.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="project_form" layoutX="141.0" layoutY="134.0" prefHeight="555.0" prefWidth="877.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="12.0" layoutY="9.0" prefHeight="533.0" prefWidth="854.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
@@ -198,10 +213,10 @@
                                           <String fx:value="shadow" />
                                        </styleClass>
                                        <children>
-                                          <TableView fx:id="addProject_table" layoutX="14.0" layoutY="12.0" prefHeight="327.0" prefWidth="816.0">
+                                          <TableView fx:id="addProject_table" layoutX="14.0" layoutY="12.0" onMouseClicked="#addProjectSelect" prefHeight="327.0" prefWidth="816.0">
                                              <columns>
                                                 <TableColumn fx:id="addProject_col_projectName" prefWidth="230.0" text="Project name" />
-                                                <TableColumn prefWidth="230.0" text="Team" />
+                                                <TableColumn fx:id="addProject_col_team" prefWidth="230.0" text="Team" />
                                              </columns>
                                           </TableView>
                                        </children>
@@ -212,22 +227,23 @@
                                        </font>
                                     </Label>
                                     <TextField fx:id="addProject_projectName" layoutX="213.0" layoutY="377.0" prefHeight="25.0" prefWidth="200.0" />
-                                    <Label layoutX="90.0" layoutY="414.0" prefHeight="27.0" prefWidth="123.0" text="-">
+                                    <Label layoutX="152.0" layoutY="414.0" prefHeight="27.0" prefWidth="51.0" text="Team:">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="213.0" layoutY="415.0" prefHeight="25.0" prefWidth="200.0" />
-                                    <Label layoutX="91.0" layoutY="455.0" prefHeight="27.0" prefWidth="122.0" text="-">
-                                       <font>
-                                          <Font size="17.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField layoutX="213.0" layoutY="456.0" prefHeight="25.0" prefWidth="200.0" />
+                                    <TextField fx:id="addProject_Team" layoutX="213.0" layoutY="415.0" prefHeight="25.0" prefWidth="200.0" />
                                     <Button fx:id="addProject_addBtn" layoutX="511.0" layoutY="433.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="101.0" text="Add" />
                                     <Button fx:id="addProject_clearBtn" layoutX="511.0" layoutY="388.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="101.0" text="Clear" />
                                     <Button fx:id="addProject_UpdateBtn" layoutX="639.0" layoutY="388.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="101.0" text="Update" />
                                     <Button fx:id="addProject_deleteBtn" layoutX="639.0" layoutY="433.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="101.0" text="Delete" />
+                                    <Label layoutX="52.0" layoutY="450.0" prefHeight="17.0" prefWidth="359.0" text="if the project is not assigned to a team, you can assign it here:" />
+                                    <ComboBox fx:id="addProject_selectTeam" layoutX="216.0" layoutY="476.0" prefHeight="25.0" prefWidth="198.0" />
+                                    <Label layoutX="85.0" layoutY="476.0" prefHeight="27.0" prefWidth="121.0" text="Selecte a team:">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </AnchorPane>
                            </children>
@@ -361,7 +377,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="assignTeam_form" layoutX="61.0" layoutY="118.0" prefHeight="555.0" prefWidth="877.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="assignTeam_form" layoutX="61.0" layoutY="118.0" prefHeight="555.0" prefWidth="877.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="532.0" prefWidth="854.0" stylesheets="@dashboardDesign.css" visible="false">
                                  <styleClass>
