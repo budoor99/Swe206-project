@@ -1,5 +1,6 @@
 package com.example.researchcentersystem;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -120,7 +121,7 @@ public class AdminController implements Initializable {
     private TextField addProject_projectName;
 
     @FXML
-    private TableView<?> addProject_table;
+    private TableView<Project> addProject_table;
 
     @FXML
     private Button close;
@@ -169,6 +170,19 @@ public class AdminController implements Initializable {
     @FXML
     private Label home_theMostActiveMember;
     private ObservableList<Member> addMemberList;
+
+    @FXML
+    private Label home_numOfProject;
+
+    @FXML
+    private ComboBox<Team> addProject_selectTeam;
+
+    @FXML
+    private TextField addProject_Team;
+
+
+
+
 
     private double x=0;
     private double y=0;
@@ -246,6 +260,7 @@ public class AdminController implements Initializable {
 
             addMemberShowListData();
             addMemberClear();
+            //homeTheMostActiveMember();
 
 
         } else if (event.getSource() == addProject_btn) {
@@ -265,6 +280,7 @@ public class AdminController implements Initializable {
             viewTeams_btn.setStyle("-fx-background-color:transparent");
             viewMachines_btn.setStyle("-fx-background-color:transparent");
             assignTeamToProject_btn.setStyle("-fx-background-color:transparent");
+            addProjectShowListData();
 
 
         } else if (event.getSource() == addMachine_btn) {
@@ -362,6 +378,8 @@ public class AdminController implements Initializable {
         }
 
     }
+
+    //*************************ALL THESE FUNCTIONS TO ADD NEW MEMBER FORM*************************//
     public void addMemberShowListData(){
         addMemberList= convertMembersListToObservable(database.getAllMembers());
 //        addMember_col_memberID.setCellValueFactory(new PropertyValueFactory<>("UserID"));
@@ -385,13 +403,8 @@ public class AdminController implements Initializable {
         addMember_memberEmail.setText(String.valueOf(member.getUserEmail()));
 
     }
-
     public void addMemberResearchInterests() {
         ArrayList<String> RI=database.getResearchInterest();
-
-//        for (String R: RI) {
-//            researchInterests.add(R);
-//        }
 
         ObservableList<String> researchInterests = FXCollections.observableArrayList(RI);
         addMember_researchInterest.setItems(researchInterests);
@@ -489,13 +502,6 @@ public class AdminController implements Initializable {
             }
         }
     }
-
-    public void homeTheMostActiveMember(){
-//        Member m=database.viewMostActiveMember();
-//        home_theMostActiveMember.setText(String.valueOf(countData));
-    }
-
-
     public void addMemberClear() {
         addMember_memberID.setText(""); // Assuming memberID is the actual member ID
         addMember_memberName.setText("");
@@ -504,19 +510,86 @@ public class AdminController implements Initializable {
     }
 
 
+    //*************************ALL THESE FUNCTIONS TO ADD NEW Project FORM*************************//
+    @FXML
+    private TableColumn<Project,String> addProject_col_team;
+    public void addProjectShowListData(){
+
+        ObservableList<Project> addProjectsList= convertProjectsListToObservable(database.getAllProjects());
+
+        addProject_col_projectName.setCellValueFactory(new PropertyValueFactory<>("projectName"));
+        addProject_col_team.setCellValueFactory(cellData -> {
+            Team team = cellData.getValue().getTeam();
+            String teamName = (team != null) ? team.getTeamName() : "-";
+            return new SimpleStringProperty(teamName);
+        });
+        addProject_table.setItems(addProjectsList);
+
+
+    }
+    private ObservableList<Project> convertProjectsListToObservable(ArrayList<Project> projectList) {
+        ObservableList<Project> projects = FXCollections.observableArrayList();
+        for (Project p : projectList) {
+            projects.add(p);
+        }
+
+        return projects;
+    }
+
+    public void addProjectSelect(){
+        Project project=addProject_table.getSelectionModel().getSelectedItem();
+        int num=addProject_table.getSelectionModel().getSelectedIndex();
+
+        if((num-1)<-1){
+            return;
+        }
+
+        addProject_projectName.setText(String.valueOf(project.getProjectName())); // Assuming memberID is the actual member ID
+        Team projectTeam = project.getTeam();
+        addProject_Team.setText(String.valueOf((projectTeam != null) ? projectTeam.getTeamName() :""));
+    }
+
+    // i am here
+//    public void addTeams() {
+//        ArrayList<Team> RI=FXCollections.observableArrayList(database.ge);
+//
+//        ObservableList<String> researchInterests = FXCollections.observableArrayList(RI);
+//        addMember_researchInterest.setItems(researchInterests);
+//    }
+
+
+
+
+
+// this can NOT be used until we assign team to project.
+//    public void homeTheMostActiveMember(){
+//        Member m=database.viewMostActiveMember();
+//        home_theMostActiveMember.setText(String.valueOf(m.getUserName()));
+//        home_numOfProject.setText(String.valueOf(m.viewAssignedProject().size()));
+//    }
+
+
+
+
+
 
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
         addMemberShowListData();
         addMemberResearchInterests();
-
+        //homeTheMostActiveMember();
 
         String adminName = MemorySession.currentUser.getUserName();
         username.setText(adminName);
-        
+
+        addMemberShowListData();
+        addMemberResearchInterests();
+
 
 
     }

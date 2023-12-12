@@ -69,9 +69,10 @@ public class loginControllers implements Initializable {
                             String memberInfo;
                             while ((memberInfo = readerMember.readLine()) != null){
                                 String [] info = memberInfo.split(",");
+                                System.out.println(Arrays.toString(info));
                                 database.addMember(info[0], info[1], info[4], info[3]);
                             }
-                            //readings for members
+                            //readings for admins
                             BufferedReader readerAdmin = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/admin.txt"));
                             String adminInfo;
                             while ((adminInfo = readerAdmin.readLine()) != null){
@@ -103,7 +104,7 @@ public class loginControllers implements Initializable {
                             while ((projectInfo = readerProjects.readLine())!=null){
                                 String [] pInfo = projectInfo.split(",");
                                 if(pInfo.length==2){
-                                    Team t=database.searchTeam(pInfo[1]);
+                                    Team t=database.searchTeam(pInfo[1].trim());
                                     database.addProject(pInfo[0],t);
 
                                 }
@@ -111,6 +112,8 @@ public class loginControllers implements Initializable {
                                     database.addProject(pInfo[0],null);
                                 }
                             }
+
+
 
                             //reading for research interest
                             BufferedReader readerResearchInterests = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/researchInterests.txt"));
@@ -129,6 +132,28 @@ public class loginControllers implements Initializable {
                                     interests.add(machineIfo[i]);
                                 }
                                 database.addMachine(machineIfo[0],machineIfo[1],interests);
+                            }
+
+                            BufferedReader readReservations = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/MachineReservations.txt"));
+                            String reservation;
+                            Machine m1, prevm1 = new Machine("","");
+                            Team t1 = new Team("","");
+                            while ((reservation = readReservations.readLine()) != null){
+                                m1= database.searchMachine(reservation);
+                                if(m1==null){
+                                    //reservation= readReservations.readLine();
+                                    String [] rInfo = reservation.split(",");
+                                    for(int i = 1; i<rInfo.length;i++){
+                                        String [] teamAndMachineInfo = rInfo[i].split("/");
+                                        prevm1.createReservation(rInfo[0], teamAndMachineInfo[1]);
+                                        t1 = database.searchTeam(teamAndMachineInfo[0]);
+                                        System.out.println(teamAndMachineInfo[0]);
+                                        t1.addMachine(prevm1.getMachineName(), rInfo[0]+", "+teamAndMachineInfo[1]);
+                                        System.out.println(t1.teamMachines);
+                                    }
+                                }else{
+                                    prevm1 = m1;
+                                }
                             }
 
                             //if all went well

@@ -204,6 +204,15 @@ public class MemorySession {
         return null;
     }
 
+    public Machine searchMachine(String machineName){
+        for (int i = 0; i<machines.size();i++){
+            if(machines.get(i).getMachineName().equals(machineName)){
+                return machines.get(i);
+            }
+        }
+        return null;
+    }
+
 
     public Team searchTeam(String name){
         for (int i = 0; i<teams.size();i++){
@@ -293,5 +302,17 @@ public class MemorySession {
         }
         return member;
     }
+
+    public ArrayList<Project> getAllProjects(){
+        ArrayList<Project> all=new ArrayList<>(takenProjects);
+        all.addAll(availableProjects);
+        return all;
+    }
+
+//   public ArrayList<Team> getAllTeam(){
+//        return
+//   }
+
+
 
 }

@@ -1,5 +1,5 @@
-X.Y.Z,team1
-The Physics Collective,team3
-The Energy Frontier, team5
+X.Y.Z,Team1
+The Physics Collective,Team3
+The Energy Frontier,Team5
 Code Nexus,
 Proficiency Project,

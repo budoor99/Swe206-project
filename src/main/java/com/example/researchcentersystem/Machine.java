@@ -10,7 +10,7 @@ public class Machine {
     private String machineName;
 
     private ArrayList<String> researchInterest;
-    HashMap<String, ArrayList <String>> reservations= new HashMap<>();
+    public HashMap<String, ArrayList <String>> reservations= new HashMap<>();
 
 
 
