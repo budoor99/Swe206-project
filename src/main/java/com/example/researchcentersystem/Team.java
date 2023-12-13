@@ -5,6 +5,7 @@ import java.util.*;
 public class Team {
     private ArrayList<Member> members = new ArrayList<>();
     private String leader;
+    private ArrayList<Project> projects=new ArrayList<>();
 
 
     public HashMap<String, ArrayList <String>> teamMachines= new HashMap<>();
@@ -110,11 +111,19 @@ public class Team {
 
     }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 18695fd38ad6a34f5c62d349d5d609a96fcd9794
     @Override
     public String toString(){
         return teamName;
     }
     
+<<<<<<< HEAD
+
+=======
+>>>>>>> 18695fd38ad6a34f5c62d349d5d609a96fcd9794
 
     //get machines method for specific team
     public HashMap<String, ArrayList <String>> getTeamReservations() {
@@ -128,6 +137,25 @@ public class Team {
         return teamReservations;
     }
 
+<<<<<<< HEAD
+    public void addProject(Project p){
+        projects.add(p);
+    }
+
+    public String getTeamID() {
+        return teamID;
+    }
+
+    public String getProjects() {
+        return projects.toString();
+    }
+
+    public HashMap<String, ArrayList<String>> getTeamMachines() {
+        return teamMachines;
+    }
+
+
+=======
 
     public String fileOutput(){
         String str = teamName+","+teamID+",";
@@ -141,4 +169,5 @@ public class Team {
         return str;
     }
 
+>>>>>>> 18695fd38ad6a34f5c62d349d5d609a96fcd9794
 }

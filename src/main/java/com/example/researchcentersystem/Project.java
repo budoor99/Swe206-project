@@ -58,6 +58,9 @@ public class Project {
     }
 
     public String toString(){
+<<<<<<< HEAD
+        return projectName;
+=======
         String str= projectName+",";
         if(team==null){
             return str;
@@ -66,6 +69,7 @@ public class Project {
             return str;
         }
 
+>>>>>>> 18695fd38ad6a34f5c62d349d5d609a96fcd9794
     }
 
 

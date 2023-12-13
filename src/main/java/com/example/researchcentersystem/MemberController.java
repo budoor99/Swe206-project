@@ -110,6 +110,11 @@ public class MemberController implements Initializable {
 
 
     @FXML
+    private Button clear_btn;
+
+
+
+    @FXML
     private TableColumn<Map.Entry<String, List<String>>, String> machines_col;
 
     @FXML
@@ -152,6 +157,10 @@ public class MemberController implements Initializable {
 
     @FXML
     private Button reserve_nbtn;
+
+    @FXML
+    private Label totalProjects;
+
 
 
 
@@ -268,7 +277,8 @@ public class MemberController implements Initializable {
         String username = MemorySession.currentUser.getUserName();
         memberName.setText(username);
         addMyTeams();
-        totalTeams();
+        totalTeams(); //it will also print total projects
+
 
 
         machineComboList();
@@ -286,7 +296,23 @@ public class MemberController implements Initializable {
     public void totalTeams(){
 
         totalTeams.setText(String.valueOf(teams.size()));
+        totalProjects.setText(String.valueOf(totalProjects()));
 
+    }
+    //count total projects for this member:
+
+    public int totalProjects(){
+        int count = 0;
+
+        for (Project project : database.getTakenProjects()) {
+            for (Team team : teams) {
+                if (project.getTeam() != null && project.getTeam().equals(team)) {
+                    count++;
+                    break;
+                }
+            }
+        }
+        return count;
     }
 
 
@@ -358,6 +384,9 @@ public class MemberController implements Initializable {
 
     public String getAssignedProject(Team selectedTeam){
         if (selectedTeam != null) {
+            //debug
+            System.out.println(database.getTakenProjects().size()+"heree");
+
             for (Project project : database.getTakenProjects()) {
                 if (project.getTeam() != null && project.getTeam().equals(selectedTeam)) {
                     return project.getProjectName();
@@ -537,6 +566,7 @@ public class MemberController implements Initializable {
 
         reserve_table.setItems(reservationList);
     }
+
 
 
 

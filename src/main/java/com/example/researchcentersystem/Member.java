@@ -40,8 +40,13 @@ public class Member extends User {
 
     public void removeFromMyTeams(Team t1){myTeams.remove(t1);}
 
+<<<<<<< HEAD
+
+
+=======
     public String toString(){
         return super.getUserName()+","+super.getUserEmail()+",member,"+super.getUserID()+","+researchInterest;
     }
+>>>>>>> 18695fd38ad6a34f5c62d349d5d609a96fcd9794
 
 }

@@ -1,5 +1,6 @@
 package com.example.researchcentersystem;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,11 +15,14 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.StageStyle;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class AdminController implements Initializable {
     private MemorySession database=new MemorySession();
@@ -184,7 +188,29 @@ public class AdminController implements Initializable {
     @FXML
     private ListView<String> addMachine_listView;
 
+    @FXML
+    private TableColumn<Team,String> viewTeam_teamProjects;
+    @FXML
+    private TableColumn<Team,String> viewTeam_teamMember;
+    @FXML
+    private TableColumn<Team,String> viewTeam_teamLeader;
+    @FXML
+    private TableColumn<Team,String> viewTeam_teamName;
+    @FXML
+    private TableColumn<Team,String> viewTeam_teamID;
 
+    @FXML
+    private TableView<Team> viewTeam_table;
+
+    @FXML
+    private TextField viewTeam_teamId;
+
+    @FXML
+    private TextField viewTeam_teamNameF;
+    @FXML
+    private TextField viewTeam_teamLeaderF;
+    @FXML
+    private  ListView<Member>viewTeam_teamMembersF;
 
 
 
@@ -250,8 +276,6 @@ public class AdminController implements Initializable {
             member_form.setVisible(false);
             project_form.setVisible(false);
             teams_form.setVisible(false);
-            machines_form.setVisible(false);
-            assignTeam_form.setVisible(false);
 
 
             home_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c);");
@@ -259,8 +283,6 @@ public class AdminController implements Initializable {
             addMember_btn.setStyle("-fx-background-color:transparent");
             addProject_btn.setStyle("-fx-background-color:transparent");
             viewTeams_btn.setStyle("-fx-background-color:transparent");
-            viewMachines_btn.setStyle("-fx-background-color:transparent");
-            assignTeamToProject_btn.setStyle("-fx-background-color:transparent");
 
             addMemberShowListData();
             addMemberClear();
@@ -273,8 +295,6 @@ public class AdminController implements Initializable {
             member_form.setVisible(false);
             project_form.setVisible(true);
             teams_form.setVisible(false);
-            machines_form.setVisible(false);
-            assignTeam_form.setVisible(false);
 
 
             addProject_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c);");
@@ -282,8 +302,6 @@ public class AdminController implements Initializable {
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
             viewTeams_btn.setStyle("-fx-background-color:transparent");
-            viewMachines_btn.setStyle("-fx-background-color:transparent");
-            assignTeamToProject_btn.setStyle("-fx-background-color:transparent");
             addProjectShowListData();
             addTeams();
 
@@ -294,8 +312,7 @@ public class AdminController implements Initializable {
             member_form.setVisible(false);
             project_form.setVisible(false);
             teams_form.setVisible(false);
-            machines_form.setVisible(false);
-            assignTeam_form.setVisible(false);
+
 
 
             addMachine_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c);");
@@ -303,8 +320,7 @@ public class AdminController implements Initializable {
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
             viewTeams_btn.setStyle("-fx-background-color:transparent");
-            viewMachines_btn.setStyle("-fx-background-color:transparent");
-            assignTeamToProject_btn.setStyle("-fx-background-color:transparent");
+
 
             addMachineShowListData();
 
@@ -314,8 +330,6 @@ public class AdminController implements Initializable {
             member_form.setVisible(true);
             project_form.setVisible(false);
             teams_form.setVisible(false);
-            machines_form.setVisible(false);
-            assignTeam_form.setVisible(false);
 
 
             addMember_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c);");
@@ -323,8 +337,7 @@ public class AdminController implements Initializable {
             addMachine_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
             viewTeams_btn.setStyle("-fx-background-color:transparent");
-            viewMachines_btn.setStyle("-fx-background-color:transparent");
-            assignTeamToProject_btn.setStyle("-fx-background-color:transparent");
+
             
         } else if (event.getSource() ==viewTeams_btn) {
             home_form.setVisible(false);
@@ -332,8 +345,8 @@ public class AdminController implements Initializable {
             member_form.setVisible(false);
             project_form.setVisible(false);
             teams_form.setVisible(true);
-            machines_form.setVisible(false);
-            assignTeam_form.setVisible(false);
+
+
 
 
             viewTeams_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c);");
@@ -341,47 +354,11 @@ public class AdminController implements Initializable {
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
             addMachine_btn.setStyle("-fx-background-color:transparent");
-            viewMachines_btn.setStyle("-fx-background-color:transparent");
-            assignTeamToProject_btn.setStyle("-fx-background-color:transparent");
-
-        } else if (event.getSource() ==viewMachines_btn) {
-            home_form.setVisible(false);
-            machine_form.setVisible(false);
-            member_form.setVisible(false);
-            project_form.setVisible(false);
-            teams_form.setVisible(false);
-            machines_form.setVisible(true);
-            assignTeam_form.setVisible(false);
+            ViewTeamListData();
 
 
-            viewMachines_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c);");
-            addProject_btn.setStyle("-fx-background-color:transparent");
-            addMember_btn.setStyle("-fx-background-color:transparent");
-            home_btn.setStyle("-fx-background-color:transparent");
-            viewTeams_btn.setStyle("-fx-background-color:transparent");
-            addMachine_btn.setStyle("-fx-background-color:transparent");
-            assignTeamToProject_btn.setStyle("-fx-background-color:transparent");
-
-        } else if (event.getSource() ==assignTeamToProject_btn) {
-            home_form.setVisible(false);
-            machine_form.setVisible(false);
-            member_form.setVisible(false);
-            project_form.setVisible(false);
-            teams_form.setVisible(false);
-            machines_form.setVisible(false);
-            assignTeam_form.setVisible(true);
-
-
-            assignTeamToProject_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c);");
-            addProject_btn.setStyle("-fx-background-color:transparent");
-            addMember_btn.setStyle("-fx-background-color:transparent");
-            home_btn.setStyle("-fx-background-color:transparent");
-            viewTeams_btn.setStyle("-fx-background-color:transparent");
-            viewMachines_btn.setStyle("-fx-background-color:transparent");
-            addMachine_btn.setStyle("-fx-background-color:transparent");
 
         }
-
     }
 
     //*************************ALL THESE FUNCTIONS TO ADD NEW MEMBER FORM*************************//
@@ -465,8 +442,7 @@ public class AdminController implements Initializable {
         Alert alert;
         if(addMember_memberID.getText().isEmpty() ||
                 addMember_memberName.getText().isEmpty() ||
-                addMember_memberEmail.getText().isEmpty() ||
-                addMember_researchInterest.getSelectionModel().getSelectedItem() == null){
+                addMember_memberEmail.getText().isEmpty() ){
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error message");
             alert.setHeaderText(null);
@@ -521,14 +497,11 @@ public class AdminController implements Initializable {
     public void addProjectShowListData(){ //big problem!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         addProjectsList= convertProjectsListToObservable(database.getAllProjects());
-//        addMember_col_memberName.setCellValueFactory(new PropertyValueFactory<>("userName"));
-//        addMember_col_memberEmail.setCellValueFactory(new PropertyValueFactory<>("userEmail"));
-//        addMember_col_researchInterest.setCellValueFactory(new PropertyValueFactory<>("researchInterest"));
         addProject_col_projectName.setCellValueFactory(new PropertyValueFactory<>("projectName"));
         addProject_col_team.setCellValueFactory(new PropertyValueFactory<>("team"));
         addProject_table.setItems(addProjectsList);
-        System.out.println("here");
-
+        addTeams();
+        addProjectClear();
 
     }
     private ObservableList<Project> convertProjectsListToObservable(ArrayList<Project> projectList) {
@@ -599,6 +572,8 @@ public class AdminController implements Initializable {
 
         }
     }
+
+    //add p
     public void addProjectClear() {
         addProject_projectName.setText(""); // Assuming memberID is the actual member ID
         addProject_Team.setText("");
@@ -661,6 +636,7 @@ public class AdminController implements Initializable {
         addMachine_col_researchInterests.setCellValueFactory(new PropertyValueFactory<>("researchInterests"));
         addMachine_table.setItems(addMachineList);
         AddMachineFillResearchInterests();
+        addMachineClear();
 
     }
     public void addMachineSelect(){
@@ -673,8 +649,6 @@ public class AdminController implements Initializable {
 
         addMachine_machineID.setText(String.valueOf(machine.getMachineID())); // Assuming memberID is the actual member ID
         addMachine_machineName.setText(String.valueOf(machine.getMachineName()));
-
-
     }
 
     private ObservableList<Machine> convertMachinesListToObservable(ArrayList<Machine> machines) {
@@ -682,7 +656,6 @@ public class AdminController implements Initializable {
         for (Machine machine : machines) {
             m.add(machine);
         }
-
         return m;
     }
 
@@ -783,6 +756,150 @@ public class AdminController implements Initializable {
         addMachine_listView.getSelectionModel().clearSelection();
     }
 
+    //*************************ALL THESE FUNCTIONS TO VIEW TEAM FORM*************************//
+    ObservableList<Team> observableList;
+    public void ViewTeamListData(){
+        fillTeamProjects();
+        observableList= convertTeamsListToObservable(database.getAllTeam());
+        viewTeam_teamID.setCellValueFactory(new PropertyValueFactory<>("teamID"));
+        viewTeam_teamName.setCellValueFactory(new PropertyValueFactory<>("teamName"));
+        viewTeam_teamLeader.setCellValueFactory(new PropertyValueFactory<>("leader"));
+        viewTeam_teamMember.setCellValueFactory(new PropertyValueFactory<>("members"));
+        viewTeam_table.setItems(observableList);
+        viewTeamFillMembers();
+        viewTeamClear();
+    }
+
+    private ObservableList<Team> convertTeamsListToObservable(ArrayList<Team> teamsList) {
+        ObservableList<Team> teams = FXCollections.observableArrayList();
+        for (Team t:teamsList) {
+            teams.add(t);
+        }
+
+        return teams;
+    }
+
+    public void fillTeamProjects(){
+        ArrayList<Project> projects=database.getTakenProjects();
+        for (Project p:projects){
+            Team t=p.getTeam();
+            System.out.println(p.toString()+t);
+            t.addProject(p);
+        }
+    }
+
+
+    public void viewTeamSelect(){
+        Team team=viewTeam_table.getSelectionModel().getSelectedItem();
+        int num=viewTeam_table.getSelectionModel().getSelectedIndex();
+
+        if((num-1)<-1){
+            return;
+        }
+
+        viewTeam_teamId.setText(String.valueOf(team.getTeamID())); // Assuming memberID is the actual member ID
+        viewTeam_teamNameF.setText(String.valueOf(team.getTeamName()));
+        viewTeam_teamLeaderF.setText(String.valueOf(team.getLeader()));
+
+
+    }
+
+
+
+    public void viewTeamAdd(){
+        ObservableList<Member> selectedItems = viewTeam_teamMembersF.getSelectionModel().getSelectedItems();
+        Alert alert;
+        if(viewTeam_teamId.getText().isEmpty() ||
+                viewTeam_teamNameF.getText().isEmpty() ||
+                viewTeam_teamLeader.getText().isEmpty() ||
+                selectedItems.isEmpty()){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error message");
+            alert.setHeaderText(null);
+            alert.setContentText("please fill all the fields");
+            alert.showAndWait();
+        }
+        else {
+            String name=viewTeam_teamNameF.getText(); String ID=viewTeam_teamId.getText();
+            String leader=viewTeam_teamLeaderF.getText();
+            Team team=database.searchTeam(name);
+            if(team==null){
+                database.addTeam(new ArrayList<>(selectedItems),name,ID,leader);
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully Added!");
+                alert.showAndWait();
+                ViewTeamListData();
+            }
+            else {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error message");
+                alert.setHeaderText(null);
+                alert.setContentText("the team is already exist");
+                alert.showAndWait();
+
+            }
+        }
+    }
+
+    public void viewTeamFillMembers(){
+        ObservableList<Member> members = FXCollections.observableArrayList(database.getAllMembers());
+        viewTeam_teamMembersF.getItems().addAll(members);
+        viewTeam_teamMembersF.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    }
+    public void viewTeamDelete(){
+        Alert alert;
+        if(viewTeam_teamNameF.getText().isEmpty()){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error message");
+            alert.setHeaderText(null);
+            alert.setContentText("please select a team to be deleted");
+            alert.showAndWait();
+        }
+        else {
+            String name=viewTeam_teamNameF.getText(); String ID=viewTeam_teamId.getText();
+            Team team=database.searchTeam(name);
+            if(team!=null){
+
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Cofirmation Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want to DELETE "+name+" with ID: " + ID + "?");
+                Optional<ButtonType> option = alert.showAndWait();
+
+                if (option.get().equals(ButtonType.OK)) {
+                    database.removeTeam(name);
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully deleted!");
+                    alert.showAndWait();
+                    ViewTeamListData();
+                    viewTeamClear();
+                }
+            }
+            else {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error message");
+                alert.setHeaderText(null);
+                alert.setContentText("The team is not exist!");
+                alert.showAndWait();
+
+            }
+        }
+    }
+    public void viewTeamClear() {
+        viewTeam_teamNameF.setText("");
+        viewTeam_teamId.setText("");
+        viewTeam_teamLeaderF.setText("");
+        viewTeam_teamMembersF.getSelectionModel().clearSelection();
+    }
+
+
+
 
 
 
@@ -812,13 +929,6 @@ public class AdminController implements Initializable {
 
         String adminName = MemorySession.currentUser.getUserName();
         username.setText(adminName);
-
-        addMemberShowListData();
-        addMemberResearchInterests();
-
-        AddMachineFillResearchInterests();
-
-
 
     }
 

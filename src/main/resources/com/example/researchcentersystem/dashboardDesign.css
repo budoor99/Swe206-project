@@ -74,6 +74,8 @@
 
 
 
+<<<<<<< HEAD
+=======
 .table-view {
     -fx-background-color: transparent;
     -fx-control-inner-background: transparent;
@@ -82,9 +84,12 @@
     -fx-border-radius: 5px;
 }
 */
+>>>>>>> 18695fd38ad6a34f5c62d349d5d609a96fcd9794
 
 /*
 
+<<<<<<< HEAD
+=======
 
 .table-view .table-column{
         -fx-alignment: CENTER;
@@ -112,3 +117,4 @@
 
 */
 
+>>>>>>> 18695fd38ad6a34f5c62d349d5d609a96fcd9794

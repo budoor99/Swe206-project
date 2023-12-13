@@ -148,9 +148,24 @@ public class MemorySession {
             if (team.getTeamName().equals(name)) {
                 removedTeam = team;
                 teams.remove(team);
+                break;
             }
         }
 
+<<<<<<< HEAD
+        if(removedTeam!=null){
+            ArrayList<Member> members = removedTeam.getMembers();
+            for (Member member : members) {
+                member.removeFromMyTeams(removedTeam);
+            }
+
+            for (Project project : takenProjects) {
+                if (project.getTeam().equals(removedTeam)) { //override equals ..
+                    project.setTeam(null);
+                    takenProjects.remove(project);
+                    availableProjects.add(project);
+                    break;
+=======
         ArrayList<Member> members = removedTeam.getMembers();
         for (Member member : members) {
             member.removeFromMyTeams(removedTeam);
@@ -160,11 +175,12 @@ public class MemorySession {
         for (Project project : takenProjects) {
             if (project.getTeam().equals(removedTeam)) { //override equals ..
                 project.setTeam(null);
+>>>>>>> 18695fd38ad6a34f5c62d349d5d609a96fcd9794
 
+                }
             }
         }
         return removedTeam;
-
     }
 
     public ArrayList<Machine> viewAllMachines() {
