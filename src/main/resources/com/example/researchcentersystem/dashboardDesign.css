@@ -33,7 +33,7 @@
 
 
 .nav-form{
-      -fx-background-color: linear-gradient(to bottom right, #272b3f, #256b51);
+      -fx-background-color: linear-gradient(to bottom right, #033557, #1477ba);
 }
 
 
@@ -45,9 +45,13 @@
       -fx-text-fill: #fff;
       -fx-alignment: CENTER_LEFT;
 }
+.nav-btn: hover{
+      -fx-background-color: #1477ba;
+}
+
 
 .logout{
-      -fx-background-color: #256b51;
+      -fx-background-color: #1477ba;
       -fx-background-radius: 10px;
       -fx-cursor: hand;
 
@@ -66,7 +70,7 @@
        -fx-background-radius:8px;
 }
 .card{
-       -fx-background-color:linear-gradient(to right, #2b303c, #525968);
+       -fx-background-color:linear-gradient(to right, #97a5b9, #b3becf);
        -fx-background-radius:5px;
 }
 
@@ -95,7 +99,7 @@
 
 
 .table-view .column-header-background{
-       -fx-background-color:linear-gradient(to right, #272b3f, #256b51);
+       -fx-background-color:linear-gradient(to right, #033557, #1477ba);
        -fx-background-insets: 0 0 0 0;
        -fx-background-radius:0px 0px 0px 0px;
         -fx-border-color: #555555;
