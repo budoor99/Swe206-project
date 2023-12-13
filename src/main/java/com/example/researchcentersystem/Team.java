@@ -111,19 +111,13 @@ public class Team {
 
     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 18695fd38ad6a34f5c62d349d5d609a96fcd9794
     @Override
     public String toString(){
         return teamName;
     }
     
-<<<<<<< HEAD
 
-=======
->>>>>>> 18695fd38ad6a34f5c62d349d5d609a96fcd9794
 
     //get machines method for specific team
     public HashMap<String, ArrayList <String>> getTeamReservations() {
@@ -137,7 +131,7 @@ public class Team {
         return teamReservations;
     }
 
-<<<<<<< HEAD
+
     public void addProject(Project p){
         projects.add(p);
     }
@@ -150,12 +144,8 @@ public class Team {
         return projects.toString();
     }
 
-    public HashMap<String, ArrayList<String>> getTeamMachines() {
-        return teamMachines;
-    }
 
 
-=======
 
     public String fileOutput(){
         String str = teamName+","+teamID+",";
@@ -169,5 +159,5 @@ public class Team {
         return str;
     }
 
->>>>>>> 18695fd38ad6a34f5c62d349d5d609a96fcd9794
+
 }
