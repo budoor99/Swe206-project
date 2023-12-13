@@ -212,6 +212,53 @@ public class AdminController implements Initializable {
     @FXML
     private  ListView<Member>viewTeam_teamMembersF;
 
+    //To create the reservation table:
+    @FXML
+    private Button clear_btn;
+
+
+    @FXML
+    private Button reserve_abtn;
+
+
+    @FXML
+    private AnchorPane reserve_aform;
+
+
+
+    @FXML
+    private DatePicker date_picker;
+
+    @FXML
+    private ComboBox<String> machine_combo;
+
+    @FXML
+    private ComboBox<String> teams_combo;
+
+
+    @FXML
+    private ComboBox<String> time_combo;
+
+
+
+    @FXML
+    private TableView<Reservation> reserve_table;
+
+    @FXML
+    private TableColumn<Reservation, String> teams_col;
+
+    @FXML
+    private TableColumn<Reservation, String> time_col;
+
+    @FXML
+    private TableColumn<Reservation, String> machine_col;
+
+    @FXML
+    private TableColumn<Reservation, String> date_col;
+
+
+
+
 
 
     private double x=0;
@@ -276,13 +323,15 @@ public class AdminController implements Initializable {
             member_form.setVisible(false);
             project_form.setVisible(false);
             teams_form.setVisible(false);
+            reserve_aform.setVisible(false);
 
 
-            home_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c);");
+            home_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
             addMachine_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             addProject_btn.setStyle("-fx-background-color:transparent");
             viewTeams_btn.setStyle("-fx-background-color:transparent");
+            reserve_abtn.setStyle("-fx-background-color:transparent");
 
             addMemberShowListData();
             addMemberClear();
@@ -295,13 +344,15 @@ public class AdminController implements Initializable {
             member_form.setVisible(false);
             project_form.setVisible(true);
             teams_form.setVisible(false);
+            reserve_aform.setVisible(false);
 
 
-            addProject_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c);");
+            addProject_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
             addMachine_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
             viewTeams_btn.setStyle("-fx-background-color:transparent");
+            reserve_abtn.setStyle("-fx-background-color:transparent");
             addProjectShowListData();
             addTeams();
 
@@ -312,14 +363,16 @@ public class AdminController implements Initializable {
             member_form.setVisible(false);
             project_form.setVisible(false);
             teams_form.setVisible(false);
+            reserve_aform.setVisible(false);
 
 
 
-            addMachine_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c);");
+            addMachine_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
             addProject_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
             viewTeams_btn.setStyle("-fx-background-color:transparent");
+            reserve_abtn.setStyle("-fx-background-color:transparent");
 
 
             addMachineShowListData();
@@ -330,16 +383,39 @@ public class AdminController implements Initializable {
             member_form.setVisible(true);
             project_form.setVisible(false);
             teams_form.setVisible(false);
+            reserve_aform.setVisible(false);
 
 
-            addMember_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c);");
+            addMember_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
             addProject_btn.setStyle("-fx-background-color:transparent");
             addMachine_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
             viewTeams_btn.setStyle("-fx-background-color:transparent");
+            reserve_abtn.setStyle("-fx-background-color:transparent");
 
             
         } else if (event.getSource() ==viewTeams_btn) {
+            home_form.setVisible(false);
+            machine_form.setVisible(false);
+            member_form.setVisible(false);
+            project_form.setVisible(false);
+            teams_form.setVisible(false);
+            reserve_aform.setVisible(true);
+
+
+
+
+            viewTeams_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
+            addProject_btn.setStyle("-fx-background-color:transparent");
+            addMember_btn.setStyle("-fx-background-color:transparent");
+            home_btn.setStyle("-fx-background-color:transparent");
+            addMachine_btn.setStyle("-fx-background-color:transparent");
+            reserve_abtn.setStyle("-fx-background-color:transparent");
+            ViewTeamListData();
+
+
+        }
+        else if (event.getSource() ==reserve_abtn) {
             home_form.setVisible(false);
             machine_form.setVisible(false);
             member_form.setVisible(false);
@@ -349,16 +425,16 @@ public class AdminController implements Initializable {
 
 
 
-            viewTeams_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c);");
+            viewTeams_btn.setStyle("-fx-background-color:transparent");
+            reserve_abtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
             addProject_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
             addMachine_btn.setStyle("-fx-background-color:transparent");
-            ViewTeamListData();
+            }
 
 
 
-        }
     }
 
     //*************************ALL THESE FUNCTIONS TO ADD NEW MEMBER FORM*************************//
@@ -930,7 +1006,155 @@ public class AdminController implements Initializable {
         String adminName = MemorySession.currentUser.getUserName();
         username.setText(adminName);
 
+
+
+        //regarding creating schedule
+        machineComboList();
+        machine_combo.setOnAction(event -> handleMachineSelection());
+
+        teamsComboList();
+
+
+        timeComboList();
+
     }
+
+
+    //**********************************create a schedule******************************************
+    public void machineComboList() {
+        ArrayList<Machine> ML= database.getMachines();
+        ArrayList<String> names= new ArrayList<>();
+
+        for(int i = 0; i<ML.size();i++){
+            names.add(ML.get(i).getMachineName());
+        }
+
+        ObservableList<String> machines = FXCollections.observableArrayList(names);
+        machine_combo.setItems(machines);
+    }
+
+
+    public void teamsComboList(){
+        ObservableList<String> teamNames = FXCollections.observableArrayList();
+
+        for (Team team : database.viewAllTeams()){
+            teamNames.add(team.getTeamName());
+        }
+        teams_combo.setItems(teamNames);
+
+    }
+
+    public void timeComboList() {
+
+        ArrayList<String> timeSlots = database.TIME_SLOTS;
+
+        ObservableList<String> timeSlotList = FXCollections.observableArrayList(timeSlots);
+
+        time_combo.setItems(timeSlotList);
+    }
+
+
+    public void handleMachineSelection() {
+        String selectedMachine = machine_combo.getValue();
+
+        if (selectedMachine != null) {
+            ArrayList<Reservation> reservations = database.getReservations(selectedMachine);
+            System.out.println(selectedMachine+"here");
+
+
+            ObservableList<Reservation> reservationList = FXCollections.observableArrayList(reservations);
+
+
+            machine_col.setCellValueFactory(new PropertyValueFactory<>("machineName"));
+            teams_col.setCellValueFactory(new PropertyValueFactory<>("teamName"));
+            time_col.setCellValueFactory(new PropertyValueFactory<>("time"));
+            date_col.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+
+            reserve_table.setItems(reservationList);
+        }
+    }
+
+
+    public void addMachineAddR() {
+        Alert alert;
+
+
+        if (machine_combo.getValue().isEmpty() ||
+                teams_combo.getValue().isEmpty() ||
+                date_picker.getEditor().getText().isEmpty() ||
+                time_combo.getValue().isEmpty()) {
+
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error message");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the fields");
+            alert.showAndWait();
+        } else {
+
+            String machineName = machine_combo.getValue();
+            String teamName = teams_combo.getValue();
+            String date = date_picker.getEditor().getText(); // directly get as a string
+            String time = time_combo.getValue();
+
+            Machine findMachineObject =database.searchMachine(machineName);
+            boolean isTaken = findMachineObject.createReservation(date, time);
+            if (isTaken) {
+
+                Reservation newReservation = new Reservation(machineName, teamName, time,date);
+                Team teamS = database.searchTeam(teamName);
+                teamS.addReservation(machineName, date,time);
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully Added!");
+                alert.showAndWait();
+
+
+                updateReservationsTableForMachine(machineName);
+                reserveMachineClear();
+
+            } else {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error message");
+                alert.setHeaderText(null);
+                alert.setContentText("The machine already exists");
+                alert.showAndWait();
+            }
+        }
+    }
+
+    public void reserveMachineClear() {
+        machine_combo.getSelectionModel().clearSelection();
+        teams_combo.getSelectionModel().clearSelection();
+        date_picker.setValue(null);
+        time_combo.getSelectionModel().clearSelection();
+    }
+
+    @FXML
+    public void handleReserveButton(ActionEvent event) {
+        addMachineAddR();
+    }
+
+
+    public void updateReservationsTableForMachine(String machineName) {
+
+        ArrayList<Reservation> reservations = database.getReservations(machineName);
+
+        ObservableList<Reservation> reservationList = FXCollections.observableArrayList(reservations);
+
+        machine_col.setCellValueFactory(new PropertyValueFactory<>("machineName"));
+        teams_col.setCellValueFactory(new PropertyValueFactory<>("teamName"));
+        time_col.setCellValueFactory(new PropertyValueFactory<>("time"));
+        date_col.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        reserve_table.setItems(reservationList);
+    }
+
+
+
+
 
 
 }

@@ -61,19 +61,18 @@ public class Project {
         return projectName;
 
 
+    }
 
-        String str= projectName+",";
-        if(team==null){
+    public String projectToFile() {
+        String str = projectName + ",";
+        if (team == null) {
             return str;
-        }else{
-            str+=team.getTeamName();
+        } else {
+            str += team.getTeamName();
             return str;
         }
 
 
     }
-
-
-
 
 }

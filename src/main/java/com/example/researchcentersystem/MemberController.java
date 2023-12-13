@@ -567,9 +567,4 @@ public class MemberController implements Initializable {
         reserve_table.setItems(reservationList);
     }
 
-
-
-
-
-
 }
