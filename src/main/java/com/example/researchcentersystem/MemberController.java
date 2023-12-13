@@ -495,10 +495,10 @@ public class MemberController implements Initializable {
         Alert alert;
 
 
-        if (machine_combo.getValue().isEmpty() ||
-                teams_combo.getValue().isEmpty() ||
+        if (machine_combo.getSelectionModel().getSelectedItem() == null ||
+                teams_combo.getSelectionModel().getSelectedItem() == null ||
                 date_picker.getEditor().getText().isEmpty() ||
-                time_combo.getValue().isEmpty()) {
+                time_combo.getSelectionModel().getSelectedItem() == null) {
 
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error message");
