@@ -1,0 +1,10 @@
+Machine1,5908341,Physics,Chemistry,Materials Science
+Machine2,1245889,Biology,Neuroscience,Bioinformatics
+Machine3,9820156,Environmental Science,Earth Science,Geographic Information Systems
+Machine4,7659372,Astronomy,Astrophysics,Artificial Intelligence
+Machine5,2134785,Chemistry,Chemical Engineering,Materials Informatics
+Machine6,8701492,Mathematics,Algorithms and Complexity,Scientific Computing
+Machine7,5098271,Computer Science,Data Science,Machine Learning
+Machine8,6312758,Psychology,Cognitive Modeling,Neuroscience
+Machine9,4185023,Genetics,Biotechnology,Bioinformatics
+Machine10,7952371,Geology,Earth Science,Environmental Science

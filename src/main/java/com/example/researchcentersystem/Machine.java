@@ -1,7 +1,6 @@
 package com.example.researchcentersystem;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,7 +9,7 @@ public class Machine {
     private String machineID;
     private String machineName;
 
-    private ArrayList<String> researchInterest;
+    private ArrayList<String> researchInterests;
     public HashMap<String, ArrayList <String>> reservations= new HashMap<>();
 
 
@@ -18,7 +17,7 @@ public class Machine {
     public Machine(String machineID, String machineName){
         this.machineID= machineID;
         this.machineName=machineName;
-        this.researchInterest = new ArrayList<>();// we will update it. it is not optional
+        this.researchInterests = new ArrayList<>();// we will update it. it is not optional
 
     }
 
@@ -34,8 +33,8 @@ public class Machine {
         this.machineID = machineID;
     }
 
-    public void setResearchInterest(ArrayList<String> researchInterest) {
-        this.researchInterest = researchInterest;
+    public void setResearchInterests(ArrayList<String> researchInterests) {
+        this.researchInterests = researchInterests;
     }
 
 
@@ -70,6 +69,23 @@ public class Machine {
         return false;
 
     }
+    public String getResearchInterests(){
+        return researchInterests.toString();
+    }
+
+    public String toString(){
+        String str = machineName+","+machineID+",";
+        for(int i = 0; i<researchInterests.size();i++){
+            if(i==researchInterests.size()-1){
+                str+=researchInterests.get(i);
+            }else{
+                str = str+researchInterests.get(i)+",";
+            }
+        }
+        return str;
+    }
+
+
 
 
     //return the machines
@@ -77,9 +93,7 @@ public class Machine {
         return new ArrayList<>(reservations.keySet());
     }
 
-    public String toString(){
-        return machineName;
-    }
+
 
 
     /*public boolean createReservationMember (String date, String time){

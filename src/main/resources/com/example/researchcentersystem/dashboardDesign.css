@@ -58,7 +58,7 @@
 }
 
 .shadow{
-      -fx-effect:dropshadow(three-pass-box, rgba(0,0,0,0.5), 6, 0, 0, 0,);
+      -fx-effect:dropshadow(three-pass-box, rgba(0,0,0,0.5), 6, 0, 0, 0);
 }
 
 .white-bg{
@@ -71,6 +71,7 @@
 }
 
 /*
+
 
 
 .table-view {
@@ -108,4 +109,6 @@
 .table-view .table-cell {
     -fx-text-fill: black;
 }
+
 */
+

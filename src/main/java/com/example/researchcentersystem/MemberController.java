@@ -215,7 +215,7 @@ public class MemberController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("Are you sure you want to logout?");
         Optional< ButtonType> option = alert.showAndWait();
-
+        database.writeToFiles();
         try {
             if (option.get().equals(ButtonType.OK))
             {
