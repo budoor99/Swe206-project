@@ -102,24 +102,25 @@ public class MemorySession {
     public Project removeProject(String name) {
         Project removedProject = null;
         boolean isInAvailable = false;
-        for (Project project : availableProjects) {
+
+        ArrayList<Project> AP=availableProjects;
+        for (Project project : AP) {
             if (project.getProjectName().equals(name)) {
                 removedProject = project;
-                availableProjects.remove(project);
                 isInAvailable = true;
+                availableProjects.remove(project);
                 break;
             }
-
-
         }
         if (!isInAvailable) {
-            for (Project project : takenProjects) {
+            ArrayList<Project> TP=takenProjects;
+            for (Project project : TP) {
                 removedProject = project;
                 takenProjects.remove(project);
-
+                break;
             }
-
         }
+
         if (removedProject.getTeam() != null) {
             ArrayList<Member> members = removedProject.getTeam().getMembers();
             for (Member member : members) {
