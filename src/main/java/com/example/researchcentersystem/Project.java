@@ -62,6 +62,14 @@ public class Project {
 
     }
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> a93f3f22dbed08c366a9586a872bb30641b2c32c
     public String projectToFile(){
         String str= projectName+",";
         if(team==null){

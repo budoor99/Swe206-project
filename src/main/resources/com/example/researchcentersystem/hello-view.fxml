@@ -262,6 +262,7 @@
                                     </Label>
 
 
+<<<<<<< HEAD
                                     <TextField fx:id="addProject_Team" layoutX="213.0" layoutY="415.0" prefHeight="25.0" prefWidth="200.0" />
                                     <Button fx:id="addProject_addBtn" layoutX="518.0" layoutY="386.0" mnemonicParsing="false" onMouseClicked="#addProjectAdd" prefHeight="34.0" prefWidth="101.0" text="Add" />
                                     <Button fx:id="addProject_clearBtn" layoutX="637.0" layoutY="442.0" mnemonicParsing="false" onMouseClicked="#addProjectClear" prefHeight="34.0" prefWidth="101.0" text="Clear" />
@@ -269,12 +270,21 @@
                                     <Label layoutX="52.0" layoutY="450.0" prefHeight="17.0" prefWidth="359.0" text="if the project is not assigned to a team, you can assign it here:" />
                                     <ComboBox fx:id="addProject_selectTeam" layoutX="216.0" layoutY="476.0" prefHeight="25.0" prefWidth="198.0" />
                                     <Label layoutX="85.0" layoutY="476.0" prefHeight="27.0" prefWidth="121.0" text="Selecte a team:">
+=======
+                                    <TextField fx:id="addProject_Team" layoutX="162.0" layoutY="104.0" prefHeight="26.0" prefWidth="184.0" />
+                                    <Button fx:id="addProject_addBtn" layoutX="32.0" layoutY="367.0" mnemonicParsing="false" onMouseClicked="#addProjectAdd" prefHeight="34.0" prefWidth="101.0" text="Add" />
+                                    <Button fx:id="addProject_clearBtn" layoutX="34.0" layoutY="429.0" mnemonicParsing="false" onMouseClicked="#addProjectClear" prefHeight="34.0" prefWidth="101.0" text="Clear" />
+                                    <Button fx:id="addProject_deleteBtn" layoutX="142.0" layoutY="365.0" mnemonicParsing="false" onMouseClicked="#addProjectDelete" prefHeight="34.0" prefWidth="101.0" text="Delete" />
+                                    <Label layoutX="11.0" layoutY="150.0" prefHeight="17.0" prefWidth="339.0" text="if the project is not assigned to a team, you can assign it here:" />
+                                    <ComboBox fx:id="addProject_selectTeam" layoutX="149.0" layoutY="193.0" prefHeight="25.0" prefWidth="198.0" />
+                                    <Label layoutX="25.0" layoutY="193.0" prefHeight="27.0" prefWidth="121.0" text="Selecte a team:">
+>>>>>>> a93f3f22dbed08c366a9586a872bb30641b2c32c
 
                                        <font>
                                           <Font size="17.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="addProject_AssignBtn" layoutX="152.0" layoutY="222.0" mnemonicParsing="false" onMouseClicked="#assignBtn" prefHeight="26.0" prefWidth="101.0" text="Assign" />
+                                    <Button fx:id="addProject_AssignBtn" layoutX="152.0" layoutY="236.0" mnemonicParsing="false" onMouseClicked="#assignBtn" prefHeight="26.0" prefWidth="101.0" text="Assign" />
                                  </children>
                               </AnchorPane>
                            </children>
