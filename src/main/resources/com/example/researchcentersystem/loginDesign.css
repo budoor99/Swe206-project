@@ -17,3 +17,14 @@
       -fx-border-color:#000;
       -fx-border-width: .4px .4px .4px 0px;
 }
+.add-btn{
+    -fx-background-color:#1c74b1;
+    -fx-background-radius:8px;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-font-family:"Arial";
+    -fx-cursor:hand;
+}
+.add-btn:hover{
+    -fx-background-color:#3357a4;
+}

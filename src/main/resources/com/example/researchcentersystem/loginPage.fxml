@@ -38,7 +38,7 @@
                   </Label>
                   <TextField fx:id="username" layoutX="32.0" layoutY="138.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" />
                   <TextField fx:id="password" layoutX="32.0" layoutY="185.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" />
-                  <Button fx:id="loginBtn" layoutX="32.0" layoutY="259.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="220.0" text="Login" />
+                  <Button fx:id="loginBtn" layoutX="32.0" layoutY="259.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="220.0" styleClass="add-btn" stylesheets="@loginDesign.css" text="Login" />
                   <Button fx:id="closeBtn" layoutX="241.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="52.0" styleClass="close" stylesheets="@loginDesign.css">
                      <graphic>
                         <FontAwesomeIconView glyphName="CLOSE" text="" wrappingWidth="12.428571701049805" />
