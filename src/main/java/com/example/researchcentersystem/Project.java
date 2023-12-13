@@ -57,6 +57,17 @@ public class Project {
         team=t1;
     }
 
+    public String toString(){
+        String str= projectName+",";
+        if(team==null){
+            return str;
+        }else{
+            str+=team.getTeamName();
+            return str;
+        }
+
+    }
+
 
 
 

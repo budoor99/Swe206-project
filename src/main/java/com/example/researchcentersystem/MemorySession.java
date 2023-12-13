@@ -1,12 +1,16 @@
 package com.example.researchcentersystem;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.io.FileWriter;
 
 public class MemorySession {
     public static User currentUser;
     private static ArrayList<Project> takenProjects = new ArrayList<>();
+    public static HashMap<String, ArrayList<String>> allReservations= new HashMap<>();
+
 
     private static ArrayList<Project> availableProjects = new ArrayList<>();
     private  static ArrayList<Member> members = new ArrayList<>();
@@ -344,6 +348,62 @@ public class MemorySession {
 
             }
         return newArray;
+        }
+
+        public void writeToFiles(){
+            try {
+                File memberWrite = new File("src/main/java/com/example/researchcentersystem/memberCopy.txt");
+                FileWriter outputMembers = new FileWriter(memberWrite);
+                for(int i =0;i<members.size();i++){
+                    outputMembers.write(members.get(i).toString()+"\n");
+                }
+                outputMembers.close();
+
+                File teamWrite = new File("src/main/java/com/example/researchcentersystem/teamCopy.txt");
+                FileWriter outputTeam = new FileWriter(teamWrite);
+                for(int i=0;i<teams.size();i++){
+                    outputTeam.write(teams.get(i).fileOutput()+"\n");
+                }
+                outputTeam.close();
+
+                File projectWrite = new File("src/main/java/com/example/researchcentersystem/projectCopy.txt");
+                FileWriter outputProject = new FileWriter(projectWrite);
+                for(int i=0;i<takenProjects.size();i++){
+                    outputProject.write(takenProjects.get(i).toString()+"\n");
+                }
+                for(int i=0;i<availableProjects.size();i++){
+                    outputProject.write(availableProjects.get(i).toString()+"\n");
+                }
+                outputProject.close();
+
+                File machineWrite = new File("src/main/java/com/example/researchcentersystem/machineCopy.txt");
+                FileWriter outputMachine = new FileWriter(machineWrite);
+                for(int i=0;i<machines.size();i++){
+                    outputMachine.write(machines.get(i).toString()+"\n");
+                }
+
+                outputMachine.close();
+
+                String date;
+                File machineReservationWrite = new File("src/main/java/com/example/researchcentersystem/machineReservationsCopy.txt");
+                FileWriter outputReservation = new FileWriter(machineReservationWrite);
+                for(int k = 0; k< machines.size();k++) {
+                    if(allReservations.containsKey(machines.get(k).getMachineName())){
+                        String machinename = machines.get(k).getMachineName();
+                        outputReservation.write(machinename+"\n");
+                        for(int i =0; i<allReservations.get(machinename).size();i++){
+                            outputReservation.write((allReservations.get(machinename)).get(i)+"\n");
+                            System.out.println(allReservations.get(machinename));
+                        }
+                    }
+                }
+
+                outputReservation.close();
+
+
+            } catch (Exception err) {
+                System.out.println(err);
+            }
         }
 
 
