@@ -3,6 +3,7 @@ package com.example.researchcentersystem;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.HashMap;
+import java.util.List;
 
 public class Machine {
 
@@ -69,6 +70,33 @@ public class Machine {
         return false;
 
     }
+
+
+    //return the machines
+    public List<String> getReservedMachines() {
+        return new ArrayList<>(reservations.keySet());
+    }
+
+    public String toString(){
+        return machineName;
+    }
+
+
+    /*public boolean createReservationMember (String date, String time){
+        if(reservations.containsKey(date)) {
+            if (!reservations.get(date).contains(time)) {
+                reservations.get(date).add(time);
+                return true;
+            }
+        }else{
+            ArrayList<String> addNewDate = new ArrayList<>();
+            addNewDate.add(time);
+            reservations.put(date, addNewDate);
+            return true;
+        }
+        return false;
+
+    }*/
 
 
 

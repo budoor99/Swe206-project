@@ -9,6 +9,21 @@ public class Team {
 
     public HashMap<String, ArrayList <String>> teamMachines= new HashMap<>();
 
+    public void addReservation(String m,String d, String t){
+        String c=d+","+t;
+        if(teamMachines.containsKey(m)) {
+            teamMachines.get(m).add(c);
+            }
+        else{
+            ArrayList<String> addNewDate = new ArrayList<>();
+            addNewDate.add(c);
+            teamMachines.put(m, addNewDate);
+        }
+    }
+
+    public HashMap<String, ArrayList<String>> getTeamMachines() {
+        return teamMachines;
+    }
 
     public String getTeamName() {
         return teamName;
@@ -95,4 +110,6 @@ public class Team {
 
         return teamReservations;
     }
+
+
 }

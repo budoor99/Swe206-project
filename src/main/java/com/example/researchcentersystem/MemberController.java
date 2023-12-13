@@ -1,6 +1,5 @@
 package com.example.researchcentersystem;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -92,7 +91,19 @@ public class MemberController implements Initializable {
     @FXML
     private AnchorPane viewOneTeam_form;
 
-    //private ObservableList<Member> MemberList;
+    @FXML
+    private Label date_label;
+
+
+    @FXML
+    private Label machines_label;
+
+    @FXML
+    private Label time_label;
+
+
+    @FXML
+    private VBox vVbox;
 
     @FXML
     private Label assignedProjext_label;
@@ -107,6 +118,42 @@ public class MemberController implements Initializable {
 
     @FXML
     private TableView<Map.Entry<String, List<String>>> reserved_table;
+
+
+    @FXML
+    private DatePicker date_picker;
+
+
+    @FXML
+    private TableColumn<Reservation, String> machine_col;
+
+    @FXML
+    private TableColumn<Reservation, String> teams_col;
+
+
+    @FXML
+    private TableColumn<Reservation, String> time_col;
+
+
+    @FXML
+    private TableColumn<Reservation, String> date_col;
+
+    @FXML
+    private ComboBox<String> time_combo;
+
+    @FXML
+    private ComboBox<String> teams_combo;
+
+    @FXML
+    private ComboBox<String> machine_combo;
+
+    @FXML
+    private TableView<Reservation> reserve_table;
+
+    @FXML
+    private Button reserve_nbtn;
+
+
 
 
 
@@ -224,6 +271,15 @@ public class MemberController implements Initializable {
         totalTeams();
 
 
+        machineComboList();
+        machine_combo.setOnAction(event -> handleMachineSelection());
+
+        teamsComboList();
+
+
+        timeComboList();
+
+
 
     }
 
@@ -246,21 +302,18 @@ public class MemberController implements Initializable {
 
         for (Team team : teams) {
             Button teamButton = new Button(team.getTeamName());
-            teamButton.setMaxWidth(Double.MAX_VALUE); // Allow the button to grow horizontally
+            teamButton.setMaxWidth(Double.MAX_VALUE);
             HBox.setHgrow(teamButton, Priority.ALWAYS);
-            teamButton.setOnAction(event -> handleTeamButtonClick(team)); // Add event handler
+            teamButton.setOnAction(event -> handleTeamButtonClick(team));
             myteams.getChildren().add(teamButton);
         }
     }
 
     private void handleTeamButtonClick(Team team) {
         selectedTeam = team;
-        // debug
-        System.out.println("Selected Team: " + selectedTeam.getTeamName());
-        MemberShowListData(selectedTeam);
-        //showTeamReservations(selectedTeam);
 
-        //moveForwardToTeam();
+        MemberShowListData(selectedTeam);
+
 
 
         String assignedProjectName = getAssignedProject(selectedTeam);
@@ -281,14 +334,6 @@ public class MemberController implements Initializable {
         }
     }
 
-   /* public void moveForwardToTeam() {
-        viewteams_form.setVisible(false);
-        viewOneTeam_form.setVisible(true);
-        home_form.setVisible(false);
-
-        MemberShowListData(selectedTeam);
-    }
-*/
 
     private ObservableList<Member> convertMembersListToObservable(ArrayList<Member> memberList) {
         ObservableList<Member> members = FXCollections.observableArrayList();
@@ -300,28 +345,17 @@ public class MemberController implements Initializable {
     }
 
     public void MemberShowListData(Team team) {
-        /*MemberList= convertMembersListToObservable(selectedTeam.getMembers());
-        col_memberID.setCellValueFactory(new PropertyValueFactory<>("userID"));
+
+        ObservableList<Member> memberList = convertMembersListToObservable(team.getMembers());
+
         col_memberName.setCellValueFactory(new PropertyValueFactory<>("userName"));
         col_memberEmail.setCellValueFactory(new PropertyValueFactory<>("userEmail"));
-        col_researchInterest.setCellValueFactory(new PropertyValueFactory<>("researchInterest"));
-        Member_table.setItems(MemberList);*/
-
-
-            ObservableList<Member> memberList = convertMembersListToObservable(team.getMembers());
-
-            //debug
-            System.out.println("Number of members: " + memberList.size());
-
-
-            col_memberName.setCellValueFactory(new PropertyValueFactory<>("userName"));
-            col_memberEmail.setCellValueFactory(new PropertyValueFactory<>("userEmail"));
-            Member_table.setItems(memberList);
+        Member_table.setItems(memberList);
 
 
     }
 
-    ///////
+
     public String getAssignedProject(Team selectedTeam){
         if (selectedTeam != null) {
             for (Project project : database.getTakenProjects()) {
@@ -335,51 +369,177 @@ public class MemberController implements Initializable {
 
 
 
-    @FXML
-    private Label date_label;
-
-
-    @FXML
-    private Label machines_label;
-
-    @FXML
-    private Label time_label;
-
-    //////
-    //private HashMap<String, ArrayList <String>> mahinesInfo;
 
     public void showMachinesAndInfo(Team selectedTeam) {
         HashMap<String, ArrayList<String>> machinesInfo = selectedTeam.getTeamReservations();
 
-        // debug
+        // Debug
         System.out.println(machinesInfo);
+
         if (selectedTeam != null && machinesInfo != null) {
-            StringBuilder machinesStringBuilder = new StringBuilder();
-            StringBuilder datesStringBuilder = new StringBuilder();
-            StringBuilder timeRangesStringBuilder = new StringBuilder();
+
+            vVbox.getChildren().clear();
 
             for (Map.Entry<String, ArrayList<String>> entry : machinesInfo.entrySet()) {
                 String machine = entry.getKey();
                 ArrayList<String> reservations = entry.getValue();
 
-                machinesStringBuilder.append(machine).append("\n");
+                Label machineLabel = new Label("Machine: " + machine);
+                vVbox.getChildren().add(machineLabel);
 
                 for (String reservation : reservations) {
                     String[] reservationParts = reservation.split(",");
                     String date = reservationParts[0].trim();
                     String timeRange = reservationParts[1].trim();
 
-                    datesStringBuilder.append(date).append("\n");
-                    timeRangesStringBuilder.append(timeRange).append("\n");
-                }
-            }
+                    Label dateLabel = new Label("Date: " + date);
+                    Label timeRangeLabel = new Label("Time Range: " + timeRange);
 
-            // Set the text for labels
-            machines_label.setText(machinesStringBuilder.toString());
-            date_label.setText(datesStringBuilder.toString());
-            time_label.setText(timeRangesStringBuilder.toString());
+                    vVbox.getChildren().addAll(dateLabel, timeRangeLabel);
+                }
+
+
+                vVbox.getChildren().add(new Separator());
+            }
         }
     }
+
+    //*******************************All about reserving machines*************************************************
+
+
+    public void machineComboList() {
+        ArrayList<Machine> ML= database.getMachines();
+        ArrayList<String> names= new ArrayList<>();
+
+        for(int i = 0; i<ML.size();i++){
+            names.add(ML.get(i).getMachineName());
+        }
+
+        ObservableList<String> machines = FXCollections.observableArrayList(names);
+        machine_combo.setItems(machines);
+    }
+
+
+    public void teamsComboList(){
+        ObservableList<String> teamNames = FXCollections.observableArrayList();
+
+        for (Team team : teams){
+                teamNames.add(team.getTeamName());
+        }
+        teams_combo.setItems(teamNames);
+
+    }
+
+    public void timeComboList() {
+
+        ArrayList<String> timeSlots = database.TIME_SLOTS;
+
+        ObservableList<String> timeSlotList = FXCollections.observableArrayList(timeSlots);
+
+        time_combo.setItems(timeSlotList);
+    }
+
+
+    public void handleMachineSelection() {
+        String selectedMachine = machine_combo.getValue();
+
+        if (selectedMachine != null) {
+            ArrayList<Reservation> reservations = database.getReservations(selectedMachine);
+            System.out.println(selectedMachine+"here");
+
+
+            ObservableList<Reservation> reservationList = FXCollections.observableArrayList(reservations);
+
+
+            machine_col.setCellValueFactory(new PropertyValueFactory<>("machineName"));
+            teams_col.setCellValueFactory(new PropertyValueFactory<>("teamName"));
+            time_col.setCellValueFactory(new PropertyValueFactory<>("time"));
+            date_col.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+
+            reserve_table.setItems(reservationList);
+        }
+    }
+
+
+    public void addMachineAdd() {
+        Alert alert;
+
+
+        if (machine_combo.getValue().isEmpty() ||
+                teams_combo.getValue().isEmpty() ||
+                date_picker.getEditor().getText().isEmpty() ||
+                time_combo.getValue().isEmpty()) {
+
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error message");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the fields");
+            alert.showAndWait();
+        } else {
+
+            String machineName = machine_combo.getValue();
+            String teamName = teams_combo.getValue();
+            String date = date_picker.getEditor().getText(); // directly get as a string
+            String time = time_combo.getValue();
+
+            Machine findMachineObject =database.searchMachine(machineName);
+            boolean isTaken = findMachineObject.createReservation(date, time);
+            if (isTaken) {
+
+                Reservation newReservation = new Reservation(machineName, teamName, time,date);
+                Team teamS = database.searchTeam(teamName);
+                teamS.addReservation(machineName, date,time);
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully Added!");
+                alert.showAndWait();
+
+
+                updateReservationsTableForMachine(machineName);
+                reserveMachineClear();
+
+            } else {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error message");
+                alert.setHeaderText(null);
+                alert.setContentText("The machine already exists");
+                alert.showAndWait();
+            }
+        }
+    }
+
+    public void reserveMachineClear() {
+        machine_combo.getSelectionModel().clearSelection();
+        teams_combo.getSelectionModel().clearSelection();
+        date_picker.setValue(null);
+        time_combo.getSelectionModel().clearSelection();
+    }
+
+    @FXML
+    public void handleReserveButton(ActionEvent event) {
+        addMachineAdd();
+    }
+
+
+    public void updateReservationsTableForMachine(String machineName) {
+
+        ArrayList<Reservation> reservations = database.getReservations(machineName);
+
+        ObservableList<Reservation> reservationList = FXCollections.observableArrayList(reservations);
+
+        machine_col.setCellValueFactory(new PropertyValueFactory<>("machineName"));
+        teams_col.setCellValueFactory(new PropertyValueFactory<>("teamName"));
+        time_col.setCellValueFactory(new PropertyValueFactory<>("time"));
+        date_col.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        reserve_table.setItems(reservationList);
+    }
+
+
+
 
 
 }

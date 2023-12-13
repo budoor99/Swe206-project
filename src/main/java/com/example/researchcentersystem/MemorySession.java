@@ -1,8 +1,6 @@
 package com.example.researchcentersystem;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class MemorySession {
     public static User currentUser;
@@ -15,6 +13,20 @@ public class MemorySession {
 
     private static ArrayList<String> researchInterest = new ArrayList<>();
     private static ArrayList<Admin> admins=new ArrayList<>();
+
+    public static final ArrayList<String> TIME_SLOTS = new ArrayList<>(Arrays.asList(
+            "00:00-04:00",
+            "04:00-08:00",
+            "08:00-12:00",
+            "12:00-16:00",
+            "16:00-20:00",
+            "20:00-00:00"
+    ));
+
+
+
+
+
 
 
     public void addMachine(String name, String machineID,  ArrayList<String> researchInterest){
@@ -273,6 +285,8 @@ public class MemorySession {
     public static ArrayList<String> getResearchInterest() {
         return researchInterest;
     }
+
+
     //    public Machine viewMostUsedMachine(){ //two arrays, the first is machines, the second is the count of machines
 //
 //        //or dictionary
@@ -327,7 +341,7 @@ public class MemorySession {
                     ArrayList<String> values = entry.getValue();
                     for(String value : values){
                         String[] info = value.split(",");
-                        newArray.add(new Reservation(key, team.getTeamName(),info[1],info[0]));
+                        newArray.add(new Reservation(s, team.getTeamName(),info[1],info[0])); //changed key to s
                     }
                 }
 
@@ -336,8 +350,6 @@ public class MemorySession {
             }
         return newArray;
         }
-
-
     }
 
 
