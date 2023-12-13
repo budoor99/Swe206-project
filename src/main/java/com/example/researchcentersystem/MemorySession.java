@@ -75,6 +75,7 @@ public class MemorySession {
         for (Team team : teams) {
             if (team.isPartOfTeam(removedMember)) {
                 team.removeTeamMember(removedMember);
+                break;
             }
         }
         return removedMember;
@@ -106,6 +107,7 @@ public class MemorySession {
                 removedProject = project;
                 availableProjects.remove(project);
                 isInAvailable = true;
+                break;
             }
 
 
@@ -148,19 +150,23 @@ public class MemorySession {
             if (team.getTeamName().equals(name)) {
                 removedTeam = team;
                 teams.remove(team);
+                break;
             }
         }
 
         ArrayList<Member> members = removedTeam.getMembers();
         for (Member member : members) {
             member.removeFromMyTeams(removedTeam);
+            break;
 
         }
 
         for (Project project : takenProjects) {
             if (project.getTeam().equals(removedTeam)) { //override equals ..
                 project.setTeam(null);
-
+                takenProjects.remove(project);
+                availableProjects.add(project);
+                break;
             }
         }
         return removedTeam;
