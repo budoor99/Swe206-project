@@ -396,6 +396,13 @@ public class MemorySession {
         return p+","+max;
     }
 
+    public void addTakenProject(Project p){
+        takenProjects.add(p);
+    }
+    public void removeAvailableProject(Project p){
+        availableProjects.remove(p);
+    }
+
 
     public void writeToFiles() {
         try {

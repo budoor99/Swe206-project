@@ -114,7 +114,7 @@ public class AdminController implements Initializable {
     @FXML
     private TableColumn<Project,String> addProject_col_projectName;
     @FXML
-    private TableColumn<Project,String> addProject_col_team;
+    private TableColumn<Project,String> addProject_col_team; //
 
     @FXML
     private Button addProject_deleteBtn;
@@ -211,8 +211,6 @@ public class AdminController implements Initializable {
     private TextField viewTeam_teamLeaderF;
     @FXML
     private  ListView<Member>viewTeam_teamMembersF;
-
-
     @FXML
     private Label home_projectName;
     @FXML
@@ -226,10 +224,8 @@ public class AdminController implements Initializable {
     @FXML
     private Button clear_btn;
 
-
     @FXML
     private Button reserve_abtn;
-
 
     @FXML
     private AnchorPane reserve_aform;
@@ -243,11 +239,8 @@ public class AdminController implements Initializable {
     @FXML
     private ComboBox<String> teams_combo;
 
-
     @FXML
     private ComboBox<String> time_combo;
-
-
 
     @FXML
     private TableView<Reservation> reserve_table;
@@ -264,15 +257,9 @@ public class AdminController implements Initializable {
     @FXML
     private TableColumn<Reservation, String> date_col;
 
-
-
-
-
-
-
     private double x=0;
     private double y=0;
-
+    //*********************************** Handle the logout process*************************************//
     public void logout(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Message");
@@ -316,14 +303,17 @@ public class AdminController implements Initializable {
             e.printStackTrace();
         }
     }
-    public void close(){
+
+    public void close(){  //Handle the close page operation
         System.exit(0);
     }
 
-    public void minimize(){
+    public void minimize(){ //Handle the minimize page operation
         Stage stage = (Stage)home_form.getScene().getWindow();
         stage.setIconified(true);
     }
+
+    //************** Handles the button clicks to switch between different forms and updates the UI accordingly.***************************/
     public void switchForm(ActionEvent event) {
 
         if (event.getSource() == home_btn) {
@@ -333,7 +323,6 @@ public class AdminController implements Initializable {
             project_form.setVisible(false);
             teams_form.setVisible(false);
             reserve_aform.setVisible(false);
-
 
             home_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
             addMachine_btn.setStyle("-fx-background-color:transparent");
@@ -346,7 +335,6 @@ public class AdminController implements Initializable {
             homeTheMostUsedMachine();
             homeProjectWithMostMachines();
 
-
         } else if (event.getSource() == addProject_btn) {
             home_form.setVisible(false);
             machine_form.setVisible(false);
@@ -355,16 +343,15 @@ public class AdminController implements Initializable {
             teams_form.setVisible(false);
             reserve_aform.setVisible(false);
 
-
             addProject_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
             addMachine_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
             viewTeams_btn.setStyle("-fx-background-color:transparent");
             reserve_abtn.setStyle("-fx-background-color:transparent");
+
             addProjectShowListData();
             addTeams();
-
 
         } else if (event.getSource() == addMachine_btn) {
             home_form.setVisible(false);
@@ -374,14 +361,13 @@ public class AdminController implements Initializable {
             teams_form.setVisible(false);
             reserve_aform.setVisible(false);
 
-
-
             addMachine_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
             addProject_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
             viewTeams_btn.setStyle("-fx-background-color:transparent");
             reserve_abtn.setStyle("-fx-background-color:transparent");
+
             addMachineShowListData();
 
         } else if (event.getSource() ==addMember_btn) {
@@ -392,15 +378,14 @@ public class AdminController implements Initializable {
             teams_form.setVisible(false);
             reserve_aform.setVisible(false);
 
-
             addMember_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
             addProject_btn.setStyle("-fx-background-color:transparent");
             addMachine_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
             viewTeams_btn.setStyle("-fx-background-color:transparent");
             reserve_abtn.setStyle("-fx-background-color:transparent");
-            addMemberShowListData();
 
+            addMemberShowListData();
             
         } else if (event.getSource() ==viewTeams_btn) {
             home_form.setVisible(false);
@@ -410,17 +395,14 @@ public class AdminController implements Initializable {
             teams_form.setVisible(true);
             reserve_aform.setVisible(false);
 
-
-
-
             viewTeams_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
             addProject_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
             addMachine_btn.setStyle("-fx-background-color:transparent");
             reserve_abtn.setStyle("-fx-background-color:transparent");
-            ViewTeamListData();
 
+            ViewTeamListData();
 
         }
         else if (event.getSource() ==reserve_abtn) {
@@ -431,25 +413,19 @@ public class AdminController implements Initializable {
             teams_form.setVisible(false);
             reserve_aform.setVisible(true);
 
-
-
-
             viewTeams_btn.setStyle("-fx-background-color:transparent");
             reserve_abtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
             addProject_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
             addMachine_btn.setStyle("-fx-background-color:transparent");
+
             }
-
-
-
     }
 
-    //*************************ALL THESE FUNCTIONS TO ADD NEW MEMBER FORM*************************//
-    public void addMemberShowListData(){
+    //*************************ALL THESE FUNCTIONS TO ADD NEW MEMBER FORM**************************************//
+    public void addMemberShowListData(){ // Update the table
         addMemberList= convertMembersListToObservable(database.getAllMembers());
-//        addMember_col_memberID.setCellValueFactory(new PropertyValueFactory<>("UserID"));
         addMember_col_memberID.setCellValueFactory(new PropertyValueFactory<>("UserID"));
         addMember_col_memberName.setCellValueFactory(new PropertyValueFactory<>("userName"));
         addMember_col_memberEmail.setCellValueFactory(new PropertyValueFactory<>("userEmail"));
@@ -457,35 +433,35 @@ public class AdminController implements Initializable {
         addMember_table.setItems(addMemberList);
 
     }
-    public void addMemberSelect(){
+
+    public void addMemberSelect(){  // Handles the selection in the Add Member form.
         Member member=addMember_table.getSelectionModel().getSelectedItem();
         int num=addMember_table.getSelectionModel().getSelectedIndex();
-
         if((num-1)<-1){
             return;
         }
-
         addMember_memberID.setText(String.valueOf(member.getUserID())); // Assuming memberID is the actual member ID
         addMember_memberName.setText(String.valueOf(member.getUserName()));
         addMember_memberEmail.setText(String.valueOf(member.getUserEmail()));
-
     }
-    public void addMemberResearchInterests() {
+
+    public void addMemberResearchInterests() { //Update the research interests
+
         ArrayList<String> RI=database.getResearchInterest();
 
         ObservableList<String> researchInterests = FXCollections.observableArrayList(RI);
         addMember_researchInterest.setItems(researchInterests);
     }
-    private ObservableList<Member> convertMembersListToObservable(ArrayList<Member> memberList) {
+
+    private ObservableList<Member> convertMembersListToObservable(ArrayList<Member> memberList) { // Converts an ArrayList of Member objects into an ObservableList
         ObservableList<Member> members = FXCollections.observableArrayList();
         for (Member member : memberList) {
             members.add(member);
         }
-
         return members;
     }
 
-    public void addMemberAdd(){
+    public void addMemberAdd(){ // Handles the action of adding a new member.
         Alert alert;
         if(addMember_memberID.getText().isEmpty() ||
         addMember_memberName.getText().isEmpty() ||
@@ -523,7 +499,7 @@ public class AdminController implements Initializable {
         }
     }
 
-    public void addMemberDelete(){
+    public void addMemberDelete(){ //Handles the action of removing a member from the system.
         Alert alert;
         if(addMember_memberID.getText().isEmpty() ||
                 addMember_memberName.getText().isEmpty() ||
@@ -568,8 +544,9 @@ public class AdminController implements Initializable {
             }
         }
     }
-    public void addMemberClear() {
-        addMember_memberID.setText(""); // Assuming memberID is the actual member ID
+
+    public void addMemberClear() { // to clear the fields
+        addMember_memberID.setText("");
         addMember_memberName.setText("");
         addMember_memberEmail.setText("");
         addMember_researchInterest.getSelectionModel().clearSelection();
@@ -579,18 +556,19 @@ public class AdminController implements Initializable {
     //*************************ALL THESE FUNCTIONS TO ADD NEW Project FORM*************************//
 
     ObservableList<Project> addProjectsList;
-    public void addProjectShowListData(){ //big problem!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+    public void addProjectShowListData(){
         addProjectsList= convertProjectsListToObservable(database.getAllProjects());
         addProject_col_projectName.setCellValueFactory(new PropertyValueFactory<>("projectName"));
         addProject_col_team.setCellValueFactory(new PropertyValueFactory<>("team"));
         addProject_table.setItems(addProjectsList);
+        addProject_table.refresh();
         addTeams();
         addProjectClear();
-
     }
+
+    ObservableList<Project> projects;
     private ObservableList<Project> convertProjectsListToObservable(ArrayList<Project> projectList) {
-        ObservableList<Project> projects = FXCollections.observableArrayList();
+        projects = FXCollections.observableArrayList();
         for (Project p : projectList) {
             projects.add(p);
         }
@@ -613,7 +591,6 @@ public class AdminController implements Initializable {
         addProject_Team.setText(String.valueOf((projectTeam != null) ? projectTeam.getTeamName() :""));
     }
 
-
     public void addTeams() {
         ObservableList<Team> RI=FXCollections.observableArrayList(database.getAllTeam());
         addProject_selectTeam.setItems(RI);
@@ -634,6 +611,8 @@ public class AdminController implements Initializable {
             Team assignedTeam = addProject_selectTeam.getSelectionModel().getSelectedItem();
             if(addProject_Team.getText().isEmpty()){
                 selectedProject.assignTeamProject(assignedTeam);
+                database.removeAvailableProject(selectedProject);
+                database.addTakenProject(selectedProject);
 
                 addProjectShowListData();
                 Alert alert;
@@ -657,6 +636,7 @@ public class AdminController implements Initializable {
 
         }
     }
+
     public void addProjectAdd(){
         Alert alert;
         if(addProject_projectName.getText().isEmpty()){
@@ -697,13 +677,13 @@ public class AdminController implements Initializable {
         }
     }
 
-    //add p
     public void addProjectClear() {
         addProject_projectName.setText(""); // Assuming memberID is the actual member ID
         addProject_Team.setText("");
         addProject_selectTeam.getSelectionModel().clearSelection();
         selectedProject=null;
     }
+
     public void addProjectDelete(){
         Alert alert;
         if(addProject_projectName.getText().isEmpty()){
@@ -823,13 +803,11 @@ public class AdminController implements Initializable {
 
     public void AddMachineFillResearchInterests(){
 
-
         ObservableList<String> interests = FXCollections.observableArrayList(database.getResearchInterest());;
 
         addMachine_listView.getItems().addAll(interests);
         addMachine_listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
-
 
     public void addMachineDelete(){
         Alert alert;
@@ -874,6 +852,7 @@ public class AdminController implements Initializable {
             }
         }
     }
+
     public void addMachineClear() {
         addMachine_machineID.setText(""); // Assuming memberID is the actual member ID
         addMachine_machineName.setText("");
@@ -889,7 +868,9 @@ public class AdminController implements Initializable {
         viewTeam_teamName.setCellValueFactory(new PropertyValueFactory<>("teamName"));
         viewTeam_teamLeader.setCellValueFactory(new PropertyValueFactory<>("leader"));
         viewTeam_teamMember.setCellValueFactory(new PropertyValueFactory<>("members"));
+        viewTeam_teamProjects.setCellValueFactory(new PropertyValueFactory<>("projects"));
         viewTeam_table.setItems(observableList);
+        viewTeam_table.refresh();
         viewTeamFillMembers();
         viewTeamClear();
     }
@@ -899,7 +880,6 @@ public class AdminController implements Initializable {
         for (Team t:teamsList) {
             teams.add(t);
         }
-
         return teams;
     }
 
@@ -911,7 +891,6 @@ public class AdminController implements Initializable {
             t.addProject(p);
         }
     }
-
 
     public void viewTeamSelect(){
         Team team=viewTeam_table.getSelectionModel().getSelectedItem();
@@ -925,10 +904,7 @@ public class AdminController implements Initializable {
         viewTeam_teamNameF.setText(String.valueOf(team.getTeamName()));
         viewTeam_teamLeaderF.setText(String.valueOf(team.getLeader()));
 
-
     }
-
-
 
     public void viewTeamAdd(){
         ObservableList<Member> selectedItems = viewTeam_teamMembersF.getSelectionModel().getSelectedItems();
@@ -973,6 +949,7 @@ public class AdminController implements Initializable {
         viewTeam_teamMembersF.getItems().addAll(members);
         viewTeam_teamMembersF.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
+
     public void viewTeamDelete(){
         Alert alert;
         if(viewTeam_teamNameF.getText().isEmpty()){
@@ -1015,15 +992,13 @@ public class AdminController implements Initializable {
             }
         }
     }
+
     public void viewTeamClear() {
         viewTeam_teamNameF.setText("");
         viewTeam_teamId.setText("");
         viewTeam_teamLeaderF.setText("");
         viewTeam_teamMembersF.getSelectionModel().clearSelection();
     }
-
-
-
 
     public void homeTheMostActiveMember(){
         Member m=database.viewMostActiveMember();
@@ -1044,19 +1019,6 @@ public class AdminController implements Initializable {
         home_numOfMachineInProject.setText(info[1]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     //**********************************create a schedule******************************************
     public void machineComboList() {
         ArrayList<Machine> ML= database.getMachines();
@@ -1069,7 +1031,6 @@ public class AdminController implements Initializable {
         ObservableList<String> machines = FXCollections.observableArrayList(names);
         machine_combo.setItems(machines);
     }
-
 
     public void teamsComboList(){
         ObservableList<String> teamNames = FXCollections.observableArrayList();
@@ -1089,7 +1050,6 @@ public class AdminController implements Initializable {
 
         time_combo.setItems(timeSlotList);
     }
-
 
     public void handleMachineSelection() {
         String selectedMachine = machine_combo.getValue();
@@ -1208,5 +1168,4 @@ public class AdminController implements Initializable {
         timeComboList();
 
     }
-
 }
