@@ -60,19 +60,24 @@ public class Project {
     public String toString(){
         return projectName;
 
+    }
 
+<<<<<<< HEAD
     }
 
     public String projectToFile() {
         String str = projectName + ",";
         if (team == null) {
+=======
+    public String projectToFile(){
+        String str= projectName+",";
+        if(team==null){
+>>>>>>> 87add6ac41aa0a21eb79ef407c4604507d3e9aa2
             return str;
         } else {
             str += team.getTeamName();
             return str;
         }
-
-
     }
 
 }

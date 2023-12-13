@@ -75,6 +75,7 @@ public class MemorySession {
         for (Team team : teams) {
             if (team.isPartOfTeam(removedMember)) {
                 team.removeTeamMember(removedMember);
+                break;
             }
         }
         return removedMember;
@@ -101,23 +102,25 @@ public class MemorySession {
     public Project removeProject(String name) {
         Project removedProject = null;
         boolean isInAvailable = false;
-        for (Project project : availableProjects) {
+
+        ArrayList<Project> AP=availableProjects;
+        for (Project project : AP) {
             if (project.getProjectName().equals(name)) {
                 removedProject = project;
-                availableProjects.remove(project);
                 isInAvailable = true;
+                availableProjects.remove(project);
+                break;
             }
-
-
         }
         if (!isInAvailable) {
-            for (Project project : takenProjects) {
+            ArrayList<Project> TP=takenProjects;
+            for (Project project : TP) {
                 removedProject = project;
                 takenProjects.remove(project);
-
+                break;
             }
-
         }
+
         if (removedProject.getTeam() != null) {
             ArrayList<Member> members = removedProject.getTeam().getMembers();
             for (Member member : members) {
@@ -148,19 +151,23 @@ public class MemorySession {
             if (team.getTeamName().equals(name)) {
                 removedTeam = team;
                 teams.remove(team);
+                break;
             }
         }
 
         ArrayList<Member> members = removedTeam.getMembers();
         for (Member member : members) {
             member.removeFromMyTeams(removedTeam);
+            break;
 
         }
 
         for (Project project : takenProjects) {
             if (project.getTeam().equals(removedTeam)) { //override equals ..
                 project.setTeam(null);
-
+                takenProjects.remove(project);
+                availableProjects.add(project);
+                break;
             }
         }
         return removedTeam;

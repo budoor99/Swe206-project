@@ -648,6 +648,45 @@ public class AdminController implements Initializable {
 
         }
     }
+    public void addProjectAdd(){
+        Alert alert;
+        if(addProject_projectName.getText().isEmpty()){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error message");
+            alert.setHeaderText(null);
+            alert.setContentText("please fill the team name");
+            alert.showAndWait();
+        }
+        else {
+            String name=addProject_projectName.getText();
+            Team team = addProject_selectTeam.getSelectionModel().getSelectedItem();
+            Project project=database.searchProject(name);
+            if(project==null){
+                Project p=new Project(name);
+                if(team==null){
+                    database.addProject(name, null);
+                }
+                else {
+                    database.addProject(name, team);
+                }
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully Added!");
+                alert.showAndWait();
+                addProjectShowListData();
+            }
+            else {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error message");
+                alert.setHeaderText(null);
+                alert.setContentText("the project is already exist");
+                alert.showAndWait();
+
+            }
+        }
+    }
 
     //add p
     public void addProjectClear() {
