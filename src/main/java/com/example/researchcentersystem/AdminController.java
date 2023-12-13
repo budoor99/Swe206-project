@@ -212,6 +212,18 @@ public class AdminController implements Initializable {
     @FXML
     private  ListView<Member>viewTeam_teamMembersF;
 
+    @FXML
+    private Label home_projectName;
+    @FXML
+    private Label home_machineName;
+    @FXML
+    private Label home_numOfReservation;
+    @FXML
+    private Label home_numOfMachineInProject;
+
+
+
+
 
 
     private double x=0;
@@ -940,15 +952,26 @@ public class AdminController implements Initializable {
 
 
 
+    public void homeTheMostActiveMember(){
+        Member m=database.viewMostActiveMember();
+        home_theMostActiveMember.setText(String.valueOf(m.getUserName()));
+        home_numOfProject.setText(String.valueOf(m.viewAssignedProject().size()));
+    }
+
+    public void homeTheMostUsedMachine(){
+        String machine=database.theMostUsedMachine();
+        int num=MemorySession.allReservations.get(machine).size();
+        home_machineName.setText(String.valueOf(machine));
+        home_numOfReservation.setText(String.valueOf(num));
+    }
+
+    public void homeProjectWithMostMachines(){
+        String[] info=database.ProjectWithMostMachines().split(",");
+        home_projectName.setText(info[0]);
+        home_numOfMachineInProject.setText(info[1]);
+    }
 
 
-
-// this can NOT be used until we assign team to project.
-//    public void homeTheMostActiveMember(){
-//        Member m=database.viewMostActiveMember();
-//        home_theMostActiveMember.setText(String.valueOf(m.getUserName()));
-//        home_numOfProject.setText(String.valueOf(m.viewAssignedProject().size()));
-//    }
 
 
 
@@ -964,7 +987,9 @@ public class AdminController implements Initializable {
 
         addMemberShowListData();
         addMemberResearchInterests();
-        //homeTheMostActiveMember();
+        homeTheMostActiveMember();
+        homeTheMostUsedMachine();
+        homeProjectWithMostMachines();
 
         String adminName = MemorySession.currentUser.getUserName();
         username.setText(adminName);

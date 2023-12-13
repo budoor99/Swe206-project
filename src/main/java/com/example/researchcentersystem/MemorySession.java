@@ -365,6 +365,37 @@ public class MemorySession {
         return newArray;
     }
 
+    public String theMostUsedMachine(){
+        int num=0;
+        String m="";
+        for (Map.Entry<String, ArrayList<String>> entry : allReservations.entrySet()) {
+            String key = entry.getKey();
+            ArrayList<String> values = entry.getValue();
+            if(values.size()>num){
+                m=key;
+                num=values.size();
+            }
+        }
+
+        return m;
+    }
+
+    public String ProjectWithMostMachines(){
+        int max=0;
+        String p="";
+        for (Project project:takenProjects){
+            Team team=project.getTeam();
+            if(team!=null){
+                int num=team.teamMachines.size();
+                if(num>max){
+                    max=num;
+                    p=project.getProjectName();
+                }
+            }
+        }
+        return p+","+max;
+    }
+
 
     public void writeToFiles() {
         try {
