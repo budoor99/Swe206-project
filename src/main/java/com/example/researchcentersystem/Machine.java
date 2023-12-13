@@ -2,6 +2,7 @@ package com.example.researchcentersystem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Machine {
 
@@ -71,6 +72,45 @@ public class Machine {
     public String getResearchInterests(){
         return researchInterests.toString();
     }
+
+    public String toString(){
+        String str = machineName+","+machineID+",";
+        for(int i = 0; i<researchInterests.size();i++){
+            if(i==researchInterests.size()-1){
+                str+=researchInterests.get(i);
+            }else{
+                str = str+researchInterests.get(i)+",";
+            }
+        }
+        return str;
+    }
+
+
+
+
+    //return the machines
+    public List<String> getReservedMachines() {
+        return new ArrayList<>(reservations.keySet());
+    }
+
+
+
+
+    /*public boolean createReservationMember (String date, String time){
+        if(reservations.containsKey(date)) {
+            if (!reservations.get(date).contains(time)) {
+                reservations.get(date).add(time);
+                return true;
+            }
+        }else{
+            ArrayList<String> addNewDate = new ArrayList<>();
+            addNewDate.add(time);
+            reservations.put(date, addNewDate);
+            return true;
+        }
+        return false;
+
+    }*/
 
 
 

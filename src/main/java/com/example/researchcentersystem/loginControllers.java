@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -68,6 +69,9 @@ public class loginControllers implements Initializable {
                             BufferedReader readerMember = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/member.txt"));
                             String memberInfo;
                             while ((memberInfo = readerMember.readLine()) != null){
+                                if(memberInfo.equals("")){
+                                    break;
+                                }
                                 String [] info = memberInfo.split(",");
                                 System.out.println(Arrays.toString(info));
                                 database.addMember(info[0], info[1], info[4], info[3]);
@@ -76,6 +80,9 @@ public class loginControllers implements Initializable {
                             BufferedReader readerAdmin = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/admin.txt"));
                             String adminInfo;
                             while ((adminInfo = readerAdmin.readLine()) != null){
+                                if(adminInfo.equals("")){
+                                    break;
+                                }
                                 String [] info = adminInfo.split(",");
                                 database.addAdmin(info[0],info[1],info[3]);
                             }
@@ -87,6 +94,9 @@ public class loginControllers implements Initializable {
                             BufferedReader readerTeam = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/team.txt"));
                             String teamInfo;
                             while ((teamInfo = readerTeam.readLine())!=null){
+                                if(teamInfo.equals("")){
+                                    break;
+                                }
                                 String [] tInfo = teamInfo.split(",");
                                 Team t1 = new Team (tInfo[0], tInfo[1]);
                                 t1.setLeader(tInfo[2]);
@@ -102,6 +112,9 @@ public class loginControllers implements Initializable {
                             BufferedReader readerProjects = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/projects.txt"));
                             String projectInfo;
                             while ((projectInfo = readerProjects.readLine())!=null){
+                                if(projectInfo.equals("")){
+                                    break;
+                                }
                                 String [] pInfo = projectInfo.split(",");
                                 if(pInfo.length==2){
                                     Team t=database.searchTeam(pInfo[1].trim());
@@ -119,6 +132,9 @@ public class loginControllers implements Initializable {
                             BufferedReader readerResearchInterests = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/researchInterests.txt"));
                             String researchInterests;
                             while ((researchInterests = readerResearchInterests.readLine()) != null){
+                                if(researchInterests.equals("")){
+                                    break;
+                                }
                                 database.addResearchInterest(researchInterests.trim());
                             }
 
@@ -126,6 +142,9 @@ public class loginControllers implements Initializable {
                             BufferedReader readerMachines = new BufferedReader(new FileReader("src/main/java/com/example/researchcentersystem/machines.txt"));
                             String machine;
                             while ((machine = readerMachines.readLine()) != null){
+                                if(machine.equals("")){
+                                    break;
+                                }
                                 String[] machineIfo=machine.split(",");
                                 ArrayList<String> interests=new ArrayList<>();
                                 for (int i=2;i<machineIfo.length;i++){
@@ -139,18 +158,26 @@ public class loginControllers implements Initializable {
                             Machine m1, prevm1 = new Machine("","");
                             Team t1 = new Team("","");
                             while ((reservation = readReservations.readLine()) != null){
+                                if(reservation.equals("")){
+                                    break;
+                                }
                                 m1= database.searchMachine(reservation);
                                 if(m1==null){
                                     //reservation= readReservations.readLine();
                                     String [] rInfo = reservation.split(",");
-                                    for(int i = 1; i<rInfo.length;i++){
-                                        String [] teamAndMachineInfo = rInfo[i].split("/");
-                                        prevm1.createReservation(rInfo[0], teamAndMachineInfo[1]);
-                                        t1 = database.searchTeam(teamAndMachineInfo[0]);
-                                        System.out.println(teamAndMachineInfo[0]);
-                                        t1.addMachine(prevm1.getMachineName(), rInfo[0]+", "+teamAndMachineInfo[1]);
-                                        System.out.println(t1.teamMachines);
+                                    String [] teamAndMachineInfo = rInfo[1].split("/");
+                                    if(database.allReservations.containsKey(prevm1.getMachineName())) {
+                                        database.allReservations.get(prevm1.getMachineName()).add(rInfo[0] + "," + teamAndMachineInfo[0] + "/" + teamAndMachineInfo[1]);
+                                    }else{
+                                        ArrayList <String> temp = new ArrayList<>();
+                                        temp.add(rInfo[0] + "," + teamAndMachineInfo[0] + "/" + teamAndMachineInfo[1]);
+                                        database.allReservations.put(prevm1.getMachineName(),temp);
                                     }
+                                    prevm1.createReservation(rInfo[0], teamAndMachineInfo[1]);
+                                    t1 = database.searchTeam(teamAndMachineInfo[0]);
+                                    System.out.println(teamAndMachineInfo[0]);
+                                    t1.addMachine(prevm1.getMachineName(), rInfo[0]+","+teamAndMachineInfo[1]);
+                                    System.out.println(t1.teamMachines);
                                 }else{
                                     prevm1 = m1;
                                 }

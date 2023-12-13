@@ -10,6 +10,21 @@ public class Team {
 
     public HashMap<String, ArrayList <String>> teamMachines= new HashMap<>();
 
+    public void addReservation(String m,String d, String t){
+        String c=d+","+t;
+        if(teamMachines.containsKey(m)) {
+            teamMachines.get(m).add(c);
+            }
+        else{
+            ArrayList<String> addNewDate = new ArrayList<>();
+            addNewDate.add(c);
+            teamMachines.put(m, addNewDate);
+        }
+    }
+
+    public HashMap<String, ArrayList<String>> getTeamMachines() {
+        return teamMachines;
+    }
 
     public String getTeamName() {
         return teamName;
@@ -69,28 +84,51 @@ public class Team {
     }
 
     public boolean addMachine(String machineName, String dateAndTime){
+        MemorySession database = new MemorySession();
+        boolean choice = false;
+        String [] timeInfo = dateAndTime.split(",");
         if(teamMachines.containsKey(machineName)) {
             if (!teamMachines.get(machineName).contains(dateAndTime)) {
                 teamMachines.get(machineName).add(dateAndTime);
-                return true;
+                choice =  true;
             }
         }else{
             ArrayList<String> addNewDate = new ArrayList<>();
             addNewDate.add(dateAndTime);
             teamMachines.put(machineName, addNewDate);
-            return true;
+            choice = true;
         }
-        return false;
+
+        if (choice){
+            if(database.allReservations.containsKey(machineName)){
+                if (database.allReservations.get(machineName).contains(timeInfo[0]+","+teamName+"/"+timeInfo[1])){
+                    return false;
+                }else{
+                    database.allReservations.get(machineName).add(timeInfo[0]+","+teamName+"/"+timeInfo[1]);
+                }
+            }else{
+                ArrayList<String> res = new ArrayList<>();
+                res.add(timeInfo[0]+","+teamName+"/"+timeInfo[1]);
+                database.allReservations.put(machineName,res );
+            }
+        }
+        return choice;
 
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 18695fd38ad6a34f5c62d349d5d609a96fcd9794
     @Override
     public String toString(){
         return teamName;
     }
     
+<<<<<<< HEAD
 
+=======
+>>>>>>> 18695fd38ad6a34f5c62d349d5d609a96fcd9794
 
     //get machines method for specific team
     public HashMap<String, ArrayList <String>> getTeamReservations() {
@@ -104,6 +142,7 @@ public class Team {
         return teamReservations;
     }
 
+<<<<<<< HEAD
     public void addProject(Project p){
         projects.add(p);
     }
@@ -121,4 +160,19 @@ public class Team {
     }
 
 
+=======
+
+    public String fileOutput(){
+        String str = teamName+","+teamID+",";
+        for (int i = 0; i<members.size();i++){
+            if(i == members.size()-1){
+                str= str+members.get(i).getUserName();
+            }else {
+                str = str + members.get(i).getUserName() + ",";
+            }
+        }
+        return str;
+    }
+
+>>>>>>> 18695fd38ad6a34f5c62d349d5d609a96fcd9794
 }
