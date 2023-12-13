@@ -10,6 +10,7 @@ public class Team {
     public HashMap<String, ArrayList <String>> teamMachines= new HashMap<>();
 
     public void addReservation(String m,String d, String t){
+        MemorySession database = new MemorySession();
         String c=d+","+t;
         if(teamMachines.containsKey(m)) {
             teamMachines.get(m).add(c);
@@ -18,6 +19,14 @@ public class Team {
             ArrayList<String> addNewDate = new ArrayList<>();
             addNewDate.add(c);
             teamMachines.put(m, addNewDate);
+        }
+        if(database.allReservations.containsKey(m)){
+
+                database.allReservations.get(m).add(d+","+teamName+"/"+t);
+        }else{
+            ArrayList<String> res = new ArrayList<>();
+            res.add(d+","+teamName+"/"+t);
+            database.allReservations.put(m,res );
         }
     }
 
@@ -83,7 +92,6 @@ public class Team {
     }
 
     public boolean addMachine(String machineName, String dateAndTime){
-        MemorySession database = new MemorySession();
         boolean choice = false;
         String [] timeInfo = dateAndTime.split(",");
         if(teamMachines.containsKey(machineName)) {
@@ -98,19 +106,6 @@ public class Team {
             choice = true;
         }
 
-        if (choice){
-            if(database.allReservations.containsKey(machineName)){
-                if (database.allReservations.get(machineName).contains(timeInfo[0]+","+teamName+"/"+timeInfo[1])){
-                    return false;
-                }else{
-                    database.allReservations.get(machineName).add(timeInfo[0]+","+teamName+"/"+timeInfo[1]);
-                }
-            }else{
-                ArrayList<String> res = new ArrayList<>();
-                res.add(timeInfo[0]+","+teamName+"/"+timeInfo[1]);
-                database.allReservations.put(machineName,res );
-            }
-        }
         return choice;
 
     }
