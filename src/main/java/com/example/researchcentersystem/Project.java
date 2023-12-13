@@ -65,14 +65,12 @@ public class Project {
     public String projectToFile(){
         String str= projectName+",";
         if(team==null){
+
             return str;
-        }else{
-            str+=team.getTeamName();
+        } else {
+            str += team.getTeamName();
             return str;
         }
     }
-
-
-
 
 }
