@@ -34,7 +34,11 @@
         <li><a href="#run-application">Run Application</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#how-to-use">How To Use</a></li>
+    <ul>
+        <li><a href="#login-information">Login Information</a></li>
+        <li><a href="#run-application">Run Application</a></li>
+    </ul>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -121,7 +125,7 @@ The member has the ability to preform a few tasks that appear to the user on the
 
 
 <!-- ROADMAP -->
-## Roadmap
+## 
 
 - [ ] Feature 1
 - [ ] Feature 2
