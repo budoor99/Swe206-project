@@ -40,4 +40,7 @@ public class Member extends User {
 
     public void removeFromMyTeams(Team t1){myTeams.remove(t1);}
 
+
+
+
 }

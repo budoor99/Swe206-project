@@ -57,6 +57,10 @@ public class Project {
         team=t1;
     }
 
+    public String toString(){
+        return projectName;
+    }
+
 
 
 

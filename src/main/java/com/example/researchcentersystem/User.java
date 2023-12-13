@@ -40,4 +40,8 @@ public class User {
         UserType = userType;
     }
 
+    public String toString(){
+        return UserName;
+    }
+
 }

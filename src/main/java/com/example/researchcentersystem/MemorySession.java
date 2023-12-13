@@ -134,24 +134,27 @@ public class MemorySession {
             if(team.getTeamName().equals(name)){
                 removedTeam = team;
                 teams.remove(team);
+                break;
             }
         }
 
-        ArrayList<Member> members = removedTeam.getMembers();
-        for(Member member: members)
-        {
-            member.removeFromMyTeams(removedTeam);
+        if(removedTeam!=null){
+            ArrayList<Member> members = removedTeam.getMembers();
+            for (Member member : members) {
+                member.removeFromMyTeams(removedTeam);
+            }
 
-        }
+            for (Project project : takenProjects) {
+                if (project.getTeam().equals(removedTeam)) { //override equals ..
+                    project.setTeam(null);
+                    takenProjects.remove(project);
+                    availableProjects.add(project);
+                    break;
 
-        for(Project project: takenProjects){
-            if(project.getTeam().equals(removedTeam)){ //override equals ..
-                project.setTeam(null);
-
+                }
             }
         }
         return removedTeam;
-
     }
 
     public ArrayList<Machine> viewAllMachines(){
