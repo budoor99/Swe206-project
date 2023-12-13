@@ -60,8 +60,9 @@ public class Project {
     public String toString(){
         return projectName;
 
+    }
 
-
+    public String projectToFile(){
         String str= projectName+",";
         if(team==null){
             return str;
@@ -69,8 +70,6 @@ public class Project {
             str+=team.getTeamName();
             return str;
         }
-
-
     }
 
 

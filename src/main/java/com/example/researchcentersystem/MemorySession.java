@@ -378,10 +378,10 @@ public class MemorySession {
             File projectWrite = new File("src/main/java/com/example/researchcentersystem/projectCopy.txt");
             FileWriter outputProject = new FileWriter(projectWrite);
             for (int i = 0; i < takenProjects.size(); i++) {
-                outputProject.write(takenProjects.get(i).toString() + "\n");
+                outputProject.write(takenProjects.get(i).projectToFile() + "\n");
             }
             for (int i = 0; i < availableProjects.size(); i++) {
-                outputProject.write(availableProjects.get(i).toString() + "\n");
+                outputProject.write(availableProjects.get(i).projectToFile() + "\n");
             }
             outputProject.close();
 
