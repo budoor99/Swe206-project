@@ -212,6 +212,16 @@ public class AdminController implements Initializable {
     @FXML
     private  ListView<Member>viewTeam_teamMembersF;
 
+
+    @FXML
+    private Label home_projectName;
+    @FXML
+    private Label home_machineName;
+    @FXML
+    private Label home_numOfReservation;
+    @FXML
+    private Label home_numOfMachineInProject;
+
     //To create the reservation table:
     @FXML
     private Button clear_btn;
@@ -223,8 +233,6 @@ public class AdminController implements Initializable {
 
     @FXML
     private AnchorPane reserve_aform;
-
-
 
     @FXML
     private DatePicker date_picker;
@@ -255,6 +263,7 @@ public class AdminController implements Initializable {
 
     @FXML
     private TableColumn<Reservation, String> date_col;
+
 
 
 
@@ -333,9 +342,9 @@ public class AdminController implements Initializable {
             viewTeams_btn.setStyle("-fx-background-color:transparent");
             reserve_abtn.setStyle("-fx-background-color:transparent");
 
-            addMemberShowListData();
-            addMemberClear();
-            //homeTheMostActiveMember();
+            homeTheMostActiveMember();
+            homeTheMostUsedMachine();
+            homeProjectWithMostMachines();
 
 
         } else if (event.getSource() == addProject_btn) {
@@ -373,8 +382,6 @@ public class AdminController implements Initializable {
             home_btn.setStyle("-fx-background-color:transparent");
             viewTeams_btn.setStyle("-fx-background-color:transparent");
             reserve_abtn.setStyle("-fx-background-color:transparent");
-
-
             addMachineShowListData();
 
         } else if (event.getSource() ==addMember_btn) {
@@ -392,6 +399,7 @@ public class AdminController implements Initializable {
             home_btn.setStyle("-fx-background-color:transparent");
             viewTeams_btn.setStyle("-fx-background-color:transparent");
             reserve_abtn.setStyle("-fx-background-color:transparent");
+            addMemberShowListData();
 
             
         } else if (event.getSource() ==viewTeams_btn) {
@@ -1017,47 +1025,36 @@ public class AdminController implements Initializable {
 
 
 
-
-
-
-// this can NOT be used until we assign team to project.
-//    public void homeTheMostActiveMember(){
-//        Member m=database.viewMostActiveMember();
-//        home_theMostActiveMember.setText(String.valueOf(m.getUserName()));
-//        home_numOfProject.setText(String.valueOf(m.viewAssignedProject().size()));
-//    }
-
-
-
-
-
-
-
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
-        addMemberShowListData();
-        addMemberResearchInterests();
-        //homeTheMostActiveMember();
-
-        String adminName = MemorySession.currentUser.getUserName();
-        username.setText(adminName);
-
-
-
-        //regarding creating schedule
-        machineComboList();
-        machine_combo.setOnAction(event -> handleMachineSelection());
-
-        teamsComboList();
-
-
-        timeComboList();
-
+    public void homeTheMostActiveMember(){
+        Member m=database.viewMostActiveMember();
+        home_theMostActiveMember.setText(String.valueOf(m.getUserName()));
+        home_numOfProject.setText(String.valueOf(m.viewAssignedProject().size()));
     }
+
+    public void homeTheMostUsedMachine(){
+        String machine=database.theMostUsedMachine();
+        int num=MemorySession.allReservations.get(machine).size();
+        home_machineName.setText(String.valueOf(machine));
+        home_numOfReservation.setText(String.valueOf(num));
+    }
+
+    public void homeProjectWithMostMachines(){
+        String[] info=database.ProjectWithMostMachines().split(",");
+        home_projectName.setText(info[0]);
+        home_numOfMachineInProject.setText(info[1]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     //**********************************create a schedule******************************************
@@ -1120,10 +1117,10 @@ public class AdminController implements Initializable {
         Alert alert;
 
 
-        if (machine_combo.getValue().isEmpty() ||
-                teams_combo.getValue().isEmpty() ||
+        if (machine_combo.getSelectionModel().getSelectedItem() == null ||
+                teams_combo.getSelectionModel().getSelectedItem() == null ||
                 date_picker.getEditor().getText().isEmpty() ||
-                time_combo.getValue().isEmpty()) {
+                time_combo.getSelectionModel().getSelectedItem() == null) {
 
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error message");
@@ -1192,9 +1189,24 @@ public class AdminController implements Initializable {
         reserve_table.setItems(reservationList);
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
+        homeTheMostActiveMember();
+        homeTheMostUsedMachine();
+        homeProjectWithMostMachines();
+
+        String adminName = MemorySession.currentUser.getUserName();
+        username.setText(adminName);
 
 
+        //regarding creating schedule
+        machineComboList();
+        machine_combo.setOnAction(event -> handleMachineSelection());
+        teamsComboList();
+        timeComboList();
+
+    }
 
 }

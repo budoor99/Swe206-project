@@ -121,26 +121,41 @@
                                        <children>
                                           <AnchorPane prefHeight="179.0" prefWidth="849.0">
                                              <children>
-                                                <AnchorPane layoutX="8.0" layoutY="6.0" prefHeight="162.0" prefWidth="269.0" styleClass="card" stylesheets="@dashboardDesign.css">
+                                                <AnchorPane layoutX="2.0" layoutY="6.0" prefHeight="162.0" prefWidth="290.0" styleClass="card" stylesheets="@dashboardDesign.css">
                                                    <children>
                                                       <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="23.0" layoutY="85.0" size="4em" />
-                                                      <Label layoutX="41.0" layoutY="116.0" prefHeight="26.0" prefWidth="187.0" text="The most used machine" textFill="WHITE">
+                                                      <Label layoutX="13.0" layoutY="106.0" prefHeight="42.0" prefWidth="244.0" text="The project with most machines" textFill="WHITE">
                                                          <font>
                                                             <Font size="17.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="TOP_RIGHT" layoutX="113.0" layoutY="12.0" prefHeight="53.0" prefWidth="142.0" text="0" textFill="WHITE">
+                                                      <Label fx:id="home_numOfMachineInProject" alignment="CENTER" layoutX="169.0" layoutY="50.0" prefHeight="34.0" prefWidth="29.0" text="00" textFill="#90ffb5">
                                                          <font>
-                                                            <Font size="28.0" />
+                                                            <Font size="17.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="home_projectName" layoutX="131.0" layoutY="8.0" prefHeight="42.0" prefWidth="173.0" text="Project name" textFill="WHITE">
+                                                         <font>
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="131.0" layoutY="56.0" text="with" textFill="WHITE">
+                                                         <font>
+                                                            <Font size="17.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="202.0" layoutY="56.0" text="machines" textFill="WHITE">
+                                                         <font>
+                                                            <Font size="17.0" />
                                                          </font>
                                                       </Label>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane layoutX="571.0" layoutY="6.0" prefHeight="162.0" prefWidth="272.0" styleClass="card" stylesheets="@dashboardDesign.css">
+                                                <AnchorPane layoutX="586.0" layoutY="6.0" prefHeight="162.0" prefWidth="271.0" styleClass="card" stylesheets="@dashboardDesign.css">
                                                    <children>
-                                                      <Label fx:id="home_numOfProject" layoutX="165.0" layoutY="61.0" prefHeight="34.0" prefWidth="50.0" text="00" textFill="#90ffb5">
+                                                      <Label fx:id="home_numOfProject" alignment="CENTER" layoutX="151.0" layoutY="59.0" prefHeight="24.0" prefWidth="29.0" text="00" textFill="#90ffb5">
                                                          <font>
-                                                            <Font size="22.0" />
+                                                            <Font size="19.0" />
                                                          </font>
                                                       </Label>
                                                       <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="34.0" layoutY="83.0" size="4em" text="" />
@@ -149,34 +164,53 @@
                                                             <Font size="17.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="home_theMostActiveMember" alignment="TOP_RIGHT" layoutX="90.0" layoutY="12.0" prefHeight="40.0" prefWidth="180.0" text="user name" textFill="WHITE">
+
+                                                      <Label fx:id="home_theMostActiveMember" alignment="TOP_RIGHT" layoutX="115.0" layoutY="12.0" prefHeight="34.0" prefWidth="142.0" text="user name" textFill="WHITE">
+
                                                          <font>
                                                             <Font size="22.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label layoutX="140.0" layoutY="61.0" text="In" textFill="WHITE">
+                                                      <Label layoutX="128.0" layoutY="60.0" text="In" textFill="WHITE">
                                                          <font>
-                                                            <Font size="22.0" />
+                                                            <Font size="19.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label layoutX="195.0" layoutY="61.0" text="projects" textFill="WHITE">
+                                                      <Label layoutX="182.0" layoutY="58.0" prefHeight="24.0" prefWidth="78.0" text="projects" textFill="WHITE">
                                                          <font>
-                                                            <Font size="20.0" />
+                                                            <Font size="19.0" />
                                                          </font>
                                                       </Label>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane layoutX="290.0" layoutY="6.0" prefHeight="162.0" prefWidth="269.0" styleClass="card" stylesheets="@dashboardDesign.css">
+                                                <AnchorPane layoutX="309.0" layoutY="6.0" prefHeight="162.0" prefWidth="269.0" styleClass="card" stylesheets="@dashboardDesign.css">
                                                    <children>
                                                       <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="29.0" layoutY="83.0" size="4em" />
-                                                      <Label layoutX="13.0" layoutY="106.0" prefHeight="42.0" prefWidth="244.0" text="The project with most machines" textFill="WHITE">
+                                                      <Label fx:id="home_numOfReservation" alignment="CENTER" layoutX="139.0" layoutY="52.0" prefHeight="34.0" prefWidth="29.0" text="00" textFill="#90ffb5">
                                                          <font>
                                                             <Font size="17.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="TOP_RIGHT" layoutX="116.0" layoutY="12.0" prefHeight="40.0" prefWidth="146.0" text="0" textFill="WHITE">
+
+                                                      <Label fx:id="home_machineName" layoutX="107.0" layoutY="6.0" prefHeight="40.0" prefWidth="158.0" text="machine name" textFill="WHITE">
                                                          <font>
-                                                            <Font size="28.0" />
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="106.0" layoutY="59.0" prefHeight="12.0" prefWidth="30.0" text="with" textFill="WHITE">
+
+                                                         <font>
+                                                            <Font size="17.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="167.0" layoutY="57.0" prefHeight="25.0" prefWidth="80.0" text="reservation" textFill="WHITE">
+                                                         <font>
+                                                            <Font size="17.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="26.0" layoutY="110.0" prefHeight="26.0" prefWidth="187.0" text="The most used machine" textFill="WHITE">
+                                                         <font>
+                                                            <Font size="17.0" />
                                                          </font>
                                                       </Label>
                                                    </children>
@@ -232,6 +266,7 @@
                                     </Label>
 
 
+
                                     <TextField fx:id="addProject_Team" layoutX="160.0" layoutY="141.0" prefHeight="26.0" prefWidth="180.0" />
                                     <Button fx:id="addProject_addBtn" layoutX="31.0" layoutY="385.0" mnemonicParsing="false" onMouseClicked="#addProjectAdd" prefHeight="34.0" prefWidth="101.0" text="Add" />
                                     <Button fx:id="addProject_clearBtn" layoutX="31.0" layoutY="448.0" mnemonicParsing="false" onMouseClicked="#addProjectClear" prefHeight="34.0" prefWidth="101.0" text="Clear" />
@@ -239,6 +274,10 @@
                                     <Label layoutX="13.0" layoutY="209.0" prefHeight="17.0" prefWidth="351.0" text="if the project is not assigned to a team, you can assign it here:" />
                                     <ComboBox fx:id="addProject_selectTeam" layoutX="151.0" layoutY="242.0" prefHeight="26.0" prefWidth="189.0" />
                                     <Label layoutX="30.0" layoutY="242.0" prefHeight="27.0" prefWidth="121.0" text="Selecte a team:">
+
+
+
+
 
                                        <font>
                                           <Font size="17.0" />

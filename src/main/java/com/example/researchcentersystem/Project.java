@@ -62,11 +62,6 @@ public class Project {
 
     }
 
-
-
-
-
-
     public String projectToFile(){
         String str= projectName+",";
         if(team==null){
