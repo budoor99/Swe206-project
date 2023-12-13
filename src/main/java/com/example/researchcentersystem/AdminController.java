@@ -302,6 +302,7 @@ public class AdminController implements Initializable {
         {
             e.printStackTrace();
         }
+        database.writeToFiles();
     }
 
     public void close(){  //Handle the close page operation
@@ -324,12 +325,8 @@ public class AdminController implements Initializable {
             teams_form.setVisible(false);
             reserve_aform.setVisible(false);
 
-<<<<<<< HEAD
-            home_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
-=======
-
             home_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #033557, #1477ba)");
->>>>>>> 77989edefd4b221d4b745f32fa72724aaad2bb13
+
             addMachine_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             addProject_btn.setStyle("-fx-background-color:transparent");
@@ -348,12 +345,8 @@ public class AdminController implements Initializable {
             teams_form.setVisible(false);
             reserve_aform.setVisible(false);
 
-<<<<<<< HEAD
-            addProject_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
-=======
-
             addProject_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #033557, #1477ba)");
->>>>>>> 77989edefd4b221d4b745f32fa72724aaad2bb13
+
             addMachine_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
@@ -371,13 +364,9 @@ public class AdminController implements Initializable {
             teams_form.setVisible(false);
             reserve_aform.setVisible(false);
 
-<<<<<<< HEAD
-            addMachine_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
-=======
-
 
             addMachine_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #033557, #1477ba)");
->>>>>>> 77989edefd4b221d4b745f32fa72724aaad2bb13
+
             addProject_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
@@ -394,12 +383,8 @@ public class AdminController implements Initializable {
             teams_form.setVisible(false);
             reserve_aform.setVisible(false);
 
-<<<<<<< HEAD
-            addMember_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
-=======
-
             addMember_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #033557, #1477ba)");
->>>>>>> 77989edefd4b221d4b745f32fa72724aaad2bb13
+
             addProject_btn.setStyle("-fx-background-color:transparent");
             addMachine_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
@@ -416,14 +401,7 @@ public class AdminController implements Initializable {
             teams_form.setVisible(true);
             reserve_aform.setVisible(false);
 
-<<<<<<< HEAD
-            viewTeams_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
-=======
-
-
-
             viewTeams_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #033557, #1477ba)");
->>>>>>> 77989edefd4b221d4b745f32fa72724aaad2bb13
             addProject_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
@@ -447,6 +425,8 @@ public class AdminController implements Initializable {
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
             addMachine_btn.setStyle("-fx-background-color:transparent");
+            teamsComboList();
+            machineComboList();
 
             }
     }
@@ -459,6 +439,7 @@ public class AdminController implements Initializable {
         addMember_col_memberEmail.setCellValueFactory(new PropertyValueFactory<>("userEmail"));
         addMember_col_researchInterest.setCellValueFactory(new PropertyValueFactory<>("researchInterest"));
         addMember_table.setItems(addMemberList);
+        addMemberResearchInterests();
 
     }
 
@@ -1144,7 +1125,7 @@ public class AdminController implements Initializable {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error message");
                 alert.setHeaderText(null);
-                alert.setContentText("The machine already exists");
+                alert.setContentText("The machine is reserved in this time slot!!");
                 alert.showAndWait();
             }
         }

@@ -206,6 +206,8 @@ public class MemberController implements Initializable {
             home.setStyle("-fx-background-color:transparent");
             viewTeams.setStyle("-fx-background-color:transparent");
             reserve_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #033557, #1477ba)");
+            machineComboList();
+            teamsComboList();
 
         }
     }
@@ -260,6 +262,7 @@ public class MemberController implements Initializable {
         {
             e.printStackTrace();
         }
+        database.writeToFiles();
     }
     public void close(){
         System.exit(0);
@@ -534,7 +537,7 @@ public class MemberController implements Initializable {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error message");
                 alert.setHeaderText(null);
-                alert.setContentText("The machine already exists");
+                alert.setContentText("The machine is reserved in this time slot!!");
                 alert.showAndWait();
             }
         }

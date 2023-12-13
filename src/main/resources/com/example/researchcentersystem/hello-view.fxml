@@ -197,7 +197,7 @@
                                                             <Font size="22.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label layoutX="106.0" layoutY="59.0" prefHeight="12.0" prefWidth="30.0" text="with" textFill="WHITE">
+                                                      <Label layoutX="99.0" layoutY="59.0" prefHeight="26.0" prefWidth="37.0" text="with" textFill="WHITE">
 
                                                          <font>
                                                             <Font size="17.0" />

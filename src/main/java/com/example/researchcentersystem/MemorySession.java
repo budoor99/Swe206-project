@@ -12,11 +12,11 @@ import java.io.FileWriter;
 
 public class MemorySession {
     public static User currentUser;
-    private static ArrayList<Project> takenProjects = new ArrayList<>();
+    public static ArrayList<Project> takenProjects = new ArrayList<>();
     public static HashMap<String, ArrayList<String>> allReservations = new HashMap<>();
 
 
-    private static ArrayList<Project> availableProjects = new ArrayList<>();
+    public static ArrayList<Project> availableProjects = new ArrayList<>();
     private static ArrayList<Member> members = new ArrayList<>();
     private static ArrayList<Team> teams = new ArrayList<>();
     private static ArrayList<Machine> machines = new ArrayList<>();
@@ -409,7 +409,7 @@ public class MemorySession {
             File memberWrite = new File("src/main/java/com/example/researchcentersystem/memberCopy.txt");
             FileWriter outputMembers = new FileWriter(memberWrite);
             for (int i = 0; i < members.size(); i++) {
-                outputMembers.write(members.get(i).toString() + "\n");
+                outputMembers.write(members.get(i).getUserName()+","+members.get(i).getUserEmail()+",member,"+members.get(i).getUserID()+","+members.get(i).getResearchInterest() + "\n");
             }
             outputMembers.close();
 
