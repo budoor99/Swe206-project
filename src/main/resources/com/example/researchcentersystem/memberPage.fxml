@@ -23,7 +23,7 @@
                     <top>
                         <AnchorPane prefHeight="45.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                             <children>
-                                <AnchorPane layoutX="-8.0" layoutY="-3.0" prefHeight="36.0" prefWidth="1108.0" styleClass="my-form" stylesheets="@dashboardDesign.css" visible="false" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0">
+                                <AnchorPane layoutY="8.0" prefHeight="31.0" prefWidth="1100.0" styleClass="my-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0">
                                     <children>
                                         <FontAwesomeIconView glyphName="USERS" layoutX="16.0" layoutY="27.0" size="1.5em" />
                                         <Label layoutX="49.0" layoutY="11.0" text="KFUPM Research Center System">
@@ -148,7 +148,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="viewteams_form" layoutX="5.0" layoutY="3.0" prefHeight="548.0" prefWidth="877.0" visible="false">
+                        <AnchorPane fx:id="viewteams_form" layoutX="5.0" layoutY="3.0" prefHeight="548.0" prefWidth="877.0">
                            <children>
                               <AnchorPane layoutX="8.0" layoutY="3.0" prefHeight="533.0" prefWidth="862.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
@@ -161,7 +161,7 @@
                                           <Font name="Tahoma" size="30.0" />
                                        </font>
                                     </Label>
-                                    <VBox fx:id="myteams" layoutX="40.0" layoutY="70.0" prefHeight="180.0" prefWidth="188.0" stylesheets="@dashboardDesign.css">
+                                    <VBox fx:id="myteams" layoutX="40.0" layoutY="70.0" prefHeight="132.0" prefWidth="188.0" stylesheets="@dashboardDesign.css">
                                        <styleClass>
                                           <String fx:value="white-bg" />
                                           <String fx:value="shadow" />
@@ -216,7 +216,7 @@
                                  </children>
                               </AnchorPane>
                            </children></AnchorPane>
-                        <AnchorPane fx:id="reserve_form" prefHeight="555.0" prefWidth="889.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="reserve_form" prefHeight="555.0" prefWidth="889.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="9.0" layoutY="6.0" prefHeight="537.0" prefWidth="873.0" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
                                  <styleClass>

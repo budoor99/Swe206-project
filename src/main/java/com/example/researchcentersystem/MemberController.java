@@ -179,7 +179,7 @@ public class MemberController implements Initializable {
             reserve_form.setVisible(false);
 
 
-            home.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
+            home.setStyle("-fx-background-color:linear-gradient(to bottom right, #033557, #1477ba)");
             viewTeams.setStyle("-fx-background-color:transparent");
             reserve_btn.setStyle("-fx-background-color:transparent");
 
@@ -192,7 +192,7 @@ public class MemberController implements Initializable {
 
 
             home.setStyle("-fx-background-color:transparent");
-            viewTeams.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
+            viewTeams.setStyle("-fx-background-color:linear-gradient(to bottom right, #033557, #1477ba)");
             reserve_btn.setStyle("-fx-background-color:transparent");
 
         }
@@ -205,7 +205,7 @@ public class MemberController implements Initializable {
 
             home.setStyle("-fx-background-color:transparent");
             viewTeams.setStyle("-fx-background-color:transparent");
-            reserve_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
+            reserve_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #033557, #1477ba)");
 
         }
     }

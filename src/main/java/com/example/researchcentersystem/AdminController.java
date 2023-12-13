@@ -326,7 +326,7 @@ public class AdminController implements Initializable {
             reserve_aform.setVisible(false);
 
 
-            home_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
+            home_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #033557, #1477ba)");
             addMachine_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             addProject_btn.setStyle("-fx-background-color:transparent");
@@ -347,7 +347,7 @@ public class AdminController implements Initializable {
             reserve_aform.setVisible(false);
 
 
-            addProject_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
+            addProject_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #033557, #1477ba)");
             addMachine_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
@@ -367,7 +367,7 @@ public class AdminController implements Initializable {
 
 
 
-            addMachine_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
+            addMachine_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #033557, #1477ba)");
             addProject_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
@@ -386,7 +386,7 @@ public class AdminController implements Initializable {
             reserve_aform.setVisible(false);
 
 
-            addMember_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
+            addMember_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #033557, #1477ba)");
             addProject_btn.setStyle("-fx-background-color:transparent");
             addMachine_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
@@ -399,13 +399,13 @@ public class AdminController implements Initializable {
             machine_form.setVisible(false);
             member_form.setVisible(false);
             project_form.setVisible(false);
-            teams_form.setVisible(false);
-            reserve_aform.setVisible(true);
+            teams_form.setVisible(true);
+            reserve_aform.setVisible(false);
 
 
 
 
-            viewTeams_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
+            viewTeams_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #033557, #1477ba)");
             addProject_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
@@ -420,13 +420,14 @@ public class AdminController implements Initializable {
             machine_form.setVisible(false);
             member_form.setVisible(false);
             project_form.setVisible(false);
-            teams_form.setVisible(true);
+            teams_form.setVisible(false);
+            reserve_aform.setVisible(true);
 
 
 
 
             viewTeams_btn.setStyle("-fx-background-color:transparent");
-            reserve_abtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c)");
+            reserve_abtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #033557, #1477ba)");
             addProject_btn.setStyle("-fx-background-color:transparent");
             addMember_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");

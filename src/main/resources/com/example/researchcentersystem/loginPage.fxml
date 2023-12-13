@@ -14,7 +14,7 @@
          <children>
             <AnchorPane prefHeight="400.0" prefWidth="300.0" styleClass="left-form" stylesheets="@loginDesign.css">
                <children>
-                  <Label layoutX="12.0" layoutY="200.0" text="KFUPM research center system" textFill="WHITE">
+                  <Label layoutX="29.0" layoutY="200.0" text="KFUPM research center system" textFill="WHITE">
                      <font>
                         <Font name="Algerian" size="17.0" />
                      </font>
@@ -24,9 +24,9 @@
             </AnchorPane>
             <AnchorPane layoutX="300.0" prefHeight="400.0" prefWidth="300.0" styleClass="right-form" stylesheets="@loginDesign.css">
                <children>
-                  <Label layoutX="32.0" layoutY="72.0" prefHeight="30.0" prefWidth="136.0" text="Welcome back">
+                  <Label layoutX="32.0" layoutY="72.0" prefHeight="30.0" prefWidth="136.0" text="Welcome back" textFill="#18669a">
                      <font>
-                        <Font name="Andalus" size="19.0" />
+                        <Font name="Tahoma" size="20.0" />
                      </font>
                   </Label>
                   <TextField fx:id="username" layoutX="32.0" layoutY="138.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" />
